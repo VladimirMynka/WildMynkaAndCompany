@@ -15,7 +15,7 @@ public class Dialog : MonoBehaviour
 
     public GameObject dialogCanvas;
     GameObject content;
-    GameObject buttonExample;
+    public GameObject buttonExample;
     GameObject topicsRectangle;
     public Topic[] topics;
     public GameObject miniCanvas;
@@ -30,12 +30,8 @@ public class Dialog : MonoBehaviour
         if(!active) return;
         if(Input.GetKeyDown("space")){
             miniCanvas.GetComponent< Canvas >().planeDistance = -10;
-
-            for(int i = 0; i < topics.Length; i++){
-                add(topicsRectangle, topics[i]);
-            }
             dialogCanvas.GetComponent< Canvas >().planeDistance = 99;
-            Time.timeScale = 0;
+            StartCoroutine(clearAndAddAll());
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
@@ -51,17 +47,38 @@ public class Dialog : MonoBehaviour
         miniCanvas.GetComponent< Canvas >().planeDistance = -10;
     }
 
-    void add(GameObject topicsRectangle, Topic topic){
+    IEnumerator clearAndAddAll(){
+        clear();
+        yield return new WaitForSeconds(0.05f);
+        for(int i = 0; i < topics.Length; i++){
+            add(topics[i]);
+        }
+        Time.timeScale = 0;
+    }
+
+    void add(Topic topic){
         GameObject newTopic = Instantiate(buttonExample) as GameObject;
-        newTopic.transform.parent = topicsRectangle.transform;
         newTopic.GetComponent< Button >().onClick.AddListener(() => { onClick(topic.name, topic.texts, topic.replicas); });
-        if (topicsRectangle.transform.childCount > 0){
-            newTopic.transform.localPosition = topicsRectangle.transform.GetChild(this.transform.childCount - 1).transform.localPosition + new Vector3(0, 20, 0);
+        newTopic.transform.Find("Textic").gameObject.GetComponent<Text>().text = topic.name;
+        newTopic.transform.parent = topicsRectangle.transform;
+        if (topicsRectangle.transform.childCount > 1){
+            newTopic.transform.localPosition = topicsRectangle.transform.GetChild(topicsRectangle.transform.childCount - 2).transform.localPosition + new Vector3(0, -20, 0);
         }
         else{
-            newTopic.transform.localPosition = new Vector3 (0, 20, 0);
+            newTopic.transform.localPosition = new Vector3(53.25f, -20, 0);
         }
+        newTopic.transform.localScale = Vector3.one;
+        Debug.Log(topicsRectangle.transform.childCount);
     }
+
+    void clear(){
+        content.transform.Find("Title").gameObject.GetComponent< Text >().text = "";
+        content.transform.Find("Text").gameObject.GetComponent< Text >().text = "";
+        for(int i = 0; i < topicsRectangle.transform.childCount; i++){
+            Destroy(topicsRectangle.transform.GetChild(i).gameObject);
+        } 
+    }
+
     public void onClick(string name, string[] replicas, AudioClip[] audioReplicas){
         int index = Random.Range(0, replicas.Length);
         content.transform.Find("Title").gameObject.GetComponent< Text >().text = name;
