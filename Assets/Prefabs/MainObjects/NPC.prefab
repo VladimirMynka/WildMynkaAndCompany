@@ -494,7 +494,8 @@ MonoBehaviour:
   pointTarget: {x: 0, y: 0, z: 0}
   relationShip: 20
   normalDistance: 2
-  normalInDifference: 1
+  defaultNormalDistance: 2
+  normalInDifference: 0.1
   normalOutDifference: 0
   distance: 0
   speed: 2
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f724e5a6449e4eaa3634eb0cc007c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arms: {x: 2, y: -1, z: 0}
+  arms: {x: 0, y: -0.3, z: 0}
   normalAngle: 0
 --- !u!114 &4119328964332326226
 MonoBehaviour:
@@ -531,7 +532,8 @@ MonoBehaviour:
   changeWeaponWaiting: 10
   attackWaiting: 2
   audioWaiting: 0
-  attackDistance: 4
+  attackDistance: 0.5
+  bigAttackDistance: 1
 --- !u!114 &4119328964332326229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76537d7a7954ca84d98ac44e1eb917fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 1
+  enable: 0
   currentSpell: {fileID: 0}
   spellAudio: {fileID: 0}
   audioWaiting: 0

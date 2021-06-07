@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
     public Vector3 pointTarget;
     public int relationShip;
     public float normalDistance;
+    public float defaultNormalDistance;
     public float normalInDifference;
     public float normalOutDifference;
     public float distance;

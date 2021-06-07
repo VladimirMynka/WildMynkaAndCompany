@@ -14,27 +14,17 @@ public class Attack : MonoBehaviour
     public float attackWaiting;
     public float audioWaiting;
     public float attackDistance;
-    float normalDistance;
+    public float bigAttackDistance;
     Inventory inventory;
     Target target;
     void Start()
     {
         inventory = GetComponent< Inventory >();
         target = GetComponent< Target >();
-        normalDistance = target.normalDistance;
     }
 
     void FixedUpdate()
     {
-        if (currentWeapon){
-            if(currentWeapon.GetComponent< BoxCollider2D >()){
-                Vector2 size = currentWeapon.GetComponent< BoxCollider2D >().size;
-                size.x *= Mathf.Abs(currentWeapon.transform.localScale.x) * 2.5f;
-                size.y *= Mathf.Abs(currentWeapon.transform.localScale.y) * 2.5f;
-                attackDistance = Mathf.Min(size.x, size.y);
-            }
-        }
-
         if (changeWeaponTime != 0) changeWeaponTime += Time.deltaTime;
         if (attackTime != 0 && attackTime != attackWaiting / 2) attackTime += Time.deltaTime;
         if (audioTime != 0) audioTime += Time.deltaTime;
@@ -45,11 +35,9 @@ public class Attack : MonoBehaviour
         }
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
-
-
         if(!enable){
             removeWeapon();
-            target.normalDistance = normalDistance;
+            target.normalDistance = target.defaultNormalDistance;
         }
 
         if(enable){
@@ -78,12 +66,11 @@ public class Attack : MonoBehaviour
         if (target.normalDistance - target.distance > target.normalInDifference) return;
         
         if(attackTime == 0){
-            normalDistance = target.normalDistance;
             target.normalDistance = attackDistance;
             attackTime += 0.5f;
         }
         if(attackTime == attackWaiting / 2 + 0.5f){
-            target.normalDistance = normalDistance;
+            target.normalDistance = bigAttackDistance;
             attackTime += 0.5f;
         }
     }
