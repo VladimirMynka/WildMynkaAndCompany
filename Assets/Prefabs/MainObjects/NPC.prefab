@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogCanvas: {fileID: 0}
+  buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd, type: 3}
+  topics: []
   miniCanvas: {fileID: 0}
   active: 0
   text: 
@@ -208,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 4119328964332326228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.4, y: -76.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 5905561629487874482}
   m_Father: {fileID: 0}
@@ -254,12 +256,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: de611d8af76bb0a43bd63088703cedec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6200f2f0ac171f441a858897fa848b6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.29, y: 3.87}
+  m_Size: {x: 1, y: 0.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -283,7 +285,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.86}
-    newSize: {x: 5.29, y: 3.87}
+    newSize: {x: 1, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -528,6 +530,7 @@ MonoBehaviour:
   sounds: []
   changeWeaponWaiting: 10
   attackWaiting: 2
+  audioWaiting: 0
   attackDistance: 4
 --- !u!114 &4119328964332326229
 MonoBehaviour:
