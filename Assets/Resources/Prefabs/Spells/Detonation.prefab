@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1589825815323764980
+--- !u!1 &2783250422658346101
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1589825815323764875}
-  - component: {fileID: 2228156610771770377}
-  - component: {fileID: 1589825815323764872}
-  - component: {fileID: 1589825815323764873}
-  - component: {fileID: 1589825815323764878}
-  - component: {fileID: 8292737370510117474}
+  - component: {fileID: 6411756288683886119}
+  - component: {fileID: 241858506904287005}
+  - component: {fileID: 6054982107853794044}
+  - component: {fileID: 2518233460759167969}
+  - component: {fileID: 7067223360450739143}
+  - component: {fileID: 7654372094591721200}
+  - component: {fileID: 8120983059049895618}
+  - component: {fileID: 2370763948661293195}
   m_Layer: 0
-  m_Name: Weapon3
-  m_TagString: Weapon
+  m_Name: Detonation
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1589825815323764875
+--- !u!4 &6411756288683886119
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14, y: -78.43, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 68.099655, y: -0.4343639, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2228156610771770377
+--- !u!212 &241858506904287005
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 3b95f765cad836a4a80bf25a1105fb65, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e393300a2cfbafb4a81e7f4274eac8e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1589825815323764872
+--- !u!61 &6054982107853794044
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -103,22 +105,22 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.5}
+    oldSize: {x: 1.28, y: 0.86}
     newSize: {x: 5.29, y: 3.87}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.5}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!82 &1589825815323764873
+--- !u!82 &2518233460759167969
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -208,34 +210,76 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1589825815323764878
+--- !u!114 &7067223360450739143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf94dc84c2df7243affa118b069ba36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
-  timing: 0.5
---- !u!114 &8292737370510117474
+  - {fileID: 8300000, guid: eac294e77b096724fb729b558749cd17, type: 3}
+  timing: 10
+--- !u!50 &7654372094591721200
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783250422658346101}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 5
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &8120983059049895618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589825815323764980}
+  m_GameObject: {fileID: 2783250422658346101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78726c812bcd4a34885c1e36f40eae8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a017c8c0e044cf946bb9d0b33a2049fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: "\u0412\u0437\u0440\u044B\u0432"
   owner: {fileID: 0}
-  damage: 5
-  damageWaiting: 2
-  sound: {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
+  sound: {fileID: 8300000, guid: 576e284061af8c449857fb5906707765, type: 3}
+  aliveTime: 3
+  afterSpellWaiting: 1
+  begin: {x: 0, y: 0, z: 0}
+  end: {x: 0, y: 0, z: 0}
+  speed: 5
+  hasTarget: 1
+--- !u!114 &2370763948661293195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783250422658346101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4779ee78e3dd440b56402992cfa711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterDetonation: {fileID: 8657317574963208330, guid: 01eb9d9f80297be4288f5771b7203f0b, type: 3}
+  quantity: 20
+  radius: 1
+  afterDetonationAliveTime: 2

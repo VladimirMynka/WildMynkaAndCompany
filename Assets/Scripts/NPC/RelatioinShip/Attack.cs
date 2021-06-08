@@ -43,7 +43,7 @@ public class Attack : MonoBehaviour
         if(enable){
             changeWeapon();
             attack();
-            if(audioTime == 0){
+            if(audioTime == 0 && sounds.Length > 0){
                 int random = Random.Range(0, sounds.Length);
                 GetComponent< AudioSource >().PlayOneShot(sounds[random]);
                 audioWaiting = sounds[random].length * 2;

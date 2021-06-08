@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
+    public string spellName;
     public GameObject owner;
     public AudioClip sound;
     public float aliveTime;
@@ -22,12 +23,10 @@ public class Spell : MonoBehaviour
         float x = (end.x - begin.x) / distance;
         float y = (end.y - begin.y) / distance;
         velocity = new Vector2(x * speed, y * speed);
-    }
-
-    void FixedUpdate()
-    {
-        if(hasTarget && GetComponent< Rigidbody2D >()){
-            GetComponent< Rigidbody2D >().velocity = velocity;
-        }
+        
+        var component = GetComponent<Rigidbody2D>();
+        if(hasTarget)
+            component.drag = 0f;
+        component.velocity = velocity;
     }
 }

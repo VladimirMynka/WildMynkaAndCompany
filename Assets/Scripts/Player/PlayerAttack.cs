@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject currentWeapon;
+    public GameObject currentWeaponText;
     public int index;
     Inventory inventory;
     void Start()
     {
         inventory = GetComponent< Inventory >();
+        currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
     }
 
     void Update()
     {
         if(Input.GetKeyDown("f")){
-            if (!currentWeapon) addWeapon();
+            if (currentWeapon == null) addWeapon();
             else removeWeapon();
         }
         if(Input.GetKeyDown("[")){
             nextWeapon();
-            addWeapon();
+            if (currentWeapon != null) addWeapon();
+            currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
         }
     }
 
     void FixedUpdate(){
-        if(currentWeapon){
+        if(currentWeapon != null){
             currentWeapon.transform.localPosition = GetComponent< Arms >().arms;
         }
     }

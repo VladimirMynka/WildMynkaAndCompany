@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCastSpell : MonoBehaviour
 {
     public GameObject currentSpell;
+    public GameObject currentSpellText;
     public AudioClip spellAudio;
     public float audioWaiting;
     public float audioTime;
@@ -16,9 +18,10 @@ public class PlayerCastSpell : MonoBehaviour
     void Start()
     {
         inventory = GetComponent< Inventory >();
+        currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (spellTime != 0) spellTime += Time.deltaTime;
         if (audioTime != 0) audioTime += Time.deltaTime;
@@ -27,7 +30,10 @@ public class PlayerCastSpell : MonoBehaviour
 
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if(Input.GetButton("Fire1")) castSpell();
-        if(Input.GetKeyDown("]")) nextSpell();
+        if(Input.GetKeyDown("]")){ 
+            nextSpell();
+            currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
+        }
     }
 
     void castSpell(){

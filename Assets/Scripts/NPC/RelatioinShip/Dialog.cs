@@ -43,8 +43,10 @@ public class Dialog : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        active = false;
-        miniCanvas.GetComponent< Canvas >().planeDistance = -10;
+        if(other.gameObject.tag == "Player"){
+            active = false;
+            miniCanvas.GetComponent< Canvas >().planeDistance = -10;
+        }
     }
 
     IEnumerator clearAndAddAll(){

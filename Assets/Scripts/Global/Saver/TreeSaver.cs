@@ -1,27 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
 public class TreeSaver : Saver
 {
+    private static readonly int RegexTimes = 12 * (TreesCreator.branchCount + 1) + 1;
+    private static readonly string TransformRegex = new StringBuilder("~([^~]*)".Length*RegexTimes).Insert(0, "~([^~]*)", RegexTimes).ToString();
 
+    protected static readonly Regex TransformMatcher = new Regex(TransformRegex);
     public override void Save()
     {
-        int treeNumber = PlayerPrefs.GetInt(TreesNumberKey, 0);
-        PlayerPrefs.SetInt(TreesNumberKey, treeNumber + 1);
-        savedName = "Tree" + treeNumber;
+        savedName = "Tree" + currentTree++;
         
-        SaveSprite();
         SaveTransform();
+        SaveSprite();
         SaveChildren();
+        Push();
     }
 
     private void SaveChildren()
     {
         int childNumber = transform.childCount;
-        SaveProperty(ChildNumber, childNumber);
+        Put(childNumber);
         for (int i = 0; i < childNumber; i++)
             SaveChild(i);
     }
@@ -36,14 +40,15 @@ public class TreeSaver : Saver
     public override void Load()
     {
         savedName = gameObject.name;
-        LoadChildren();
+        matcher = new MatchHandler(TransformMatcher.Match(GetString()));
         LoadTransform();
         LoadSprite();
+        LoadChildren();
     }
 
     private void LoadChildren()
     {
-        int children = GetInt(ChildNumber);
+        int children = matcher.nextInt();
         for (int i = 0; i < children; i++)
             LoadChild(i);
     }

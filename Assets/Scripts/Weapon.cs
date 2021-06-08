@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public string weaponName;
     public GameObject owner;
     public float damage;
     float damageTime = 1;
@@ -20,7 +21,7 @@ public class Weapon : MonoBehaviour
         GameObject otherGO = other.gameObject;
         if (otherGO == owner) return;
         if (otherGO.GetComponent< Health >()){
-            otherGO.GetComponent< Health >().health -= damage;
+            otherGO.GetComponent< Health >().current -= damage;
             GetComponent< AudioSource >().PlayOneShot(sound, 1);
         }
         damageTime++;

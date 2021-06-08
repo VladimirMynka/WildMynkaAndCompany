@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     public GameObject miniCanvas;
     public string text;
     public GameObject transportObject;
-    public GameObject camera;
+    public GameObject currentCamera;
     public bool active;
 
 
@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
             transportObject = other.gameObject;
             miniCanvas.GetComponent< Canvas >().planeDistance = 100;
             miniCanvas.transform.Find("Text").GetComponent< Text >().text = text;
-            Vector3 position = camera.GetComponent< Camera >().WorldToScreenPoint(transform.position);
+            Vector3 position = currentCamera.GetComponent< Camera >().WorldToScreenPoint(transform.position);
             miniCanvas.GetComponent< RectTransform >().pivot = new Vector2(position.x, position.y);
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GlobalSaver : Saver
@@ -12,18 +13,21 @@ public class GlobalSaver : Saver
     {
         Load();
     }
-
-    private void OnDestroy() 
+    private void OnApplicationQuit()
     {
         Save();
     }
-    
+
     public override void Save()
     {
-        var all = GameObject.FindObjectsOfType<Saver>();
+        var all = FindObjectsOfType<Saver>();
         foreach (var one in all)
-            if(!(one is BranchSaver) && !(one is GlobalSaver))
+        {
+            if (!(one is BranchSaver) && !(one is GlobalSaver))
                 one.Save();
+        }
+
+        PlayerPrefs.SetInt(TreesNumberKey, currentTree);
     }
 
     public override void Load()
@@ -36,5 +40,10 @@ public class GlobalSaver : Saver
             var saver = go.AddComponent<TreeSaver>();
             saver.Load();
         }
+    }
+
+    public override string ToString()
+    {
+        return $"{name}";
     }
 }
