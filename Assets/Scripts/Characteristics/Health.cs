@@ -9,9 +9,14 @@ public class Health : MonoBehaviour
     public float current;
     public float maxHealth;
     public float regeneration = 1;
+    public SpriteRenderer sr;
+
+    void Start() {
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (current <= 0){
             Destroy(gameObject);
@@ -21,8 +26,8 @@ public class Health : MonoBehaviour
         if (current> maxHealth) current = maxHealth;
 
         float h = current / maxHealth;
-        GetComponent< SpriteRenderer >().color = new Color(
-            GetComponent< SpriteRenderer >().color[0],
+        sr.color = new Color(
+            sr.color[0],
             h,
             h,
             h

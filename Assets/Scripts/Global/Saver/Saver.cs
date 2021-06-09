@@ -10,8 +10,8 @@ public abstract class Saver : MonoBehaviour
 {
     public const string TreesNumberKey = "TreesNumber";
     public const string Branch = ".branch";
+    public const string Token = "~([^~]*)";
     protected static int currentTree = 0;
-
     
     protected static MatchHandler matcher = null;
 
@@ -104,25 +104,23 @@ public abstract class Saver : MonoBehaviour
     protected void SaveSprite()
     {
         var sprite = GetComponent<SpriteRenderer>();
-        var path = GetPrefabPath(sprite.sprite);
+        var path = GetPath(sprite.sprite);
 
         Put(path);
         Put(sprite.sortingOrder);
         
     }
 
-    protected static string GetPrefabPath(UnityEngine.Object obj)
+    protected static string GetPath(UnityEngine.Object obj)
     {
-        // Path's format: Assets/Recourses/.../file.png
-        // We have to remove "Assets/Recourses/" and ".png" for Unity to correctly load sprites
+        // Path's format: Assets/Recourses/.../file.smth
+        // We have to remove "Assets/Recourses/" and ".smth" for Unity to correctly load file
         string fullPath = AssetDatabase.GetAssetPath(obj);
-        Debug.Log(fullPath);
 
-        // "Assets/Recourses/".length == 17, format's length == 2, 3 or 4
+        // "Assets/Recourses/".length == 17
         string correctPath = fullPath.Substring(17, fullPath.LastIndexOf('.') - 17);
         return correctPath;
     }
-
     protected void LoadSprite()
     {
         var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class PlayerCastSpell : MonoBehaviour
 {
     public GameObject currentSpell;
+    public GameObject cursorExample;
+    public GameObject cursor;
+    public SpriteRenderer cursorSR;
     public GameObject currentSpellText;
     public AudioClip spellAudio;
     public float audioWaiting;
@@ -18,7 +21,10 @@ public class PlayerCastSpell : MonoBehaviour
     void Start()
     {
         inventory = GetComponent< Inventory >();
-        currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
+        currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
+        cursorExample = inventory.spells[index].GetComponent<Spell>().example;
+        cursor = Instantiate(cursorExample, transform.position, transform.rotation);
+        cursorSR = cursor.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -28,7 +34,15 @@ public class PlayerCastSpell : MonoBehaviour
         if (spellTime > spellWaiting + 1) spellTime = 0;
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        target = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+        cursor.transform.position = target;
+        float alpha = (spellTime == 0) ? 1 : spellTime / (spellWaiting + 1);
+        cursorSR.color = new Color(
+            cursorSR.color[0],
+            cursorSR.color[1],
+            cursorSR.color[2],
+            alpha
+        );
         if(Input.GetButton("Fire1")) castSpell();
         if(Input.GetKeyDown("]")){ 
             nextSpell();
@@ -36,7 +50,8 @@ public class PlayerCastSpell : MonoBehaviour
         }
     }
 
-    void castSpell(){
+    void castSpell()
+    {
         if(spellTime != 0) return;
         currentSpell = Instantiate(inventory.spells[index], transform.position, transform.rotation);
         
@@ -58,9 +73,14 @@ public class PlayerCastSpell : MonoBehaviour
 
         spellTime += 1;
     }
-    void nextSpell(){
+    void nextSpell()
+    {
         if(!inventory) return;
         index++;
         if(index >= inventory.spells.Capacity) index = 0;
+        Destroy(cursor);
+        cursorExample = inventory.spells[index].GetComponent<Spell>().example;
+        cursor = Instantiate(cursorExample, transform.position, transform.rotation);
+        cursorSR = cursor.GetComponent<SpriteRenderer>();
     }
 }

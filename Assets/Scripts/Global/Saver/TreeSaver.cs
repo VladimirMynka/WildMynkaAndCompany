@@ -8,9 +8,8 @@ using UnityEngine;
 
 public class TreeSaver : Saver
 {
-    private static readonly int RegexTimes = 12 * (TreesCreator.branchCount + 1) + 1;
-    private static readonly string TransformRegex = new StringBuilder("~([^~]*)".Length*RegexTimes).Insert(0, "~([^~]*)", RegexTimes).ToString();
-
+    private static readonly int TokenTimes = 12 * (TreesCreator.branchCount + 1) + 1;
+    private static readonly string TransformRegex = new StringBuilder(Token.Length*TokenTimes).Insert(0, Token, TokenTimes).ToString();
     protected static readonly Regex TransformMatcher = new Regex(TransformRegex);
     public override void Save()
     {

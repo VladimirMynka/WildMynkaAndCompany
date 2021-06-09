@@ -260,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: "\u0411\u0430\u0431\u0430\u0445"
   owner: {fileID: 0}
+  example: {fileID: 8825658109634511513, guid: c8c81f3c413ded24da305bf86c1da011, type: 3}
   sound: {fileID: 8300000, guid: 576e284061af8c449857fb5906707765, type: 3}
   aliveTime: 2
   afterSpellWaiting: 0

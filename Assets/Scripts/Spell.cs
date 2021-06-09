@@ -6,6 +6,7 @@ public class Spell : MonoBehaviour
 {
     public string spellName;
     public GameObject owner;
+    public GameObject example;
     public AudioClip sound;
     public float aliveTime;
     public float afterSpellWaiting;
