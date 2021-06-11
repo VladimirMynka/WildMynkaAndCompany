@@ -67,7 +67,6 @@ public abstract class Saver : MonoBehaviour
         Put(rotation.w);
     }
     
-    
     protected void LoadTransform()
     {
         var transformLocal = transform;

@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 7702783310284684712}
   - component: {fileID: 2808707635851355172}
   - component: {fileID: 8412015519696680585}
-  - component: {fileID: 1086980876629794399}
   m_Layer: 5
   m_Name: Topic
   m_TagString: Untagged
@@ -213,21 +212,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1086980876629794399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2568792612394435409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d181be34bc187140b96bea705ced7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: {fileID: 0}
-  theme: "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u0440\u044B\u0431\u043A\u0438"
-  replicas:
-  - 
-  audioReplicas: []
-  audioSource: {fileID: 0}
