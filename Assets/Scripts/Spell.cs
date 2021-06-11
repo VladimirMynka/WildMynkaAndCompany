@@ -21,6 +21,7 @@ public class Spell : MonoBehaviour
         Destroy(gameObject, aliveTime);
 
         float distance = (end - begin).magnitude;
+        if (distance == 0) distance = 1;
         float x = (end.x - begin.x) / distance;
         float y = (end.y - begin.y) / distance;
         velocity = new Vector2(x * speed, y * speed);

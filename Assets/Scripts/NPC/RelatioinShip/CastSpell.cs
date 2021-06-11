@@ -69,10 +69,10 @@ public class CastSpell : MonoBehaviour
     void changeSpell(){
         if (changeSpellTime != 0) return;
         if (!inventory) return;
-        if (inventory.spells.Capacity <= 0) return;
+        if (inventory.spells.Count <= 0) return;
 
-        int length = inventory.spells.Capacity;
-        int random = Random.Range(0, inventory.spells.Capacity);
+        int length = inventory.spells.Count;
+        int random = Random.Range(0, inventory.spells.Count);
         int i = 0;
         while (!inventory.spells[random] && i < length * 2){
             random = Random.Range(0, length);

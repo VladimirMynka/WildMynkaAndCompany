@@ -60,6 +60,6 @@ public class PlayerAttack : MonoBehaviour
     void nextWeapon(){
         if(!inventory) return;
         index++;
-        if(index >= inventory.weapons.Capacity) index = 0;
+        if(index >= inventory.weapons.Count) index = 0;
     }
 }

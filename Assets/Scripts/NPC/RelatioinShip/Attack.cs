@@ -81,10 +81,10 @@ public class Attack : MonoBehaviour
         removeWeapon();
 
         if (!inventory) return;
-        if (inventory.weapons.Capacity <= 0) return;
+        if (inventory.weapons.Count <= 0) return;
 
-        int length = inventory.weapons.Capacity;
-        int random = Random.Range(0, inventory.weapons.Capacity);
+        int length = inventory.weapons.Count;
+        int random = Random.Range(0, inventory.weapons.Count);
         int i = 0;
         while (!inventory.weapons[random] && i < length * 2){
             random = Random.Range(0, length);

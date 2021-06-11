@@ -35,14 +35,16 @@ public class PlayerCastSpell : MonoBehaviour
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
-        cursor.transform.position = target;
-        float alpha = (spellTime == 0) ? 1 : spellTime / (spellWaiting + 1);
-        cursorSR.color = new Color(
-            cursorSR.color[0],
-            cursorSR.color[1],
-            cursorSR.color[2],
-            alpha
-        );
+        if (cursor != null){
+            cursor.transform.position = target;
+            float alpha = (spellTime == 0) ? 1 : spellTime / (spellWaiting + 1);
+            cursorSR.color = new Color(
+                cursorSR.color[0],
+                cursorSR.color[1],
+                cursorSR.color[2],
+                alpha
+            );
+        }
         if(Input.GetButton("Fire1")) castSpell();
         if(Input.GetKeyDown("]")){ 
             nextSpell();
@@ -77,8 +79,8 @@ public class PlayerCastSpell : MonoBehaviour
     {
         if(!inventory) return;
         index++;
-        if(index >= inventory.spells.Capacity) index = 0;
-        Destroy(cursor);
+        if(index >= inventory.spells.Count) index = 0;
+        if (cursor != null) Destroy(cursor);
         cursorExample = inventory.spells[index].GetComponent<Spell>().example;
         cursor = Instantiate(cursorExample, transform.position, transform.rotation);
         cursorSR = cursor.GetComponent<SpriteRenderer>();

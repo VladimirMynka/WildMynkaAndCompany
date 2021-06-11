@@ -6,18 +6,13 @@ using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
-    [System.Serializable]
-    public class Topic{
-        public string name;
-        public string[] texts;
-        public AudioClip[] replicas;
-    }
-
     public GameObject dialogCanvas;
     GameObject content;
     public GameObject buttonExample;
     GameObject topicsRectangle;
     public Topic[] topics;
+    public int[] topicsIndeces;
+    public GameObject globalTopicsObject;
     public GameObject miniCanvas;
     public bool active;
     public string text;
@@ -25,6 +20,11 @@ public class Dialog : MonoBehaviour
     void Start() {
         topicsRectangle = dialogCanvas.transform.Find("Topics").Find("Viewport").Find("Content").gameObject;
         content = dialogCanvas.transform.Find("Replicas").Find("Viewport").Find("Content").gameObject;
+        topics = new Topic[topicsIndeces.Length];
+        GlobalDialogs globalTopics = globalTopicsObject.GetComponent<GlobalDialogs>();
+        for(int i = 0; i < topicsIndeces.Length; i++){
+            topics[i] = globalTopics.topics[topicsIndeces[i]];
+        }
     }
     void Update() {
         if(!active) return;

@@ -27,8 +27,8 @@ public class Target : MonoBehaviour
 
         Vector3 distanceVector = pointTarget - transform.position;
         distance = distanceVector.magnitude;
-        float x = distanceVector.x / distance * speed;
-        float y = distanceVector.y / distance * speed;
+        float x = (distance != 0) ? distanceVector.x / distance * speed : 0;
+        float y = (distance != 0) ? distanceVector.y / distance * speed : 0;
         Vector2 vector = new Vector2(x, y);
 
         if (distance - normalDistance > normalOutDifference){

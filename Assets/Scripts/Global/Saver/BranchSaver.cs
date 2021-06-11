@@ -6,17 +6,16 @@ using UnityEngine;
 
 public class BranchSaver : Saver
 {
-    public override void Save()
+    public override void Save(string saveName)
     {
         SaveTransform();
         SaveSprite();
     }
 
-    public override void Load()
+    public override void Load(string saveName)
     {
         savedName = gameObject.name;
         LoadTransform();
         LoadSprite();
     }
-
 }

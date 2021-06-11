@@ -10,59 +10,40 @@ public abstract class Saver : MonoBehaviour
 {
     public const string TreesNumberKey = "TreesNumber";
     public const string Branch = ".branch";
-    public const string Token = "~([^~]*)";
+    private const string Token = "~([^~]*)";
+    private static readonly Regex TokenRegex = new Regex(Token);
     protected static int currentTree = 0;
     
-    protected static MatchHandler matcher = null;
+    private static MatchHandler matcher = null;
 
-    protected static StringBuilder output = new StringBuilder();
+    private static StringBuilder output = new StringBuilder();
 
-    public abstract void Save();
-    
-    public abstract void Load();
+    public abstract void Save(string saveName);
+    public abstract void Load(string saveName);
 
     protected internal string savedName;
-
-    protected void Put(string s)
+    protected void Initiate() =>
+        matcher = new MatchHandler(TokenRegex.Match(GetString()));
+    
+    protected static void Put(string s)
     {
         output.Append($"~{s}");
     }
 
-    protected void Put(int i)
+    protected static void Put(int i)
     {
         output.Append($"~{i}");
     }
-    protected void Put(float i)
+    protected static void Put(float i)
     {
         output.Append($"~{i}");
     }
 
     protected void Push()
     {
-        SaveProperty(output.ToString());
+        PlayerPrefs.SetString(savedName, output.ToString());
         output.Clear();
     }
-
-    protected void SaveProperty(string key, int property) => 
-        PlayerPrefs.SetInt(savedName + "." + key, property);
-    
-    protected void SaveProperty(string key, float property) =>
-        PlayerPrefs.SetFloat(savedName + "." + key, property);
-    
-    protected void SaveProperty(string key, string property) =>
-        PlayerPrefs.SetString(savedName + "." + key, property);
-
-    protected void SaveProperty(string property) =>
-        PlayerPrefs.SetString(savedName, property);
-    
-    protected int GetInt(string key) =>
-        PlayerPrefs.GetInt(savedName + "." + key);
-    
-    protected float GetFloat(string key) =>
-        PlayerPrefs.GetFloat(savedName + "." + key);
-    
-    protected string GetString(string key) =>
-        PlayerPrefs.GetString(savedName + "." + key);
 
     protected string GetString() =>
         PlayerPrefs.GetString(savedName);
@@ -84,10 +65,6 @@ public abstract class Saver : MonoBehaviour
         Put(rotation.y);
         Put(rotation.z);
         Put(rotation.w);
-        // SaveProperty("transform", "" +
-        //                           $"~{position.x}~{position.y}~{position.z}" +
-        //                           $"~{scale.x}~{scale.y}~{scale.z}" +
-        //                           $"~{rotation.x}~{rotation.y}~{rotation.z}~{rotation.w}");
     }
     
     
@@ -95,11 +72,26 @@ public abstract class Saver : MonoBehaviour
     {
         var transformLocal = transform;
         
-        transformLocal.localPosition =    new Vector3(matcher.nextFloat(), matcher.nextFloat(), matcher.nextFloat());
-        transformLocal.localScale =       new Vector3(matcher.nextFloat(), matcher.nextFloat(), matcher.nextFloat());
-        transformLocal.localRotation = new Quaternion(matcher.nextFloat(), matcher.nextFloat(), matcher.nextFloat(), matcher.nextFloat());
+        transformLocal.localPosition = new Vector3(NextFloat(), NextFloat(), NextFloat());
+        transformLocal.localScale = new Vector3(NextFloat(), NextFloat(), NextFloat());
+        transformLocal.localRotation = new Quaternion(NextFloat(), NextFloat(), NextFloat(), NextFloat());
     }
-    
+
+    protected static float NextFloat()
+    {
+        return matcher.nextFloat();
+    }
+
+    protected static int NextInt()
+    {
+        return matcher.nextInt();
+    }
+
+    protected static string NextString()
+    {
+        return matcher.nextString();
+    }
+
 
     protected void SaveSprite()
     {
@@ -124,7 +116,7 @@ public abstract class Saver : MonoBehaviour
     protected void LoadSprite()
     {
         var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Resources.Load<Sprite>(matcher.nextString());
-        spriteRenderer.sortingOrder = matcher.nextInt();
+        spriteRenderer.sprite = Resources.Load<Sprite>(NextString());
+        spriteRenderer.sortingOrder = NextInt();
     }
 }

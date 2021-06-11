@@ -7,15 +7,13 @@ using UnityEngine.Assertions;
 
 public class PlayerSaver : Saver
 {
-
-    private static readonly int TokenTimes = 10+2+3+7+0+1+1;
-    private static readonly string TransformRegex = 
-        new StringBuilder(Token.Length*TokenTimes).Insert(0, Token, TokenTimes).ToString();
-
-    protected static readonly Regex TransformMatcher = new Regex(TransformRegex);
-    public override void Save()
+    private void Start() {
+        gameObject.name = "save1" + gameObject.name;
+        Load("save1");
+    }
+    public override void Save(string saveName)
     {
-        savedName = "Player";
+        savedName = saveName + "Player";
         
         SaveTransform();
         SaveSprite();
@@ -80,10 +78,11 @@ public class PlayerSaver : Saver
         Put(castSpell.index);
     }
 
-    public override void Load()
+    public override void Load(string saveName)
     {
         savedName = gameObject.name;
-        matcher = new MatchHandler(TransformMatcher.Match(GetString()));
+        
+        Initiate();
         LoadTransform();
         LoadSprite();
         LoadHealth();
@@ -96,53 +95,53 @@ public class PlayerSaver : Saver
     private void LoadHealth()
     {
         var health = GetComponent<Health>();
-        health.current = matcher.nextFloat();
-        health.maxHealth = matcher.nextFloat();
-        health.regeneration = matcher.nextFloat();
+        health.current = NextFloat();
+        health.maxHealth = NextFloat();
+        health.regeneration = NextFloat();
     }
     private void LoadCharacteristics()
     {
         var characteristics = GetComponent<Characteristics>();
-        characteristics.attack = matcher.nextFloat();
-        characteristics.power = matcher.nextFloat();
-        characteristics.protection = matcher.nextFloat();
-        characteristics.attackMagic = matcher.nextFloat();
-        characteristics.selfMagic = matcher.nextFloat();
-        characteristics.strangeMagic = matcher.nextFloat();
-        characteristics.camouflage = matcher.nextFloat();
+        characteristics.attack = NextFloat();
+        characteristics.power = NextFloat();
+        characteristics.protection = NextFloat();
+        characteristics.attackMagic = NextFloat();
+        characteristics.selfMagic = NextFloat();
+        characteristics.strangeMagic = NextFloat();
+        characteristics.camouflage = NextFloat();
     }
     private void LoadInventory()
     {
         var inventory = GetComponent<Inventory>();
 
-        int weaponsCount = matcher.nextInt();
+        int weaponsCount = NextInt();
         inventory.weapons = new List<GameObject>(weaponsCount);
         for(int i = 0; i < weaponsCount; i++)
-            inventory.weapons.Add(Resources.Load<GameObject>(matcher.nextString()));
+            inventory.weapons.Add(Resources.Load<GameObject>(NextString()));
         
-        int spellsCount = matcher.nextInt();
+        int spellsCount = NextInt();
         inventory.spells = new List<GameObject>(spellsCount);
         for(int i = 0; i < spellsCount; i++)
-            inventory.spells.Add(Resources.Load<GameObject>(matcher.nextString()));
+            inventory.spells.Add(Resources.Load<GameObject>(NextString()));
 
-        int keysCount = matcher.nextInt();
+        int keysCount = NextInt();
         inventory.keys = new List<GameObject>(keysCount);
         for(int i = 0; i < keysCount; i++)
-            inventory.keys.Add(Resources.Load<GameObject>(matcher.nextString()));
+            inventory.keys.Add(Resources.Load<GameObject>(NextString()));
 
-        int othersCount = matcher.nextInt();
+        int othersCount = NextInt();
         inventory.others = new List<GameObject>(othersCount);
         for(int i = 0; i < othersCount; i++)
-            inventory.others.Add(Resources.Load<GameObject>(matcher.nextString()));
+            inventory.others.Add(Resources.Load<GameObject>(NextString()));
     }
     private void LoadPlayerAttack()
     {
         var attack = GetComponent<PlayerAttack>();
-        attack.index = matcher.nextInt();
+        attack.index = NextInt();
     }
     private void LoadPlayerCastSpell()
     {
         var castSpell = GetComponent<PlayerCastSpell>();
-        castSpell.index = matcher.nextInt();
+        castSpell.index = NextInt();
     }
 }
