@@ -22,7 +22,7 @@ public abstract class Saver : MonoBehaviour
     public abstract void Load(string saveName);
 
     protected internal string savedName;
-    protected void Initiate() =>
+    public void Initiate() =>
         matcher = new MatchHandler(TokenRegex.Match(GetString()));
     
     protected static void Put(string s)

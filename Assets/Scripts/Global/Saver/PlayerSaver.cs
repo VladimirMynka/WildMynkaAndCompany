@@ -7,16 +7,11 @@ using UnityEngine.Assertions;
 
 public class PlayerSaver : Saver
 {
-    private void Start() {
-        gameObject.name = "save1" + gameObject.name;
-        Load("save1");
-    }
     public override void Save(string saveName)
     {
         savedName = saveName + "Player";
         
         SaveTransform();
-        SaveSprite();
         SaveHealth();
         SaveCharacteristics();
         SaveInventory();
@@ -31,7 +26,6 @@ public class PlayerSaver : Saver
         
         Initiate();
         LoadTransform();
-        LoadSprite();
         LoadHealth();
         LoadCharacteristics();
         LoadInventory();

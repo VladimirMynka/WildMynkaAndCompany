@@ -12,6 +12,7 @@ public class King : MonoBehaviour
     public float beginWaiting;
     int index;
     GameObject player;
+    string playerName;
     GameObject playerCopy;
     public float playerDistance;
     public float portalDistance;
@@ -27,6 +28,7 @@ public class King : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        playerName = player.name;
         time = 1;
         index = -2;
         waiting = beginWaiting;
@@ -82,6 +84,7 @@ public class King : MonoBehaviour
         }
         if(time == 0 && index == 4 && (!player || !playerCopy)){
             player = GameObject.FindWithTag("Player");
+            player.name = playerName;
             GetComponent< AudioSource >().PlayOneShot(replicas[3]);
             waiting = replicas[3].length / GetComponent< AudioSource >().pitch;
             subsCanvas.GetComponent< Canvas >().planeDistance = 100;

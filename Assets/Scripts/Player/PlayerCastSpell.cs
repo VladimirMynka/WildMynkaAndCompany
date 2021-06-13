@@ -21,10 +21,12 @@ public class PlayerCastSpell : MonoBehaviour
     void Start()
     {
         inventory = GetComponent< Inventory >();
-        currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
-        cursorExample = inventory.spells[index].GetComponent<Spell>().example;
-        cursor = Instantiate(cursorExample, transform.position, transform.rotation);
-        cursorSR = cursor.GetComponent<SpriteRenderer>();
+        if (inventory.spells.Count != 0){
+            currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
+            cursorExample = inventory.spells[index].GetComponent<Spell>().example;
+            cursor = Instantiate(cursorExample, transform.position, transform.rotation);
+            cursorSR = cursor.GetComponent<SpriteRenderer>();
+        }
     }
 
     void Update()
@@ -55,6 +57,7 @@ public class PlayerCastSpell : MonoBehaviour
     void castSpell()
     {
         if(spellTime != 0) return;
+        if(inventory.spells.Count == 0) return;
         currentSpell = Instantiate(inventory.spells[index], transform.position, transform.rotation);
         
         Spell spell = currentSpell.GetComponent< Spell >();
