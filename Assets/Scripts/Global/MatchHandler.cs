@@ -30,7 +30,7 @@ public class MatchHandler
         }
         throw new Exception("Wrong state: Matcher has no next element!");
     }
-    public int nextBool()
+    public bool nextBool()
     {
         if (hasNext())
         {

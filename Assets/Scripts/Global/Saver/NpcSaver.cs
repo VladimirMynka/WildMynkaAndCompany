@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class PlayerSaver : Saver
+public class NpcSaver : Saver
 {
     public override void Save(string saveName)
     {
