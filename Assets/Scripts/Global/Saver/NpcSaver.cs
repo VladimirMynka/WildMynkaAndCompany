@@ -9,7 +9,7 @@ public class PlayerSaver : Saver
 {
     public override void Save(string saveName)
     {
-        savedName = saveName + gameObject.name;
+        savedName = saveName + gameObject.name;;
         
         SaveTransform();
         SaveHealth();

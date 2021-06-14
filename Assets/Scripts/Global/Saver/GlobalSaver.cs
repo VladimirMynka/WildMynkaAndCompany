@@ -26,13 +26,10 @@ public class GlobalSaver : Saver
     {
         checkFormat(saveName);
         string saves = PlayerPrefs.GetString(SavesKey, "");
-        if (!saves.Contains($"~{saveName}"))
-        {
-            saves = saves + "~" + saveName;
-            PlayerPrefs.SetString(SavesKey, saves);
-        }
+        saves = saves.Replace("~" + saveName, "");
+        saves = saves + "~" + saveName;
+        PlayerPrefs.SetString(SavesKey, saves);
         PlayerPrefs.SetString(LastSaveKey, saveName);
-        
         
         var all = FindObjectsOfType<Saver>();
         foreach (var one in all)
@@ -42,6 +39,7 @@ public class GlobalSaver : Saver
         }
 
         PlayerPrefs.SetInt(TreesNumberKey, currentTree);
+        currentTree = 0;
     }
 
     public override void Load(string saveName)
@@ -65,6 +63,7 @@ public class GlobalSaver : Saver
             if (!(one is BranchSaver) && !(one is GlobalSaver)){
                 one.gameObject.name = saveName + one.gameObject.name;
                 one.Load(saveName);
+                one.gameObject.name = one.gameObject.name.Remove(0, saveName.Length);
             }
         }
     }

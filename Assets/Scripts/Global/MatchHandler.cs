@@ -30,6 +30,15 @@ public class MatchHandler
         }
         throw new Exception("Wrong state: Matcher has no next element!");
     }
+    public int nextBool()
+    {
+        if (hasNext())
+        {
+            _used = true;
+            return bool.Parse(_match.Groups[Index].Value);
+        }
+        throw new Exception("Wrong state: Matcher has no next element!");
+    }
     public string nextString()
     {
         if (hasNext())

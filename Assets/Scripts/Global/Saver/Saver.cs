@@ -38,6 +38,10 @@ public abstract class Saver : MonoBehaviour
     {
         output.Append($"~{i}");
     }
+    protected static void Put(bool b)
+    {
+        output.Append($"~{b}");
+    }
 
     protected void Push()
     {
@@ -62,6 +66,10 @@ public abstract class Saver : MonoBehaviour
     protected static string NextString()
     {
         return matcher.nextString();
+    }
+    protected static bool NextBool()
+    {
+        return matcher.nextBool();
     }
 
     protected static string GetPath(UnityEngine.Object obj)

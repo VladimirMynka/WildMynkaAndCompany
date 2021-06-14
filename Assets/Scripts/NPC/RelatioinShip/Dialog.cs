@@ -70,7 +70,6 @@ public class Dialog : MonoBehaviour
             newTopic.transform.localPosition = new Vector3(53.25f, -20, 0);
         }
         newTopic.transform.localScale = Vector3.one;
-        Debug.Log(topicsRectangle.transform.childCount);
     }
 
     void clear(){
