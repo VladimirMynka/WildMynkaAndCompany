@@ -47,6 +47,7 @@ public class SaveMenuButtons : MonoBehaviour
     {
         globalSaver.Save($"save{++maxSave}");
         StartCoroutine(clearAndAddAll());
+        closeMenu(saveMenu);
     }
 
     IEnumerator clearAndAddAll()
