@@ -44,10 +44,11 @@ public class GlobalSaver : Saver
 
     public override void Load(string saveName)
     {
-        checkFormat(saveName);
+        if(!checkFormat(saveName))
+            return;
         string saves = PlayerPrefs.GetString(SavesKey, "");
-        if (!saves.Contains($"~{saveName}")) return;
-            //throw new ArgumentException($"No save with name {saveName} exists.");
+        if (!saves.Contains($"~{saveName}"))
+            throw new ArgumentException($"No save with name {saveName} exists.");
         
         int trees = PlayerPrefs.GetInt(TreesNumberKey);
         for (int i = 0; i < trees; i++)
@@ -68,10 +69,13 @@ public class GlobalSaver : Saver
         }
     }
 
-    private static void checkFormat(string saveName)
+    private static bool checkFormat(string saveName)
     {
+        if (saveName.Equals(""))
+            return false;
         if (saveName.Contains('~'))
             throw new ArgumentException($"Illegal save name: {saveName}, it contains '~'");
+        return true;
     }
 
     public override string ToString()

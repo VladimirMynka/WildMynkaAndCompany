@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SaveMenuButtons : MonoBehaviour
 {
@@ -11,10 +12,15 @@ public class SaveMenuButtons : MonoBehaviour
     public GameObject saveContent;
     public GameObject loadMenu;
     public GameObject loadContent;
+    public GameObject applyCanvas;
     GlobalSaver globalSaver;
     public static readonly string SavesKey = "Saves";
     public static readonly string LastSaveKey = "LastSave";
     private int maxSave = 0;
+    [TextArea()] public string saveText;
+    [TextArea()] public string loadText;
+    [TextArea()] public string newGameText;
+
 
     void Start()
     {
@@ -23,20 +29,7 @@ public class SaveMenuButtons : MonoBehaviour
         loadContent = loadMenu.transform.Find("Image").Find("Loads").Find("Viewport").Find("Content").gameObject;
 
         getMaxSave();
-
-    }
-
-    void Update() {
-        if(Input.GetKeyDown("escape")){
-            if (loadMenu.GetComponent< Canvas >().planeDistance == 100){
-                loadMenu.GetComponent< Canvas >().planeDistance = -10;
-                Time.timeScale = 1;
-            }
-            else{
-                StartCoroutine(clearAndAddAll());
-                loadMenu.GetComponent< Canvas >().planeDistance = 100;
-            }
-        }
+        StartCoroutine(clearAndAddAll());       
     }
 
     void getMaxSave()
@@ -53,9 +46,11 @@ public class SaveMenuButtons : MonoBehaviour
     public void newSaveOnClick()
     {
         globalSaver.Save($"save{++maxSave}");
+        StartCoroutine(clearAndAddAll());
     }
 
-    IEnumerator clearAndAddAll(){
+    IEnumerator clearAndAddAll()
+    {
         clearSaveContent();
         clearLoadContent();
         yield return new WaitForSeconds(0.05f);
@@ -69,16 +64,17 @@ public class SaveMenuButtons : MonoBehaviour
             addSaveButton(saveName, "");
             addLoadButton(saveName, "");
         }
-        Time.timeScale = 0;
     }
 
-    void clearSaveContent(){
+    void clearSaveContent()
+    {
         for(int i = 1; i < saveContent.transform.childCount; i++){
             Destroy(saveContent.transform.GetChild(i).gameObject);
         } 
     }
 
-    void clearLoadContent(){
+    void clearLoadContent()
+    {
         for(int i = 0; i < loadContent.transform.childCount; i++){
             Destroy(loadContent.transform.GetChild(i).gameObject);
         }
@@ -118,12 +114,46 @@ public class SaveMenuButtons : MonoBehaviour
 
     void saveOnClick(string saveName)
     {
-        globalSaver.Save(saveName);
+        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = saveText;
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { save(saveName); });
     }
-
+    void save(string saveName)
+    {
+        globalSaver.Save(saveName);
+        StartCoroutine(clearAndAddAll());
+        closeMenu(applyCanvas);
+        closeMenu(saveMenu);
+    }
     void loadOnClick(string saveName)
     {
-        globalSaver.Load(saveName);
+        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = loadText;
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { load(saveName); });
+    }
+    void load(string saveName)
+    {
+        PlayerPrefs.SetString(LastSaveKey, saveName);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void newGame()
+    {
+        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = newGameText;
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { load(""); });
+
+    }
+    void openMenu(GameObject menu)
+    {
+        menu.GetComponent<Canvas>().planeDistance = 100;
+    }
+    void closeMenu(GameObject menu)
+    {
+        menu.GetComponent<Canvas>().planeDistance = -10;
     }
 
 }
