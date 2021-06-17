@@ -43,20 +43,24 @@ public class Quest1 : Quest
         if(time != 0) time += Time.deltaTime;
         if(time > waiting + 1) time = 0;
 
-        if(index == 0 && time == 0){
+        if(index == 0 && time == 0)
+        {
             Open(helpCanvas, helpStrings[0]);
             Time.timeScale = 0;
             index++;
         }
-        if(index == 1 && (player.transform.position - king.transform.position).magnitude <= normalDistance){
+        if(index == 1 && (player.transform.position - king.transform.position).magnitude <= normalDistance)
+        {
             index++;
         }
-        if(index == 2 && time == 0){
+        if(index == 2 && time == 0)
+        {
             Say(king, subsStrings[0], replicas[0]);
             index++;
             time++;
         }
-        if(index == 3 && time == 0){
+        if(index == 3 && time == 0)
+        {
             Say(king, subsStrings[1], replicas[1]);
             index++;
             time++;
@@ -68,53 +72,62 @@ public class Quest1 : Quest
                 player.transform.rotation
             );
         }
-        if(index == 4 && time == 0){
+        if(index == 4 && time == 0)
+        {
             Say(king, subsStrings[2], replicas[2]);
             index++;
             time++;
         }
-        if(index == 5 && time == 0){
+        if(index == 5 && time == 0)
+        {
             Close(subsCanvas);
             Open(helpCanvas, helpStrings[1]);
             Time.timeScale = 0;
             index++;
         }
-        if(index == 6  && time == 0 && (player == null || playerCopy == null)){
+        if(index == 6  && time == 0 && (player == null || playerCopy == null))
+        {
             player = GameObject.FindWithTag("Player");
             player.name = playerName;
             Say(king, subsStrings[3], replicas[3]);
             index++;
             time++;
         }
-        if(index == 7 && time == 0){
+        if(index == 7 && time == 0)
+        {
             Say(king, subsStrings[4], replicas[4]);
             index++;
             time++;
         }
-        if(index == 8 && time == 0){
+        if(index == 8 && time == 0)
+        {
             Say(king, subsStrings[5], replicas[5]);
             index++;
             time++;
         }
-        if(index == 9 && time == 0){
+        if(index == 9 && time == 0)
+        {
             Close(subsCanvas);
             Open(helpCanvas, helpStrings[2]);
             Time.timeScale = 0;
             portal.transform.position = transform.position + new Vector3(portalDistance, 0, 0);
             index++;
         }
-        if(index == 10 && (player.transform.position - king.transform.position).magnitude > 10){
+        if(index == 10 && (player.transform.position - king.transform.position).magnitude > 10)
+        {
             Open(weaponCanvas);
             weaponCanvas.transform.Find("Image").Find("CurrentSpell").gameObject.GetComponent<Text>().text = newSpell.GetComponent<Spell>().spellName;
             player.GetComponent<Inventory>().spells.Add(newSpell);
             index++;
         }
-        if(index == 11 && time == 0){
+        if(index == 11 && time == 0)
+        {
             Open(helpCanvas, helpStrings[3]);
             Time.timeScale = 0;
             index++;
         }
-        if(index == 12 && stone == null){
+        if(index == 12 && stone == null)
+        {
             Open(helpCanvas, helpStrings[4]);
             Time.timeScale = 0;
             index++;
@@ -129,7 +142,8 @@ public class Quest1 : Quest
     {
         Open(menu);
         var textChild = menu.transform.Find("Image").Find("Text");
-        if(textChild == null){
+        if(textChild == null)
+        {
             throw new ArgumentException("Object doesn't have child with name 'Text'");
         }
         textChild.GetComponent<Text>().text = text;

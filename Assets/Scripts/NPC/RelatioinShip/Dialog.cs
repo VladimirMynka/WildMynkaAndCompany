@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,28 +14,32 @@ public class Dialog : MonoBehaviour
     public Topic[] topics;
     public int[] topicsIndeces;
     public GameObject globalTopicsObject;
+    GlobalDialogs globalTopics;
     public GameObject miniCanvas;
     public bool active;
     public string text;
 
-    void Start() {
+    void Start() 
+    {
         topicsRectangle = dialogCanvas.transform.Find("Topics").Find("Viewport").Find("Content").gameObject;
         content = dialogCanvas.transform.Find("Replicas").Find("Viewport").Find("Content").gameObject;
         topics = new Topic[topicsIndeces.Length];
-        GlobalDialogs globalTopics = globalTopicsObject.GetComponent<GlobalDialogs>();
+        globalTopics = globalTopicsObject.GetComponent<GlobalDialogs>();
         for(int i = 0; i < topicsIndeces.Length; i++){
             topics[i] = globalTopics.topics[topicsIndeces[i]];
         }
     }
-    void Update() {
+    void Update() 
+    {
         if(!active) return;
         if(Input.GetKeyDown("space")){
             miniCanvas.GetComponent< Canvas >().planeDistance = -10;
             dialogCanvas.GetComponent< Canvas >().planeDistance = 99;
-            StartCoroutine(clearAndAddAll());
+            StartCoroutine(ClearAndAddAll());
         }
     }
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other) 
+    {
         if(other.gameObject.tag == "Player"){
             active = true;
             miniCanvas.GetComponent< Canvas >().planeDistance = 98;
@@ -42,25 +47,28 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other) 
+    {
         if(other.gameObject.tag == "Player"){
             active = false;
             miniCanvas.GetComponent< Canvas >().planeDistance = -10;
         }
     }
 
-    IEnumerator clearAndAddAll(){
-        clear();
+    IEnumerator ClearAndAddAll()
+    {
+        Clear();
         yield return new WaitForSeconds(0.05f);
         for(int i = 0; i < topics.Length; i++){
-            add(topics[i]);
+            Add(topics[i]);
         }
         Time.timeScale = 0;
     }
 
-    void add(Topic topic){
+    void Add(Topic topic)
+    {
         GameObject newTopic = Instantiate(buttonExample) as GameObject;
-        newTopic.GetComponent< Button >().onClick.AddListener(() => { onClick(topic.name, topic.texts, topic.replicas); });
+        newTopic.GetComponent< Button >().onClick.AddListener(() => { OnClick(topic); });
         newTopic.transform.Find("Textic").gameObject.GetComponent<Text>().text = topic.name;
         newTopic.transform.parent = topicsRectangle.transform;
         if (topicsRectangle.transform.childCount > 1){
@@ -72,7 +80,8 @@ public class Dialog : MonoBehaviour
         newTopic.transform.localScale = Vector3.one;
     }
 
-    void clear(){
+    void Clear()
+    {
         content.transform.Find("Title").gameObject.GetComponent< Text >().text = "";
         content.transform.Find("Text").gameObject.GetComponent< Text >().text = "";
         for(int i = 0; i < topicsRectangle.transform.childCount; i++){
@@ -80,11 +89,63 @@ public class Dialog : MonoBehaviour
         } 
     }
 
-    public void onClick(string name, string[] replicas, AudioClip[] audioReplicas){
-        int index = Random.Range(0, replicas.Length);
-        content.transform.Find("Title").gameObject.GetComponent< Text >().text = name;
-        content.transform.Find("Text").gameObject.GetComponent< Text >().text = replicas[index];
+    public void OnClick(Topic topic)
+    {
+        int index = UnityEngine.Random.Range(0, topic.texts.Length);
+        content.transform.Find("Title").gameObject.GetComponent< Text >().text = topic.name;
+        content.transform.Find("Text").gameObject.GetComponent< Text >().text = topic.texts[index];
         gameObject.GetComponent< AudioSource >().Stop();
-        gameObject.GetComponent< AudioSource >().PlayOneShot(audioReplicas[index]);
+        gameObject.GetComponent< AudioSource >().PlayOneShot(topic.replicas[index]);
+        topic.usingCount++;
+    }
+
+    public void AddTopic(int topicIndex)
+    {
+        int[] newIndeces = new int[topicsIndeces.Length + 1];
+        topics = new Topic[newIndeces.Length];
+        for(int i = 0; i < topicsIndeces.Length; i++)
+        {
+            newIndeces[i] = topicsIndeces[i];
+            topics[i] = globalTopics.topics[newIndeces[i]];
+        }
+        newIndeces[newIndeces.Length - 1] = topicIndex;
+        topics[newIndeces.Length - 1] = globalTopics.topics[newIndeces[newIndeces.Length - 1]];
+        topicsIndeces = newIndeces;
+    }
+    public void RemoveTopic(int topicIndex)
+    {
+        int j = Array.IndexOf(topicsIndeces, topicIndex);
+        if(j == -1) return;
+        int[] newIndeces = new int[topicsIndeces.Length - 1];
+        topics = new Topic[topicsIndeces.Length - 1];
+        for(int i = 0; i < j; i++)
+        {
+            newIndeces[i] = topicsIndeces[i];
+            topics[i] = globalTopics.topics[newIndeces[i]];
+        }
+        for(int i = j; i < newIndeces.Length; i++)
+        {
+            newIndeces[i] = topicsIndeces[i + 1];
+            topics[i] = globalTopics.topics[newIndeces[i]];
+        }
+        topicsIndeces = newIndeces;
+    }
+    public void ChangeTopic(int oldIndex, int newIndex)
+    {
+        int j = Array.IndexOf(topicsIndeces, oldIndex);
+        if (j == -1)
+        { 
+            AddTopic(newIndex);
+            return;
+        }
+        topicsIndeces[j] = newIndex;
+        topics[j] = globalTopics.topics[newIndex];
+    }
+    public void UpdateDialog()
+    {
+        float oldTimeScale = Time.timeScale;
+        Time.timeScale = 1;
+        StartCoroutine(ClearAndAddAll());
+        Time.timeScale = oldTimeScale;
     }
 }

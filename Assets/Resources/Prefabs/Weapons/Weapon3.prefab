@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
+  - {fileID: 8300000, guid: fb5516e2320d89e4f8e1c212f8b2b7eb, type: 3}
   timing: 0.5
 --- !u!114 &8292737370510117474
 MonoBehaviour:

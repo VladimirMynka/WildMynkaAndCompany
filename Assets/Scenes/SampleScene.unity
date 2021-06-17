@@ -323,6 +323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 158852255}
   - component: {fileID: 158852256}
+  - component: {fileID: 158852257}
   m_Layer: 0
   m_Name: Quests
   m_TagString: Untagged
@@ -461,6 +462,31 @@ MonoBehaviour:
     \u0422\u0438\u043C\u043E\u0444\u0435\u0439. \u0422\u043E\u0433\u0434\u0430 \u043C\u044B
     \u0441 \u0442\u043E\u0431\u043E\u0439 \u0441\u043C\u043E\u0436\u0435\u043C \u0443\u0437\u043D\u0430\u0442\u044C
     \u0432\u0430\u0436\u043D\u0435\u0439\u0448\u0443\u044E \u0438\u0437 \u0438\u0441\u0442\u0438\u043D"
+--- !u!114 &158852257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158852254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dcca5f1153fb84fb1b8398f63a2f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  time: 0
+  waiting: 0
+  globalDialogObject: {fileID: 1360805155}
+  ivan: {fileID: 735311873}
+  george: {fileID: 5945212827657856532}
+  deletingFog: {fileID: 6757186114927134145}
+  newWeapon: {fileID: 6450431964402723588, guid: 870bb40b0b9d9dc48b67c3ee4dd0081d, type: 3}
+  ivanAddTopicIndex1: 11
+  ivanAddTopicIndex2: 12
+  ivanAddTopicIndex3: 14
+  georgeAddTopicIndex1: 8
+  georgeAddTopicIndex2: 9
 --- !u!1 &230915246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6315266159710833473, guid: 6a04892acce601f4b8e73ab2982d6cfc, type: 3}
@@ -750,11 +776,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1496938483405311860, guid: b7c1eaa5d187b294399cbed2fcad3fb3, type: 3}
+      propertyPath: weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496938483405311860, guid: b7c1eaa5d187b294399cbed2fcad3fb3, type: 3}
       propertyPath: spells.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1496938483405311860, guid: b7c1eaa5d187b294399cbed2fcad3fb3, type: 3}
       propertyPath: spells.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496938483405311860, guid: b7c1eaa5d187b294399cbed2fcad3fb3, type: 3}
+      propertyPath: weapons.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6217097379528394626, guid: b7c1eaa5d187b294399cbed2fcad3fb3, type: 3}
@@ -928,6 +962,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &723219911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4490586549784314298}
+    m_Modifications:
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: text
+      value: "\u0421\u0443\u043D\u0434\u0443\u043A \u0418\u0432\u0430\u043D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: miniCanvas
+      value: 
+      objectReference: {fileID: 429767229169580575}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: dialogCanvas
+      value: 
+      objectReference: {fileID: 230915246}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: globalTopicsObject
+      value: 
+      objectReference: {fileID: 1360805155}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: topicsIndeces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: topicsIndeces.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: topicsIndeces.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662724, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_Name
+      value: ChestIvan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9512512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.04494346
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.16773124
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.25488707
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662748, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: timing
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+--- !u!1 &735311873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8615736117059662724, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+  m_PrefabInstance: {fileID: 723219911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &762439489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1647,6 +1775,7 @@ MonoBehaviour:
     replicas:
     - {fileID: 8300000, guid: 2cc10f6bc1677574a814e3a105557289, type: 3}
     - {fileID: 8300000, guid: cc31548f7217940418dcefce63ad2d3a, type: 3}
+    usingCount: 0
   - name: "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u043F\u0447\u0451\u043B\u043A\u0438"
     texts:
     - "\u041F\u0447\u0451\u043B \u043C\u043D\u043E\u0433\u043E \u043D\u0435 \u0431\u044B\u0432\u0430\u0435\u0442.
@@ -1658,6 +1787,7 @@ MonoBehaviour:
     replicas:
     - {fileID: 8300000, guid: fe1cec6ff62a6f94193c4541c68cd7ce, type: 3}
     - {fileID: 8300000, guid: a3d4edcdb0c79514b8a4c5c17db38431, type: 3}
+    usingCount: 0
   - name: "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u043F\u043E\u0447\u043A\u0438"
     texts:
     - "\u042F \u043C\u043D\u043E\u0433\u043E \u043F\u044C\u044E, \u043F\u043E\u044D\u0442\u043E\u043C\u0443
@@ -1672,6 +1802,7 @@ MonoBehaviour:
     replicas:
     - {fileID: 8300000, guid: 6e102c64185bdd143b68c3705fcc839d, type: 3}
     - {fileID: 8300000, guid: 6e17bbbaffd51bb4b81cceecf2d2d6c5, type: 3}
+    usingCount: 0
   - name: "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u041C\u044B\u043D\u043A\u0438"
     texts:
     - "\u041C\u044B\u043D\u043A\u0438? \u042D\u0442\u0438 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0435
@@ -1686,6 +1817,7 @@ MonoBehaviour:
     replicas:
     - {fileID: 8300000, guid: b94591405019b1a46aecfe8d20136e86, type: 3}
     - {fileID: 8300000, guid: 2ba368a4421d8c141a866fcc01dacd5f, type: 3}
+    usingCount: 0
   - name: "\u0421\u0430\u043F\u043E\u0433\u0438"
     texts:
     - "\u041C\u043D\u0435 \u043D\u0443\u0436\u043D\u044B \u043D\u043E\u0432\u044B\u0435
@@ -1697,6 +1829,154 @@ MonoBehaviour:
     replicas:
     - {fileID: 8300000, guid: 7554e5da41bfbc64b8748264a37c79b5, type: 3}
     - {fileID: 8300000, guid: a38cff014075c13418afb12eb1e5ef61, type: 3}
+    usingCount: 0
+  - name: "\u0412\u044B \u043A\u0442\u043E?"
+    texts:
+    - "\u042F - \u0441\u0443\u043D\u0434\u0443\u043A \u0413\u0435\u043E\u0440\u0433\u0438\u0439.
+      \u0410 \u0442\u044B \u043A\u0442\u043E? \u042F \u0442\u0435\u0431\u044F \u043D\u0435
+      \u0437\u043D\u0430\u044E, \u043F\u0440\u043E\u0432\u0430\u043B\u0438\u0432\u0430\u0439!"
+    replicas:
+    - {fileID: 8300000, guid: f961cba9f7a7afa4c8b0dcb6cfba6ed4, type: 3}
+    usingCount: 0
+  - name: "\u0422\u0443\u043C\u0430\u043D"
+    texts:
+    - "\u042D\u0442\u043E\u0442 \u0442\u0443\u043C\u0430\u043D \u043F\u0443\u0441\u043A\u0430\u0435\u0442
+      \u043B\u0438\u0448\u044C \u0434\u043E\u0441\u0442\u043E\u0439\u043D\u044B\u0445.
+      \u0410 \u044D\u0442\u043E \u0422\u041E\u0427\u041D\u041E \u043D\u0435 \u043F\u0440\u043E
+      \u0442\u0435\u0431\u044F. \u0423\u0445\u043E\u0434\u0438 \u0442\u0443\u0434\u0430,
+      \u043E\u0442\u043A\u0443\u0434\u0430 \u043F\u0440\u0438\u0448\u043B\u0430."
+    replicas:
+    - {fileID: 8300000, guid: a716f903a0b632045bf4e3f358b4acf6, type: 3}
+    usingCount: 0
+  - name: "\u0414\u0438\u043A\u0438\u0435 \u041C\u044B\u043D\u043A\u0438"
+    texts:
+    - "\u042D\u0442\u043E\u0442 \u0432\u0438\u0434 \u0434\u0430\u0432\u043D\u043E
+      \u0432\u044B\u043C\u0435\u0440. \u041D\u0438\u043A\u0442\u043E \u043D\u0435
+      \u0432\u0438\u0434\u0435\u043B \u0438\u0445 \u0443\u0436\u0435 \u0441\u043E\u0442\u043D\u0438
+      \u043B\u0435\u0442. \n\u0422\u0443\u0442 \u043D\u0435\u0442 \u0442\u043E\u0433\u043E,
+      \u0447\u0442\u043E \u0442\u044B \u0438\u0449\u0435\u0448\u044C. \u041F\u043E\u0447\u0435\u043C\u0443
+      \u0431\u044B \u0442\u0435\u0431\u0435 \u043D\u0435 \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F
+      \u0432 \u0442\u0443 \u0434\u044B\u0440\u0443, \u0438\u0437 \u043A\u043E\u0442\u043E\u0440\u043E\u0439
+      \u0442\u044B \u0432\u044B\u043B\u0435\u0437\u043B\u0430?"
+    replicas:
+    - {fileID: 8300000, guid: 4250bca53fbf98346afdab08d8fdfe13, type: 3}
+    usingCount: 0
+  - name: "\u0417\u0430\u0434\u0430\u043D\u0438\u0435"
+    texts:
+    - "\u0410\u0430... \u041A\u0442\u043E-\u0442\u043E \u0438\u0437 \u043C\u043E\u0438\u0445
+      \u0431\u0440\u0430\u0442\u0446\u0435\u0432 \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u043B
+      \u0442\u0435\u0431\u0435 \u043F\u0440\u043E \u0437\u0430\u0434\u0430\u043D\u0438\u0435?
+      \u0425\u043E\u0447\u0435\u0448\u044C \u0440\u0430\u0437\u0432\u0435\u044F\u0442\u044C
+      \u0442\u0443\u043C\u0430\u043D? \u0422\u043E\u0433\u0434\u0430 \u043F\u0440\u0438\u043D\u0435\u0441\u0438
+      \u043C\u043D\u0435 20 \u0430\u043A\u0443\u043B\u044C\u0438\u0445 \u043F\u043B\u0430\u0432\u043D\u0438\u043A\u043E\u0432.
+      \u0418 \u044F \u0441 \u0440\u0430\u0434\u043E\u0441\u0442\u044C\u044E \u0432\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0443
+      \u0442\u0435\u0431\u044F"
+    replicas:
+    - {fileID: 8300000, guid: bffa8067128295641bb6337ec53fedf2, type: 3}
+    usingCount: 0
+  - name: "\u0417\u0430\u0434\u0430\u043D\u0438\u0435"
+    texts:
+    - "\u0422\u044B \u043F\u0440\u0438\u043D\u0435\u0441\u043B\u0430 \u043F\u043B\u0430\u0432\u043D\u0438\u043A\u0438?
+      \u041D\u0435\u0442? \u0422\u043E\u0433\u0434\u0430 \u043D\u0430\u043C \u043D\u0435
+      \u043E \u0447\u0435\u043C \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C"
+    replicas:
+    - {fileID: 8300000, guid: 10d4a7d04f5aec647904bef17d43536c, type: 3}
+    usingCount: 0
+  - name: "\u0412\u044B \u043A\u0442\u043E?"
+    texts:
+    - "\u041C\u044B - \u0441\u0443\u043D\u0434\u0443\u043A\u0438, \u0445\u0440\u0430\u043D\u0438\u0442\u0435\u043B\u0438
+      \u043B\u0435\u0441\u0430. \u041D\u0430\u0448\u0430 \u0437\u0430\u0434\u0430\u0447\u0430
+      - \u043D\u0435 \u043F\u0440\u043E\u043F\u0443\u0441\u043A\u0430\u0442\u044C
+      \u043D\u0435\u0434\u043E\u0441\u0442\u043E\u0439\u043D\u044B\u0445 \u0432 \u0435\u0433\u043E
+      \u0433\u043B\u0443\u0431\u0438\u043D\u044B. \u0417\u0434\u0435\u0441\u044C,
+      \u043D\u0430 \u044D\u0442\u043E\u0439 \u043F\u043E\u043B\u044F\u043D\u0435
+      \u043D\u0430\u0441 \u0442\u0440\u0438 \u0431\u0440\u0430\u0442\u0430. \u042F,
+      \u0418\u0432\u0430\u043D; \u043D\u0430\u0448 \u043D\u0435\u043C\u043E\u0439
+      \u0431\u0440\u0430\u0442 \u041F\u0451\u0442\u0440, \u0438 \u0441\u0442\u0430\u0440\u0448\u0438\u0439
+      \u0438\u0437 \u043D\u0430\u0441 - \u0413\u0435\u043E\u0440\u0433\u0438\u0439.
+      \n\n\u0413\u0435\u043E\u0440\u0433\u0438\u0439 \u0445\u0440\u0430\u043D\u0438\u0442
+      \u0442\u0430\u0439\u043D\u0443 \u043E \u0442\u043E\u043C, \u043A\u0430\u043A
+      \u043F\u0440\u043E\u0439\u0442\u0438 \u0432 \u0441\u0430\u043C\u043E\u0435
+      \u0441\u0435\u0440\u0434\u0446\u0435 \u041C\u0430\u0442\u0435\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E
+      \u043B\u0435\u0441\u0430, \u043A \u0411\u043E\u043B\u044C\u0448\u043E\u043C\u0443
+      \u0434\u0435\u0440\u0435\u0432\u0443. \n\n\u041C\u044B \u0436\u0435 \u0441
+      \u041F\u0435\u0442\u0440\u043E\u043C \u0434\u0430\u0451\u043C \u043B\u044E\u0434\u044F\u043C
+      \u0434\u043E\u0440\u043E\u0433\u0443 \u0442\u0443\u0434\u0430, \u0433\u0434\u0435
+      \u0438\u0445 \u0436\u0438\u0437\u043D\u044C \u043C\u043E\u0436\u0435\u0442
+      \u0441\u0442\u0430\u0442\u044C \u0447\u0443\u0442\u044C \u043B\u0443\u0447\u0448\u0435.
+      \u041F\u0451\u0442\u0440 \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442 \u043B\u044E\u0434\u0435\u0439
+      \u043A \u0417\u0435\u043C\u043B\u044F\u043D\u0438\u0447\u043D\u043E\u0439 \u043F\u043E\u043B\u044F\u043D\u0435,
+      \u0430 \u044F \u0437\u043D\u0430\u044E, \u043A\u0430\u043A \u043F\u0440\u043E\u0439\u0442\u0438
+      \u043A \u041E\u0445\u043E\u0442\u043D\u0438\u0447\u044C\u0438\u043C \u0443\u0433\u043E\u0434\u044C\u044F\u043C."
+    replicas:
+    - {fileID: 8300000, guid: 057fd0f0f0959244d9ff12490274cd59, type: 3}
+    usingCount: 0
+  - name: "\u0413\u0435\u043E\u0440\u0433\u0438\u0439"
+    texts:
+    - "\u0414\u043E\u0432\u0435\u043B\u043E\u0441\u044C \u043F\u043E\u043E\u0431\u0449\u0430\u0442\u044C\u0441\u044F
+      \u0441 \u043C\u043E\u0438\u043C \u0431\u0440\u0430\u0442\u043E\u043C \u0413\u0435\u043E\u0440\u0433\u0438\u0435\u043C?
+      \u0423 \u043D\u0435\u0433\u043E \u043E\u0447\u0435\u043D\u044C... \u0441\u043B\u043E\u0436\u043D\u044B\u0439
+      \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440. \u041E\u043D \u0437\u043D\u0430\u0435\u0442,
+      \u043A\u0430\u043A \u043F\u0440\u043E\u0439\u0442\u0438 \u043A \u0431\u043E\u043B\u044C\u0448\u043E\u043C\u0443
+      \u0434\u0435\u0440\u0435\u0432\u0443, \u043D\u043E \u0435\u0449\u0451 \u043D\u0438
+      \u0441 \u043A\u0435\u043C \u0438\u0437 \u043B\u044E\u0434\u0435\u0439 \u043D\u0435
+      \u043F\u043E\u0434\u0435\u043B\u0438\u043B\u0441\u044F \u044D\u0442\u043E\u0439
+      \u0442\u0430\u0439\u043D\u043E\u0439.\n\n\u042F \u0431\u043E\u044E\u0441\u044C,
+      \u0443 \u0442\u0435\u0431\u044F \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435
+      \u0432\u044B\u0439\u0434\u0435\u0442, \u043D\u043E \u0442\u044B \u043C\u043E\u0436\u0435\u0448\u044C
+      \u043F\u043E\u043F\u0440\u043E\u0431\u043E\u0432\u0430\u0442\u044C \u0441\u043F\u0440\u043E\u0441\u0438\u0442\u044C
+      \u0435\u0433\u043E. \u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E, \u043E\u043D
+      \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0438\u0442 \u0442\u0435\u0431\u0435
+      \u043A\u0430\u043A\u043E\u0435-\u043D\u0438\u0431\u0443\u0434\u044C \u0437\u0430\u0434\u0430\u043D\u0438\u0435"
+    replicas:
+    - {fileID: 8300000, guid: ef48577af1f4c0f4d8713ac78ee38241, type: 3}
+    usingCount: 0
+  - name: "\u0413\u0435\u043E\u0440\u0433\u0438\u0439"
+    texts:
+    - "\u041E\u043D \u0441\u043A\u0430\u0437\u0430\u043B \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438
+      \u0435\u043C\u0443 \u0430\u043A\u0443\u043B\u044C\u0438 \u043F\u043B\u0430\u0432\u043D\u0438\u043A\u0438?
+      \u042F \u0431\u043E\u044E\u0441\u044C, \u0432 \u044D\u0442\u0438\u0445 \u043A\u0440\u0430\u044F\u0445
+      \u043D\u0435\u0442 \u0430\u043A\u0443\u043B... \u0412 \u044D\u0442\u0438\u0445
+      \u043A\u0440\u0430\u044F\u0445 \u043D\u0435\u0442 \u043D\u0438\u0447\u0435\u0433\u043E,
+      \u0443 \u0447\u0435\u0433\u043E \u043C\u043E\u0433\u043B\u0438 \u0431\u044B
+      \u0431\u044B\u0442\u044C \u043F\u043B\u0430\u0432\u043D\u0438\u043A\u0438!
+      \u041D\u043E, \u043A \u0441\u0447\u0430\u0441\u0442\u044C\u044E \u0434\u043B\u044F
+      \u0442\u0435\u0431\u044F, \u0435\u0441\u0442\u044C \u0434\u0440\u0443\u0433\u043E\u0439
+      \u043F\u0443\u0442\u044C \u043F\u0440\u043E\u0439\u0442\u0438 \u043A \u0411\u043E\u043B\u044C\u0448\u043E\u043C\u0443
+      \u0434\u0435\u0440\u0435\u0432\u0443. \u041C\u043E\u0439 \u0431\u0440\u0430\u0442
+      \u0414\u0438\u043C\u0438\u0442\u0440\u0438\u0439, \u0447\u0442\u043E \u0436\u0438\u0432\u0451\u0442
+      \u0432 \u043E\u0445\u043E\u0442\u043D\u0438\u0447\u044C\u0438\u0445 \u0443\u0433\u043E\u0434\u044C\u044F\u0445,
+      \u0437\u043D\u0430\u0435\u0442 \u0447\u0442\u043E-\u0442\u043E \u043E\u0431
+      \u044D\u0442\u043E\u043C"
+    replicas:
+    - {fileID: 8300000, guid: dda2cde6f085de14e8c95022c24bb962, type: 3}
+    usingCount: 0
+  - name: "\u041F\u0451\u0442\u0440"
+    texts:
+    - "\u0417\u0430\u0433\u0430\u0434\u043A\u0430 \u041F\u0435\u0442\u0440\u0430
+      \u0432 \u0442\u043E\u043C, \u0447\u0442\u043E\u0431\u044B \u043F\u043E\u043D\u044F\u0442\u044C
+      \u0435\u0433\u043E \u043D\u0435\u0441\u043C\u043E\u0442\u0440\u044F \u043D\u0430
+      \u0442\u043E, \u0447\u0442\u043E \u043E\u043D \u043D\u0435\u043C. \u0415\u0441\u043B\u0438
+      \u0442\u044B \u0441\u043F\u0440\u0430\u0432\u0438\u0448\u044C\u0441\u044F \u0441
+      \u044D\u0442\u0438\u043C, \u043E\u043D \u043E\u0442\u043A\u0440\u043E\u0435\u0442
+      \u0442\u0435\u0431\u0435 \u043F\u0443\u0442\u044C \u043A \u0417\u0435\u043C\u043B\u044F\u043D\u0438\u0447\u043D\u043E\u0439
+      \u043F\u043E\u043B\u044F\u043D\u0435"
+    replicas:
+    - {fileID: 8300000, guid: 4f694aae7cb994342937e410ec40a00e, type: 3}
+    usingCount: 0
+  - name: "\u041E\u0445\u043E\u0442\u043D\u0438\u0447\u044C\u0438 \u0443\u0433\u043E\u0434\u044C\u044F"
+    texts:
+    - "\u041F\u0443\u0442\u044C \u0432 \u043E\u0445\u043E\u0442\u043D\u0438\u0447\u044C\u0438
+      \u0443\u0433\u043E\u0434\u044C\u044F \u043E\u0442\u043A\u0440\u044B\u0442 \u0434\u043B\u044F
+      \u0432\u0441\u0435\u0445, \u0443 \u043A\u043E\u0433\u043E \u0435\u0441\u0442\u044C
+      \u0441 \u0441\u043E\u0431\u043E\u0439 \u043E\u0440\u0443\u0436\u0438\u0435.
+      \u041F\u043E\u043A\u0430\u0436\u0438 \u043C\u043D\u0435 \u0441\u0432\u043E\u0451
+      \u043E\u0440\u0443\u0436\u0438\u0435, \u0438 \u044F \u043E\u0442\u043A\u0440\u043E\u044E
+      \u0434\u043B\u044F \u0442\u0435\u0431\u044F \u0442\u0430\u0439\u043D\u0443
+      \u041E\u0445\u043E\u0442\u043D\u0438\u0447\u044C\u0438\u0445 \u0443\u0433\u043E\u0434\u0438\u0439 "
+    replicas:
+    - {fileID: 8300000, guid: 2cf774b30be9e1445b47460cccbc0ee3, type: 3}
+    usingCount: 0
 --- !u!1001 &1428267497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4200,6 +4480,79 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1771514501211151900, guid: 55355c50d5f804943b2893771038295f, type: 3}
   m_PrefabInstance: {fileID: 571463474596964855}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2670808065602508176
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4490586549784314298}
+    m_Modifications:
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: miniCanvas
+      value: 
+      objectReference: {fileID: 429767229169580575}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: dialogCanvas
+      value: 
+      objectReference: {fileID: 230915246}
+    - target: {fileID: 2336755910897198766, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: globalTopicsObject
+      value: 
+      objectReference: {fileID: 1360805155}
+    - target: {fileID: 8615736117059662724, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_Name
+      value: ChestGeorge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662745, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615736117059662748, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 10d4a7d04f5aec647904bef17d43536c, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
 --- !u!1001 &3433413992122440306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4788,6 +5141,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236cd967abf3a8b4a891830f8c3949c7, type: 3}
+--- !u!1 &5945212827657856532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8615736117059662724, guid: 591517029000d9b4187eae3b432df6f5, type: 3}
+  m_PrefabInstance: {fileID: 2670808065602508176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6757186114927134145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 161137365407707994, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
+  m_PrefabInstance: {fileID: 6915876929484895899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6786730756201752838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4899,6 +5262,22 @@ PrefabInstance:
     - target: {fileID: 161137365407707996, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 161137365407707997, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
+      propertyPath: current
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 161137365407707997, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 161137365407707997, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 161137365407707997, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}
+      propertyPath: regeneration
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4289d2f6fbf3f8344afa4f38818b28de, type: 3}

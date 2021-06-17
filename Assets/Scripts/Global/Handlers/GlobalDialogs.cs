@@ -9,6 +9,7 @@ public class GlobalDialogs : MonoBehaviour {
 [System.Serializable]
 public class Topic{
     public string name;
-    [TextArea()] public string[] texts;
+    [TextAreaAttribute(5, 20)] public string[] texts;
     public AudioClip[] replicas;
+    public int usingCount;
 }

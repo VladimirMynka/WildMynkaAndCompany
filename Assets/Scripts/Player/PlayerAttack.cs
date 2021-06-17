@@ -57,7 +57,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void nextWeapon(){
+    public void nextWeapon(){
         if(!inventory) return;
         index++;
         if(index >= inventory.weapons.Count) index = 0;
