@@ -119,5 +119,10 @@ public class ToHuntingGrounds : Quest
                 index++;
             }
         }
+
+        if(index > 7 && deletingFog != null)
+        {
+            Destroy(deletingFog);
+        }
     }
 }

@@ -22,7 +22,7 @@ public class Dialog : MonoBehaviour
     public string text;
     Target targetScript;
 
-    void Start() 
+    void Awake() 
     {
         topicsRectangle = dialogCanvas.transform.Find("Topics").Find("Viewport").Find("Content").gameObject;
         content = dialogCanvas.transform.Find("Replicas").Find("Viewport").Find("Content").gameObject;
@@ -151,6 +151,20 @@ public class Dialog : MonoBehaviour
         }
         topicsIndeces[j] = newIndex;
         topics[j] = globalTopics.topics[newIndex];
+    }
+    public void ChangeGreeting(int newGreeting)
+    {
+        greetingIndex = newGreeting;
+        greeting = globalTopics.greetings[newGreeting];
+    }
+    public void ChangeTopicsArray(int[] newIndeces)
+    {
+        topicsIndeces = newIndeces;
+        topics = new Topic[newIndeces.Length];
+        for(int i = 0; i < newIndeces.Length; i++)
+        {
+            topics[i] = globalTopics.topics[newIndeces[i]];
+        }
     }
     public void UpdateDialog()
     {

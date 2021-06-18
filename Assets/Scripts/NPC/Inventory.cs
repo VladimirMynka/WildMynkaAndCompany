@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     public List<int> keysIndeces;
     public List<int> othersIndeces;
 
-    void Start() 
+    void Awake() 
     {
         prefabs = assetsHandler.GetComponent<Prefabs>();
     }

@@ -23,7 +23,7 @@ public class PlayerCastSpell : MonoBehaviour
     float spellTime;
     public Vector3 target;
     Inventory inventory;
-    void Start()
+    void Awake()
     {
         inventory = GetComponent< Inventory >();
         if (inventory.spells.Count != 0){

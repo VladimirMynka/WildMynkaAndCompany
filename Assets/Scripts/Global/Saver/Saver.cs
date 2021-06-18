@@ -233,5 +233,146 @@ public abstract class Saver : MonoBehaviour
         castSpell.enable = !NextBool();
         castSpell.ChangeState();
     }
-    
+
+    protected void SavePlayerMoving()
+    {
+        var moving = gameObject.GetComponent<PlayerMoving>();
+        Put(moving.speed);
+    }
+    protected void LoadPlayerMoving()
+    {
+        var moving = gameObject.GetComponent<PlayerMoving>();
+        if (moving == null) moving = gameObject.AddComponent<PlayerMoving>();
+        moving.speed = NextFloat();
+    }
+
+    protected void SaveArms()
+    {
+        var arms = gameObject.GetComponent<Arms>();
+        Put(arms.arms.x);
+        Put(arms.arms.y);
+        Put(arms.arms.z);
+    }
+    protected void LoadArms()
+    {
+        var arms = gameObject.GetComponent<Arms>();
+        if (arms == null) arms = gameObject.AddComponent<Arms>();
+        arms.arms = new Vector3(NextFloat(), NextFloat(), NextFloat());
+    }
+
+    protected void SaveTarget()
+    {
+        var target = gameObject.GetComponent<Target>();
+        Put(target.pointTarget.x);
+        Put(target.pointTarget.y);
+        Put(target.pointTarget.z);
+        Put(target.playerRelationship);
+        Put(target.normalDistance);
+        Put(target.defaultNormalDistance);
+        Put(target.normalInDifference);
+        Put(target.normalOutDifference);
+        Put(target.speed);
+        Put(target.maxOscillationSpeed);
+    }
+    protected void LoadTarget()
+    {
+        var target = gameObject.GetComponent<Target>();
+        if (target == null) target = gameObject.AddComponent<Target>();
+        target.pointTarget = new Vector3(NextFloat(), NextFloat(), NextFloat());
+        target.playerRelationship = NextInt();
+        target.normalDistance = NextFloat();
+        target.defaultNormalDistance = NextFloat();
+        target.normalInDifference = NextFloat();
+        target.normalOutDifference = NextFloat();
+        target.speed = NextFloat();
+        target.maxOscillationSpeed = NextFloat();
+    }
+
+    protected void SaveNpcAttack()
+    {
+        var attack = gameObject.GetComponent<Attack>();
+        Put(attack.enable);
+        Put(attack.changeWeaponWaiting);
+        Put(attack.attackWaiting);
+        Put(attack.attackDistance);
+        Put(attack.bigAttackDistance);
+    }
+    protected void LoadNpcAttack()
+    {
+        var attack = gameObject.GetComponent<Attack>();
+        if (attack == null) attack = gameObject.AddComponent<Attack>();
+        attack.enable = NextBool();
+        attack.changeWeaponWaiting = NextFloat();
+        attack.attackWaiting = NextFloat();
+        attack.attackDistance = NextFloat();
+        attack.bigAttackDistance = NextFloat();
+    }
+
+    protected void SaveNpcCastSpell()
+    {
+        var castSpell = gameObject.GetComponent<CastSpell>();
+        Put(castSpell.enable);
+        Put(castSpell.index);
+        Put(castSpell.changeSpellWaiting);
+        Put(castSpell.spellDistance);
+        Put(castSpell.spellNormalInDifference);
+        Put(castSpell.spellNormalOutDifference);
+    }
+    protected void LoadNpcCastSpell()
+    {
+        var castSpell = gameObject.GetComponent<CastSpell>();
+        if (castSpell == null) castSpell = gameObject.AddComponent<CastSpell>();
+        castSpell.enable = NextBool();
+        castSpell.index = NextInt();
+        castSpell.changeSpellWaiting = NextFloat();
+        castSpell.spellDistance = NextFloat();
+        castSpell.spellNormalInDifference = NextFloat();
+        castSpell.spellNormalOutDifference = NextFloat();
+    }
+
+    protected void SaveDialog()
+    {
+        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        Put(dialog.topicsIndeces.Length);
+        foreach(int i in dialog.topicsIndeces)
+            Put(i);
+        Put(dialog.greetingIndex);
+    }
+    protected void LoadDialog()
+    {
+        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        int topicsCount = NextInt();
+        int[] newIndeces = new int[topicsCount];
+        for(int i = 0; i < topicsCount; i++)
+            newIndeces[i] = NextInt();
+        int newGreeting = NextInt();
+        dialog.ChangeTopicsArray(newIndeces);
+        dialog.ChangeGreeting(newGreeting);
+    }
+
+    protected void SaveQuest()
+    {
+        var quest = gameObject.GetComponent<Quest>();
+        Put(quest.index);
+        Put(quest.time);
+        Put(quest.waiting);
+    }
+    protected void LoadQuest()
+    {
+        var quest = gameObject.GetComponent<Quest>();
+        quest.index = NextInt();
+        quest.time = NextFloat();
+        quest.waiting = NextFloat();
+    }
+
+    protected void SaveCanvas()
+    {
+        var canvas = gameObject.GetComponent<Canvas>();
+        Put(canvas.planeDistance);
+    }
+    protected void LoadCanvas()
+    {
+        var canvas = gameObject.GetComponent<Canvas>();
+        canvas.planeDistance = NextFloat();
+    }
 }

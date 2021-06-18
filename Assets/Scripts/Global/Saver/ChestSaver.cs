@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class NpcSaver : Saver
+public class ChestSaver : Saver
 {
     public override void Save(string saveName)
     {
@@ -15,9 +15,6 @@ public class NpcSaver : Saver
         SaveHealth();
         SaveCharacteristics();
         SaveInventory();
-        SaveTarget();
-        SaveNpcAttack();
-        SaveNpcCastSpell();
         SaveDialog();
         Push();
     }
@@ -31,9 +28,6 @@ public class NpcSaver : Saver
         LoadHealth();
         LoadCharacteristics();
         LoadInventory();
-        LoadTarget();
-        LoadNpcAttack();
-        LoadNpcCastSpell();
         LoadDialog();
     }
 }

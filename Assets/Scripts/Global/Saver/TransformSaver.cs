@@ -5,20 +5,13 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class NpcSaver : Saver
+public class TransformSaver : Saver
 {
     public override void Save(string saveName)
     {
         savedName = saveName + gameObject.name;;
         
         SaveTransform();
-        SaveHealth();
-        SaveCharacteristics();
-        SaveInventory();
-        SaveTarget();
-        SaveNpcAttack();
-        SaveNpcCastSpell();
-        SaveDialog();
         Push();
     }
 
@@ -28,12 +21,5 @@ public class NpcSaver : Saver
         
         Initiate();
         LoadTransform();
-        LoadHealth();
-        LoadCharacteristics();
-        LoadInventory();
-        LoadTarget();
-        LoadNpcAttack();
-        LoadNpcCastSpell();
-        LoadDialog();
     }
 }

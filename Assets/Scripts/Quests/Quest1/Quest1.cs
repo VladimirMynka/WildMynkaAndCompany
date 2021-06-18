@@ -134,6 +134,10 @@ public class Quest1 : Quest
             Time.timeScale = 0;
             index++;
         }
+        if(index > 12 && stone != null)
+        {
+            Destroy(stone);
+        }
     }
 
     void Open(GameObject menu)

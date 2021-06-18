@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public Arms arms;
     public int index;
     Inventory inventory;
-    void Start()
+    void Awake()
     {
         inventory = GetComponent< Inventory >();
         if(inventory.weapons.Count > 0)
