@@ -8,6 +8,8 @@ using UnityEngine;
 
 public abstract class Saver : MonoBehaviour
 {
+
+    public GameObject assetsHandler;
     public const string TreesNumberKey = "TreesNumber";
     public const string Branch = ".branch";
     private const string Token = "~([^~]*)";
@@ -72,17 +74,6 @@ public abstract class Saver : MonoBehaviour
         return matcher.nextBool();
     }
 
-    protected static string GetPath(UnityEngine.Object obj)
-    {
-        // Path's format: Assets/Recourses/.../file.smth
-        // We have to remove "Assets/Recourses/" and ".smth" for Unity to correctly load file
-        string fullPath = AssetDatabase.GetAssetPath(obj);
-
-        // "Assets/Recourses/".length == 17
-        string correctPath = fullPath.Substring(17, fullPath.LastIndexOf('.') - 17);
-        return correctPath;
-    }
-
     protected void SaveTransform()
     {
         var temp = transform;
@@ -111,18 +102,17 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveSprite()
     {
-        var sprite = GetComponent<SpriteRenderer>();
-        var path = GetPath(sprite.sprite);
+        var sprite = GetComponent<SavingSprite>();
 
-        Put(path);
-        Put(sprite.sortingOrder);
+        Put(sprite.imageIndex);
+        Put(sprite.layer);
     }
     protected void LoadSprite()
     {
-        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        if(spriteRenderer == null) spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Resources.Load<Sprite>(NextString());
-        spriteRenderer.sortingOrder = NextInt();
+        var savingSprite = gameObject.GetComponent<SavingSprite>();
+        if(savingSprite == null) savingSprite = gameObject.AddComponent<SavingSprite>();
+        savingSprite.imageIndex = NextInt();
+        savingSprite.layer = NextInt();
     }
 
     protected void SaveHealth()
@@ -169,21 +159,21 @@ public abstract class Saver : MonoBehaviour
     {
         var inventory = gameObject.GetComponent<Inventory>();
         
-        Put(inventory.weapons.Count);
-        foreach (var weapon in inventory.weapons)
-            Put(GetPath(weapon));
+        Put(inventory.weaponsIndeces.Count);
+        foreach (int index in inventory.weaponsIndeces)
+            Put(index);
         
-        Put(inventory.spells.Count);
-        foreach (var spell in inventory.spells)
-            Put(GetPath(spell));
+        Put(inventory.spellsIndeces.Count);
+        foreach (int index in inventory.spellsIndeces)
+            Put(index);
         
-        Put(inventory.keys.Count);
-        foreach (var key in inventory.keys)
-            Put(GetPath(key));
+        Put(inventory.keysIndeces.Count);
+        foreach (int index in inventory.keysIndeces)
+            Put(index);
         
-        Put(inventory.others.Count);
-        foreach (var other in inventory.others)
-            Put(GetPath(other));
+        Put(inventory.othersIndeces.Count);
+        foreach (int index in inventory.othersIndeces)
+            Put(index);
     }
     protected void LoadInventory()
     {
@@ -192,29 +182,33 @@ public abstract class Saver : MonoBehaviour
 
         int weaponsCount = NextInt();
         inventory.weapons = new List<GameObject>(weaponsCount);
+        inventory.weaponsIndeces = new List<int>(weaponsCount);
         for(int i = 0; i < weaponsCount; i++)
-            inventory.weapons.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddWeapon(NextInt());
         
         int spellsCount = NextInt();
         inventory.spells = new List<GameObject>(spellsCount);
+        inventory.spellsIndeces = new List<int>(spellsCount);
         for(int i = 0; i < spellsCount; i++)
-            inventory.spells.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddSpell(NextInt());
 
         int keysCount = NextInt();
         inventory.keys = new List<GameObject>(keysCount);
+        inventory.keysIndeces = new List<int>(keysCount);
         for(int i = 0; i < keysCount; i++)
-            inventory.keys.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddKey(NextInt());
 
         int othersCount = NextInt();
         inventory.others = new List<GameObject>(othersCount);
+        inventory.othersIndeces = new List<int>(othersCount);
         for(int i = 0; i < othersCount; i++)
-            inventory.others.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddOther(NextInt());
     }
-
     protected void SavePlayerAttack()
     {
         var attack = gameObject.GetComponent<PlayerAttack>();
         Put(attack.index);
+        Put(attack.currentWeapon != null);
     }
     protected void LoadPlayerAttack()
     {
@@ -222,18 +216,22 @@ public abstract class Saver : MonoBehaviour
         if (attack == null) attack = gameObject.AddComponent<PlayerAttack>();
 
         attack.index = NextInt();
+        if(NextBool()) attack.AddWeapon();
     }
 
     protected void SavePlayerCastSpell()
     {
         var castSpell = gameObject.GetComponent<PlayerCastSpell>();
         Put(castSpell.index);
+        Put(castSpell.enable);
     }
     protected void LoadPlayerCastSpell()
     {
         var castSpell = gameObject.GetComponent<PlayerCastSpell>();
         if (castSpell == null) castSpell = gameObject.AddComponent<PlayerCastSpell>();
         castSpell.index = NextInt();
+        castSpell.enable = !NextBool();
+        castSpell.ChangeState();
     }
     
 }

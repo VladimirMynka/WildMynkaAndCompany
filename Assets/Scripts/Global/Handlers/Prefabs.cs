@@ -11,4 +11,6 @@ public class Prefabs : MonoBehaviour
     public GameObject[] places;
     public GameObject[] weapons;
     public GameObject[] spells;
+    public GameObject[] keys;
+    public GameObject[] others;
 }

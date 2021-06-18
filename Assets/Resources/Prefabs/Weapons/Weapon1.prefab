@@ -239,4 +239,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   damage: 10
   damageWaiting: 0
-  sound: {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
+  sound: {fileID: 8300000, guid: d1c6cdb4dec30e0498fdd58aecfda87f, type: 3}

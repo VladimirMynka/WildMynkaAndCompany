@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GlobalDialogs : MonoBehaviour {
     public Topic[] topics;
+    public Topic[] greetings;
 }
 
 [System.Serializable]

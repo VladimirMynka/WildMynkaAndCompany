@@ -11,17 +11,24 @@ public class TreesCreator : MonoBehaviour
     public Sprite[] branchImageOptions;
     public float normalDifference;
     public float normalTreeDifference;
-    public static int branchCount = 7;
+    public int branchCount = 7;
     public int minLayer;
     public int maxLayer;
     public int quantity;
+
+    string TreesCountKey = "TreesCount";
+    string LastSaveKey = "LastSave";
+
     void Start()
     {
-        int existingTrees = PlayerPrefs.GetInt(Saver.TreesNumberKey);
+        string lastSave = PlayerPrefs.GetString(LastSaveKey);
+        int existingTrees = PlayerPrefs.GetInt(lastSave + TreesCountKey, 0);
         for (int i = 0; i < quantity - existingTrees; i++)
         {
             CreateTree(i);
         }
+        if(lastSave != "")
+            PlayerPrefs.SetInt(lastSave + TreesCountKey, quantity);
     }
 
     private void CreateTree(int number)
@@ -31,7 +38,7 @@ public class TreesCreator : MonoBehaviour
 
         InitRandomTransform(tree);
         InitSprite(tree, trunkOptions, 1);
-        tree.AddComponent<TreeSaver>();
+        var saver = tree.AddComponent<TreeSaver>();
         InitChildren(tree);
     }
     
@@ -54,6 +61,9 @@ public class TreesCreator : MonoBehaviour
         var spriteRenderer = tree.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = from[image];
         spriteRenderer.sortingOrder = layer;
+        var savingSprite = tree.AddComponent<SavingSprite>();
+        savingSprite.imageIndex = image;
+        savingSprite.layer = layer;
     }
     
     private void InitChildren(GameObject tree)

@@ -13,14 +13,14 @@ public class Quest1 : Quest
     GameObject player;
     string playerName;
     GameObject playerCopy;
-    public float playerDistance;
+    public float betweenPlayersDistance;
     public float portalDistance;
     public float normalDistance;
     public GameObject helpCanvas;
     public GameObject subsCanvas;
     public GameObject weaponCanvas;
-    public GameObject newWeapon;
-    public GameObject newSpell;
+    public int newWeaponIndex;
+    public int newSpellIndex;
     public GameObject stone;
     public string[] helpStrings;
     public string[] subsStrings;
@@ -64,11 +64,12 @@ public class Quest1 : Quest
             Say(king, subsStrings[1], replicas[1]);
             index++;
             time++;
-            player.GetComponent<Inventory>().weapons.Add(newWeapon);
-            weaponCanvas.transform.Find("Image").Find("CurrentWeapon").gameObject.GetComponent<Text>().text = newWeapon.GetComponent<Weapon>().weaponName;
+            player.GetComponent<Inventory>().AddWeapon(newWeaponIndex);
+            weaponCanvas.transform.Find("Image").Find("CurrentWeapon").gameObject.GetComponent<Text>().text =
+                player.GetComponent<Inventory>().weapons[0].GetComponent<Weapon>().weaponName;            
             playerCopy = Instantiate(
                 player, 
-                player.transform.position + new Vector3(playerDistance, 0, 0), 
+                player.transform.position + new Vector3(betweenPlayersDistance, 0, 0), 
                 player.transform.rotation
             );
         }
@@ -110,14 +111,15 @@ public class Quest1 : Quest
             Close(subsCanvas);
             Open(helpCanvas, helpStrings[2]);
             Time.timeScale = 0;
-            portal.transform.position = transform.position + new Vector3(portalDistance, 0, 0);
+            portal.transform.localPosition = king.transform.localPosition + new Vector3(portalDistance, 0, 0);
             index++;
         }
-        if(index == 10 && (player.transform.position - king.transform.position).magnitude > 10)
+        if(index == 10 && (player.transform.position - king.transform.position).magnitude > 20)
         {
             Open(weaponCanvas);
-            weaponCanvas.transform.Find("Image").Find("CurrentSpell").gameObject.GetComponent<Text>().text = newSpell.GetComponent<Spell>().spellName;
-            player.GetComponent<Inventory>().spells.Add(newSpell);
+            player.GetComponent<Inventory>().AddSpell(newSpellIndex);
+            weaponCanvas.transform.Find("Image").Find("CurrentSpell").gameObject.GetComponent<Text>().text = 
+                player.GetComponent<Inventory>().spells[0].GetComponent<Spell>().spellName;
             index++;
         }
         if(index == 11 && time == 0)

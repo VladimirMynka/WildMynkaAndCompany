@@ -9,7 +9,6 @@ public class GlobalSaver : Saver
     public static readonly string SavesKey = "Saves";
     public static readonly string LastSaveKey = "LastSave";
     public GameObject treeParent;
-    public GameObject assetsHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +37,7 @@ public class GlobalSaver : Saver
                 one.Save(saveName);
         }
 
-        PlayerPrefs.SetInt(TreesNumberKey, currentTree);
-        currentTree = 0;
+        
     }
 
     public override void Load(string saveName)
@@ -48,15 +46,7 @@ public class GlobalSaver : Saver
             return;
         string saves = PlayerPrefs.GetString(SavesKey, "");
         if (!saves.Contains($"~{saveName}"))
-            throw new ArgumentException($"No save with name {saveName} exists.");
-        
-        int trees = PlayerPrefs.GetInt(TreesNumberKey);
-        for (int i = 0; i < trees; i++)
-        {
-            var go = new GameObject("Tree" + i);
-            go.transform.parent = treeParent.transform;
-            var saver = go.AddComponent<TreeSaver>();
-        }
+            throw new ArgumentException($"No save with name {saveName} exists.");        
 
         var all = FindObjectsOfType<Saver>();
         foreach (var one in all)

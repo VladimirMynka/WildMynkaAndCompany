@@ -14,7 +14,7 @@ public class ToHuntingGrounds : Quest
     PlayerAttack playerAttack;
     public GameObject deletingFog;
     Health fogHealth;
-    public GameObject newWeapon;
+    public int newWeaponIndex;
     
 
 
@@ -100,8 +100,8 @@ public class ToHuntingGrounds : Quest
         {
             if(playerAttack.currentWeapon != null)
             {
-                player.GetComponent<Inventory>().weapons.Add(newWeapon);
-                playerAttack.nextWeapon();
+                player.GetComponent<Inventory>().AddWeapon(newWeaponIndex);
+                playerAttack.NextWeapon();
                 index++;
             }
         }

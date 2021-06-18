@@ -13,11 +13,14 @@ public class Dialog : MonoBehaviour
     GameObject topicsRectangle;
     public Topic[] topics;
     public int[] topicsIndeces;
+    public Topic greeting;
+    public int greetingIndex;
     public GameObject globalTopicsObject;
     GlobalDialogs globalTopics;
     public GameObject miniCanvas;
     public bool active;
     public string text;
+    Target targetScript;
 
     void Start() 
     {
@@ -28,19 +31,22 @@ public class Dialog : MonoBehaviour
         for(int i = 0; i < topicsIndeces.Length; i++){
             topics[i] = globalTopics.topics[topicsIndeces[i]];
         }
+        greeting = globalTopics.greetings[greetingIndex];
+        targetScript = transform.parent.GetComponent<Target>();
     }
     void Update() 
     {
         if(!active) return;
         if(Input.GetKeyDown("space")){
             miniCanvas.GetComponent< Canvas >().planeDistance = -10;
-            dialogCanvas.GetComponent< Canvas >().planeDistance = 99;
+            dialogCanvas.GetComponent< Canvas >().planeDistance = 100;
+            Greet();
             StartCoroutine(ClearAndAddAll());
         }
     }
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player"){
+        if(other.gameObject.tag == "Player" && targetScript.playerRelationship >= 60){
             active = true;
             miniCanvas.GetComponent< Canvas >().planeDistance = 98;
             miniCanvas.transform.Find("Text").GetComponent< Text >().text = text;
@@ -55,14 +61,28 @@ public class Dialog : MonoBehaviour
         }
     }
 
+    void Greet()
+    {
+        int index = UnityEngine.Random.Range(0, greeting.texts.Length);
+        content.transform.Find("Title").gameObject.GetComponent< Text >().text = greeting.name;
+        content.transform.Find("Text").gameObject.GetComponent< Text >().text = greeting.texts[index];
+    }
+
     IEnumerator ClearAndAddAll()
     {
-        Clear();
-        yield return new WaitForSeconds(0.05f);
+        yield return StartCoroutine(Clear());
         for(int i = 0; i < topics.Length; i++){
             Add(topics[i]);
         }
         Time.timeScale = 0;
+    }
+
+    IEnumerator Clear()
+    {
+        for(int i = 0; i < topicsRectangle.transform.childCount; i++){
+            Destroy(topicsRectangle.transform.GetChild(i).gameObject);
+        } 
+        yield return null;
     }
 
     void Add(Topic topic)
@@ -70,7 +90,7 @@ public class Dialog : MonoBehaviour
         GameObject newTopic = Instantiate(buttonExample) as GameObject;
         newTopic.GetComponent< Button >().onClick.AddListener(() => { OnClick(topic); });
         newTopic.transform.Find("Textic").gameObject.GetComponent<Text>().text = topic.name;
-        newTopic.transform.parent = topicsRectangle.transform;
+        newTopic.transform.SetParent(topicsRectangle.transform, false);
         if (topicsRectangle.transform.childCount > 1){
             newTopic.transform.localPosition = topicsRectangle.transform.GetChild(topicsRectangle.transform.childCount - 2).transform.localPosition + new Vector3(0, -20, 0);
         }
@@ -78,15 +98,6 @@ public class Dialog : MonoBehaviour
             newTopic.transform.localPosition = new Vector3(53.25f, -20, 0);
         }
         newTopic.transform.localScale = Vector3.one;
-    }
-
-    void Clear()
-    {
-        content.transform.Find("Title").gameObject.GetComponent< Text >().text = "";
-        content.transform.Find("Text").gameObject.GetComponent< Text >().text = "";
-        for(int i = 0; i < topicsRectangle.transform.childCount; i++){
-            Destroy(topicsRectangle.transform.GetChild(i).gameObject);
-        } 
     }
 
     public void OnClick(Topic topic)
