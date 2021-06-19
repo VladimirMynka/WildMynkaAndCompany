@@ -64,8 +64,11 @@ public class Dialog : MonoBehaviour
     void Greet()
     {
         int index = UnityEngine.Random.Range(0, greeting.texts.Length);
-        content.transform.Find("Title").gameObject.GetComponent< Text >().text = greeting.name;
-        content.transform.Find("Text").gameObject.GetComponent< Text >().text = greeting.texts[index];
+        content.transform.Find("Title").gameObject.GetComponent<Text>().text = greeting.name;
+        content.transform.Find("Text").gameObject.GetComponent<Text>().text = greeting.texts[index];
+        gameObject.GetComponent< AudioSource >().Stop();
+        gameObject.GetComponent< AudioSource >().PlayOneShot(greeting.replicas[index]);
+        greeting.usingCount++;
     }
 
     IEnumerator ClearAndAddAll()

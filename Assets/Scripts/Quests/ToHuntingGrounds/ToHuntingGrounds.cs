@@ -120,7 +120,7 @@ public class ToHuntingGrounds : Quest
             }
         }
 
-        if(index > 7 && deletingFog != null)
+        if(index > 8 && deletingFog != null)
         {
             Destroy(deletingFog);
         }
