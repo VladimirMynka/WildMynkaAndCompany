@@ -170,6 +170,14 @@ MonoBehaviour:
   dialogCanvas: {fileID: 0}
   buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd, type: 3}
   topics: []
+  topicsIndeces: 
+  greeting:
+    name: 
+    texts: []
+    replicas: []
+    usingCount: 0
+  greetingIndex: 0
+  globalTopicsObject: {fileID: 0}
   miniCanvas: {fileID: 0}
   active: 0
   text: 
@@ -194,6 +202,7 @@ GameObject:
   - component: {fileID: 4119328964332326227}
   - component: {fileID: 4119328964332326226}
   - component: {fileID: 4119328964332326229}
+  - component: {fileID: -4771935376359053148}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -404,6 +413,7 @@ MonoBehaviour:
   current: 100
   maxHealth: 100
   regeneration: 1
+  sr: {fileID: 0}
 --- !u!114 &4119328964332326220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41ff5f297f87e45b95c61b1e31a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetsHandler: {fileID: 0}
+  prefabs: {fileID: 0}
   weapons:
   - {fileID: 6649065787367217579, guid: 8e91b9e019066034a90f68bd765bf70f, type: 3}
   - {fileID: 6450431964402723588, guid: 870bb40b0b9d9dc48b67c3ee4dd0081d, type: 3}
@@ -478,6 +490,10 @@ MonoBehaviour:
   - {fileID: 3971448354557838779, guid: 606a1ec329f178348b8bee177e0f65a5, type: 3}
   keys: []
   others: []
+  weaponsIndeces: 
+  spellsIndeces: 
+  keysIndeces: 
+  othersIndeces: 
 --- !u!114 &4119328964332326224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,7 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   pointTarget: {x: 0, y: 0, z: 0}
-  relationShip: 20
+  relationship: 0
+  playerRelationship: 0
   normalDistance: 2
   defaultNormalDistance: 2
   normalInDifference: 0.1
@@ -500,6 +517,8 @@ MonoBehaviour:
   distance: 0
   speed: 2
   angle: 0
+  oscillationAngle: 5
+  maxOscillationSpeed: 0.2
 --- !u!114 &4119328964332326227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,3 +576,16 @@ MonoBehaviour:
   spellDistance: 10
   spellNormalInDifference: 10
   spellNormalOutDifference: 0
+--- !u!114 &-4771935376359053148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119328964332326228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed348a2ac3a7a834a828c0f8dafd5ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetsHandler: {fileID: 0}

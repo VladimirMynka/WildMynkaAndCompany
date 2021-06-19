@@ -223,6 +223,7 @@ MonoBehaviour:
   current: 100
   maxHealth: 100
   regeneration: 1
+  sr: {fileID: 0}
 --- !u!114 &7279376742855398999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,5 +237,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: eac294e77b096724fb729b558749cd17, type: 3}
+  - {fileID: 8300000, guid: 2c1becc3ca471734daebcbfa56cec0f6, type: 3}
   timing: 10

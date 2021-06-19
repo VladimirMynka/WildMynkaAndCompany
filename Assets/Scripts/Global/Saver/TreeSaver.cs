@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class TreeSaver : Saver
 {
+    public TreesCreator treesCreator;
     public override void Save(string saveName)
     {
         savedName = saveName + "Tree" + currentTree++;
@@ -17,6 +18,20 @@ public class TreeSaver : Saver
         SaveChildren();
         
         Push();
+    }
+
+    public override void Load(string saveName)
+    {
+        savedName = gameObject.name;
+        Initiate();
+        LoadTransform();
+        LoadSprite();
+        LoadChildren();
+
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        var savingSprite = GetComponent<SavingSprite>();
+        spriteRenderer.sprite = treesCreator.trunkOptions[savingSprite.imageIndex];
+        spriteRenderer.sortingOrder = savingSprite.layer;
     }
 
     private void SaveChildren()
@@ -34,15 +49,6 @@ public class TreeSaver : Saver
         saver.Save("");
     }
 
-    public override void Load(string saveName)
-    {
-        savedName = gameObject.name;
-        Initiate();
-        LoadTransform();
-        LoadSprite();
-        LoadChildren();
-    }
-
     private void LoadChildren()
     {
         int children = NextInt();
@@ -55,6 +61,7 @@ public class TreeSaver : Saver
         var branch = new GameObject(savedName + Branch + number);
         var saver = branch.AddComponent<BranchSaver>();
         branch.transform.parent = gameObject.transform;
+        saver.treesCreator = treesCreator;
         saver.Load("");
     }
 }

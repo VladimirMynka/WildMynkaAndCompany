@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
-  timing: 0
+  - {fileID: 8300000, guid: e478697b86df98c43a3f63b1b764ac9a, type: 3}
+  timing: 2
 --- !u!114 &4126335810653616957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,4 +239,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   damage: 10
   damageWaiting: 0
-  sound: {fileID: 8300000, guid: f01d4c3745d452d40b9458469b0243cc, type: 3}
+  sound: {fileID: 8300000, guid: d1c6cdb4dec30e0498fdd58aecfda87f, type: 3}

@@ -7,35 +7,38 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject currentWeapon;
     public GameObject currentWeaponText;
+    public Arms arms;
     public int index;
     Inventory inventory;
-    void Start()
+    void Awake()
     {
         inventory = GetComponent< Inventory >();
-        currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
+        if(inventory.weapons.Count > 0)
+            currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
+        arms = GetComponent<Arms>();
     }
 
     void Update()
     {
         if(Input.GetKeyDown("f")){
-            if (currentWeapon == null) addWeapon();
-            else removeWeapon();
+            if (currentWeapon == null) AddWeapon();
+            else RemoveWeapon();
         }
         if(Input.GetKeyDown("[")){
-            nextWeapon();
-            if (currentWeapon != null) addWeapon();
+            NextWeapon();
+            if (currentWeapon != null) AddWeapon();
             currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
         }
     }
 
     void FixedUpdate(){
         if(currentWeapon != null){
-            currentWeapon.transform.localPosition = GetComponent< Arms >().arms;
+            currentWeapon.transform.localPosition = arms.arms;
         }
     }
 
-    void addWeapon(){
-        removeWeapon();
+    public void AddWeapon(){
+        RemoveWeapon();
         if (!inventory) return;
 
         currentWeapon = Instantiate(inventory.weapons[index]) as GameObject;
@@ -51,13 +54,13 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void removeWeapon(){
+    public void RemoveWeapon(){
         if (currentWeapon){
             Destroy(currentWeapon);
         }
     }
 
-    void nextWeapon(){
+    public void NextWeapon(){
         if(!inventory) return;
         index++;
         if(index >= inventory.weapons.Count) index = 0;

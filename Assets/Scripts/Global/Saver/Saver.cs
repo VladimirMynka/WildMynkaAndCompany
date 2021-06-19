@@ -8,6 +8,8 @@ using UnityEngine;
 
 public abstract class Saver : MonoBehaviour
 {
+
+    public GameObject assetsHandler;
     public const string TreesNumberKey = "TreesNumber";
     public const string Branch = ".branch";
     private const string Token = "~([^~]*)";
@@ -72,17 +74,6 @@ public abstract class Saver : MonoBehaviour
         return matcher.nextBool();
     }
 
-    protected static string GetPath(UnityEngine.Object obj)
-    {
-        // Path's format: Assets/Recourses/.../file.smth
-        // We have to remove "Assets/Recourses/" and ".smth" for Unity to correctly load file
-        string fullPath = AssetDatabase.GetAssetPath(obj);
-
-        // "Assets/Recourses/".length == 17
-        string correctPath = fullPath.Substring(17, fullPath.LastIndexOf('.') - 17);
-        return correctPath;
-    }
-
     protected void SaveTransform()
     {
         var temp = transform;
@@ -111,18 +102,17 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveSprite()
     {
-        var sprite = GetComponent<SpriteRenderer>();
-        var path = GetPath(sprite.sprite);
+        var sprite = GetComponent<SavingSprite>();
 
-        Put(path);
-        Put(sprite.sortingOrder);
+        Put(sprite.imageIndex);
+        Put(sprite.layer);
     }
     protected void LoadSprite()
     {
-        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        if(spriteRenderer == null) spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Resources.Load<Sprite>(NextString());
-        spriteRenderer.sortingOrder = NextInt();
+        var savingSprite = gameObject.GetComponent<SavingSprite>();
+        if(savingSprite == null) savingSprite = gameObject.AddComponent<SavingSprite>();
+        savingSprite.imageIndex = NextInt();
+        savingSprite.layer = NextInt();
     }
 
     protected void SaveHealth()
@@ -169,21 +159,21 @@ public abstract class Saver : MonoBehaviour
     {
         var inventory = gameObject.GetComponent<Inventory>();
         
-        Put(inventory.weapons.Count);
-        foreach (var weapon in inventory.weapons)
-            Put(GetPath(weapon));
+        Put(inventory.weaponsIndeces.Count);
+        foreach (int index in inventory.weaponsIndeces)
+            Put(index);
         
-        Put(inventory.spells.Count);
-        foreach (var spell in inventory.spells)
-            Put(GetPath(spell));
+        Put(inventory.spellsIndeces.Count);
+        foreach (int index in inventory.spellsIndeces)
+            Put(index);
         
-        Put(inventory.keys.Count);
-        foreach (var key in inventory.keys)
-            Put(GetPath(key));
+        Put(inventory.keysIndeces.Count);
+        foreach (int index in inventory.keysIndeces)
+            Put(index);
         
-        Put(inventory.others.Count);
-        foreach (var other in inventory.others)
-            Put(GetPath(other));
+        Put(inventory.othersIndeces.Count);
+        foreach (int index in inventory.othersIndeces)
+            Put(index);
     }
     protected void LoadInventory()
     {
@@ -192,29 +182,33 @@ public abstract class Saver : MonoBehaviour
 
         int weaponsCount = NextInt();
         inventory.weapons = new List<GameObject>(weaponsCount);
+        inventory.weaponsIndeces = new List<int>(weaponsCount);
         for(int i = 0; i < weaponsCount; i++)
-            inventory.weapons.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddWeapon(NextInt());
         
         int spellsCount = NextInt();
         inventory.spells = new List<GameObject>(spellsCount);
+        inventory.spellsIndeces = new List<int>(spellsCount);
         for(int i = 0; i < spellsCount; i++)
-            inventory.spells.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddSpell(NextInt());
 
         int keysCount = NextInt();
         inventory.keys = new List<GameObject>(keysCount);
+        inventory.keysIndeces = new List<int>(keysCount);
         for(int i = 0; i < keysCount; i++)
-            inventory.keys.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddKey(NextInt());
 
         int othersCount = NextInt();
         inventory.others = new List<GameObject>(othersCount);
+        inventory.othersIndeces = new List<int>(othersCount);
         for(int i = 0; i < othersCount; i++)
-            inventory.others.Add(Resources.Load<GameObject>(NextString()));
+            inventory.AddOther(NextInt());
     }
-
     protected void SavePlayerAttack()
     {
         var attack = gameObject.GetComponent<PlayerAttack>();
         Put(attack.index);
+        Put(attack.currentWeapon != null);
     }
     protected void LoadPlayerAttack()
     {
@@ -222,18 +216,163 @@ public abstract class Saver : MonoBehaviour
         if (attack == null) attack = gameObject.AddComponent<PlayerAttack>();
 
         attack.index = NextInt();
+        if(NextBool()) attack.AddWeapon();
     }
 
     protected void SavePlayerCastSpell()
     {
         var castSpell = gameObject.GetComponent<PlayerCastSpell>();
         Put(castSpell.index);
+        Put(castSpell.enable);
     }
     protected void LoadPlayerCastSpell()
     {
         var castSpell = gameObject.GetComponent<PlayerCastSpell>();
         if (castSpell == null) castSpell = gameObject.AddComponent<PlayerCastSpell>();
         castSpell.index = NextInt();
+        castSpell.enable = !NextBool();
+        castSpell.ChangeState();
     }
-    
+
+    protected void SavePlayerMoving()
+    {
+        var moving = gameObject.GetComponent<PlayerMoving>();
+        Put(moving.speed);
+    }
+    protected void LoadPlayerMoving()
+    {
+        var moving = gameObject.GetComponent<PlayerMoving>();
+        if (moving == null) moving = gameObject.AddComponent<PlayerMoving>();
+        moving.speed = NextFloat();
+    }
+
+    protected void SaveArms()
+    {
+        var arms = gameObject.GetComponent<Arms>();
+        Put(arms.arms.x);
+        Put(arms.arms.y);
+        Put(arms.arms.z);
+    }
+    protected void LoadArms()
+    {
+        var arms = gameObject.GetComponent<Arms>();
+        if (arms == null) arms = gameObject.AddComponent<Arms>();
+        arms.arms = new Vector3(NextFloat(), NextFloat(), NextFloat());
+    }
+
+    protected void SaveTarget()
+    {
+        var target = gameObject.GetComponent<Target>();
+        Put(target.pointTarget.x);
+        Put(target.pointTarget.y);
+        Put(target.pointTarget.z);
+        Put(target.playerRelationship);
+        Put(target.normalDistance);
+        Put(target.defaultNormalDistance);
+        Put(target.normalInDifference);
+        Put(target.normalOutDifference);
+        Put(target.speed);
+        Put(target.maxOscillationSpeed);
+    }
+    protected void LoadTarget()
+    {
+        var target = gameObject.GetComponent<Target>();
+        if (target == null) target = gameObject.AddComponent<Target>();
+        target.pointTarget = new Vector3(NextFloat(), NextFloat(), NextFloat());
+        target.playerRelationship = NextInt();
+        target.normalDistance = NextFloat();
+        target.defaultNormalDistance = NextFloat();
+        target.normalInDifference = NextFloat();
+        target.normalOutDifference = NextFloat();
+        target.speed = NextFloat();
+        target.maxOscillationSpeed = NextFloat();
+    }
+
+    protected void SaveNpcAttack()
+    {
+        var attack = gameObject.GetComponent<Attack>();
+        Put(attack.enable);
+        Put(attack.changeWeaponWaiting);
+        Put(attack.attackWaiting);
+        Put(attack.attackDistance);
+        Put(attack.bigAttackDistance);
+    }
+    protected void LoadNpcAttack()
+    {
+        var attack = gameObject.GetComponent<Attack>();
+        if (attack == null) attack = gameObject.AddComponent<Attack>();
+        attack.enable = NextBool();
+        attack.changeWeaponWaiting = NextFloat();
+        attack.attackWaiting = NextFloat();
+        attack.attackDistance = NextFloat();
+        attack.bigAttackDistance = NextFloat();
+    }
+
+    protected void SaveNpcCastSpell()
+    {
+        var castSpell = gameObject.GetComponent<CastSpell>();
+        Put(castSpell.enable);
+        Put(castSpell.index);
+        Put(castSpell.changeSpellWaiting);
+        Put(castSpell.spellDistance);
+        Put(castSpell.spellNormalInDifference);
+        Put(castSpell.spellNormalOutDifference);
+    }
+    protected void LoadNpcCastSpell()
+    {
+        var castSpell = gameObject.GetComponent<CastSpell>();
+        if (castSpell == null) castSpell = gameObject.AddComponent<CastSpell>();
+        castSpell.enable = NextBool();
+        castSpell.index = NextInt();
+        castSpell.changeSpellWaiting = NextFloat();
+        castSpell.spellDistance = NextFloat();
+        castSpell.spellNormalInDifference = NextFloat();
+        castSpell.spellNormalOutDifference = NextFloat();
+    }
+
+    protected void SaveDialog()
+    {
+        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        Put(dialog.topicsIndeces.Length);
+        foreach(int i in dialog.topicsIndeces)
+            Put(i);
+        Put(dialog.greetingIndex);
+    }
+    protected void LoadDialog()
+    {
+        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        int topicsCount = NextInt();
+        int[] newIndeces = new int[topicsCount];
+        for(int i = 0; i < topicsCount; i++)
+            newIndeces[i] = NextInt();
+        int newGreeting = NextInt();
+        dialog.ChangeTopicsArray(newIndeces);
+        dialog.ChangeGreeting(newGreeting);
+    }
+
+    protected void SaveQuest()
+    {
+        var quest = gameObject.GetComponent<Quest>();
+        Put(quest.index);
+        Put(quest.time);
+        Put(quest.waiting);
+    }
+    protected void LoadQuest()
+    {
+        var quest = gameObject.GetComponent<Quest>();
+        quest.index = NextInt();
+        quest.time = NextFloat();
+        quest.waiting = NextFloat();
+    }
+
+    protected void SaveCanvas()
+    {
+        var canvas = gameObject.GetComponent<Canvas>();
+        Put(canvas.planeDistance);
+    }
+    protected void LoadCanvas()
+    {
+        var canvas = gameObject.GetComponent<Canvas>();
+        canvas.planeDistance = NextFloat();
+    }
 }

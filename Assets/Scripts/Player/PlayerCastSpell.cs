@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerCastSpell : MonoBehaviour
 {
+    private const string SwitchEnableButton = "r";
+    private const string SwitchSpellButton = "]";
+    private const string CastSpellButton = "Fire1";
+    
     public GameObject currentSpell;
     public GameObject cursorExample;
     public GameObject cursor;
@@ -15,10 +19,11 @@ public class PlayerCastSpell : MonoBehaviour
     public float audioTime;
     public int index;
     public float spellWaiting;
+    public bool enable;
     float spellTime;
     public Vector3 target;
     Inventory inventory;
-    void Start()
+    void Awake()
     {
         inventory = GetComponent< Inventory >();
         if (inventory.spells.Count != 0){
@@ -36,8 +41,8 @@ public class PlayerCastSpell : MonoBehaviour
         if (spellTime > spellWaiting + 1) spellTime = 0;
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
-        if (cursor != null){
+        if (enable && cursor != null){
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
             cursor.transform.position = target;
             float alpha = (spellTime == 0) ? 1 : spellTime / (spellWaiting + 1);
             cursorSR.color = new Color(
@@ -47,14 +52,32 @@ public class PlayerCastSpell : MonoBehaviour
                 alpha
             );
         }
-        if(Input.GetButton("Fire1")) castSpell();
-        if(Input.GetKeyDown("]")){ 
-            nextSpell();
+        if(enable && Input.GetButton(CastSpellButton)) 
+            CastSpell();
+        if (Input.GetKeyDown(SwitchEnableButton))
+        {
+            ChangeState();
+        }
+
+        if(Input.GetKeyDown(SwitchSpellButton)){ 
+            NextSpell();
             currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
         }
     }
 
-    void castSpell()
+    public void ChangeState()
+    {
+        enable = !enable;
+        if(cursorExample == null){}
+            cursorExample = inventory.spells[index].GetComponent<Spell>().example;
+        if(cursor == null){
+            cursor = Instantiate(cursorExample, transform.position, transform.rotation);
+            cursorSR = cursor.GetComponent<SpriteRenderer>();
+        }
+        cursor.SetActive(enable);
+    }
+
+    void CastSpell()
     {
         if(spellTime != 0) return;
         if(inventory.spells.Count == 0) return;
@@ -78,7 +101,7 @@ public class PlayerCastSpell : MonoBehaviour
 
         spellTime += 1;
     }
-    void nextSpell()
+    void NextSpell()
     {
         if(!inventory) return;
         index++;

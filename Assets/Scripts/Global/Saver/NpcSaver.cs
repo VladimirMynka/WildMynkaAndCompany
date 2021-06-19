@@ -15,8 +15,10 @@ public class NpcSaver : Saver
         SaveHealth();
         SaveCharacteristics();
         SaveInventory();
-        SavePlayerAttack();
-        SavePlayerCastSpell();
+        SaveTarget();
+        SaveNpcAttack();
+        SaveNpcCastSpell();
+        SaveDialog();
         Push();
     }
 
@@ -29,7 +31,9 @@ public class NpcSaver : Saver
         LoadHealth();
         LoadCharacteristics();
         LoadInventory();
-        LoadPlayerAttack();
-        LoadPlayerCastSpell();
+        LoadTarget();
+        LoadNpcAttack();
+        LoadNpcCastSpell();
+        LoadDialog();
     }
 }

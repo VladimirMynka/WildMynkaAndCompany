@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6197173127215989789}
   - component: {fileID: 6197173127215989790}
   - component: {fileID: 6197173127215989791}
-  - component: {fileID: 8010219278217920030}
   m_Layer: 0
   m_Name: King
   m_TagString: NPC
@@ -82,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 0.73, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &6197173127215989790
@@ -207,26 +206,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8010219278217920030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6197173127215989761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6888d5c37ecdcfa4c9feaa267026759c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replicas:
-  - {fileID: 8300000, guid: 3522c13bff5f9f442861524f551368d6, type: 3}
-  - {fileID: 8300000, guid: 02df804b013e86642bb72531fe3d3d37, type: 3}
-  - {fileID: 8300000, guid: eedeb25500a9233419b7087e08082bd5, type: 3}
-  - {fileID: 8300000, guid: 63e62b82ef0b584499173bb63dfda3c7, type: 3}
-  - {fileID: 8300000, guid: 949eaf072d8d7f84c8958930ab9699cc, type: 3}
-  - {fileID: 8300000, guid: 126bb382079ce8142a85a7a5f68a6305, type: 3}
-  portal: {fileID: 7678499658787119112, guid: 7d9d54c2f7eb5e143a1eeb32efff6d73, type: 3}
-  exit: {fileID: 0}
-  playerDistance: 1
-  portalDistance: 3
