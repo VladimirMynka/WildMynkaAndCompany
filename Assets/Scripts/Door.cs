@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
 
     void Update() {
         if(!active) return;
-        if(Input.GetKeyDown("space")){
+        if(Input.GetKeyDown("e")){
             transportObject.transform.position = exit;
         }
     }

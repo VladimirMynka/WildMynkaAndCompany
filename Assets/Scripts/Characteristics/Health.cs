@@ -6,31 +6,22 @@ public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float current;
-    public float maxHealth;
+    public float current = 100;
+    public float maxHealth = 100;
     public float regeneration = 1;
-    public SpriteRenderer sr;
 
-    void Start() {
-        sr = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (current <= 0){
             Destroy(gameObject);
         }
 
-        current += Time.deltaTime * regeneration;
-        if (current> maxHealth) current = maxHealth;
+        if (current < maxHealth){
+            current += Time.deltaTime * regeneration;
 
-        float h = current / maxHealth;
-        sr.color = new Color(
-            sr.color[0],
-            h,
-            h,
-            h
-        );
+        }
+        if (current >= maxHealth){
+            current = maxHealth;
+        }
     }
 }

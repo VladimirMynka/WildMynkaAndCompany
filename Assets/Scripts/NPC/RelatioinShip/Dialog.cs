@@ -37,7 +37,7 @@ public class Dialog : MonoBehaviour
     void Update() 
     {
         if(!active) return;
-        if(Input.GetKeyDown("space")){
+        if(Input.GetKeyDown("e")){
             miniCanvas.GetComponent< Canvas >().planeDistance = -10;
             dialogCanvas.GetComponent< Canvas >().planeDistance = 100;
             Greet();

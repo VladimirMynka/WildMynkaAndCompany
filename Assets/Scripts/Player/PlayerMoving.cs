@@ -33,7 +33,7 @@ public class PlayerMoving : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        if (x != 0){
+        if (x != 0 || y != 0){
             if (rotateZ < -oscillationAngle) onRight = false;
             else if (rotateZ > oscillationAngle) onRight = true;
 
