@@ -15,7 +15,7 @@ public class Fire : MonoBehaviour
         if (otherGO == GetComponent< Spell >().owner) return;
         if (!otherGO) return;
         if (otherGO.GetComponent< Health >()){
-            otherGO.GetComponent< Health >().current -= damage;
+            otherGO.GetComponent< Health >().current -= damage * Time.deltaTime;
             Destroy(gameObject, 0.1f);
         }
     }

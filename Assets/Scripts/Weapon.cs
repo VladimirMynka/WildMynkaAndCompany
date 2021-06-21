@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public string weaponName;
+    public string weaponName = "weapon";
     public GameObject owner;
-    public float damage;
-    float damageTime = 1;
-    public float damageWaiting;
+    public float damage = 10;
+    public float speed = 1;
     public AudioClip sound;
+    bool doDamage;
+    bool canSound;
 
-    void FixedUpdate() {
-        if (damageTime != 0) damageTime += 0.02f;
-        if (damageTime > damageWaiting + 1) damageTime = 0;
-    }
-    void OnTriggerEnter2D(Collider2D other) {
-        if (damageTime != 0) return;
-        if (!other.gameObject) return;
+    void OnTriggerStay2D(Collider2D other) 
+    {
+        if (!doDamage) return;
         GameObject otherGO = other.gameObject;
         if (otherGO == owner) return;
-        if (otherGO.GetComponent< Health >()){
-            otherGO.GetComponent< Health >().current -= damage;
-            GetComponent< AudioSource >().PlayOneShot(sound, 1);
+        if (otherGO.GetComponent<Health>())
+        {
+            otherGO.GetComponent<Health>().current -= damage * Time.deltaTime;
+            if(canSound)
+            {
+                GetComponent<AudioSource>().PlayOneShot(sound);
+                canSound = false;
+            }
         }
-        damageTime++;
     }
+    public void Hit()
+    {
+        doDamage = true;
+        canSound = true;
+    }
+
+    public void EndHit()
+    {
+        doDamage = false;
+    }
+
 }

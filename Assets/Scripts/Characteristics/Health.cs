@@ -18,7 +18,6 @@ public class Health : MonoBehaviour
 
         if (current < maxHealth){
             current += Time.deltaTime * regeneration;
-
         }
         if (current >= maxHealth){
             current = maxHealth;

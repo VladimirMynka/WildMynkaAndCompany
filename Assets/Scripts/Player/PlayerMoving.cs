@@ -24,12 +24,6 @@ public class PlayerMoving : MonoBehaviour
     {
         Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        float angle = 0;
-        if(GetComponent< PlayerAttack >().currentWeapon){
-            angle = toDegrees(Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x));
-            angle -= GetComponent< Arms >().normalAngle;
-        }
-
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
@@ -44,7 +38,7 @@ public class PlayerMoving : MonoBehaviour
         transform.rotation = Quaternion.Euler(
             transform.rotation.x,
             transform.rotation.y,
-            calculateAngle(angle) + rotateZ
+            rotateZ
         );
 
         move = new Vector2(x * speed, y * speed);

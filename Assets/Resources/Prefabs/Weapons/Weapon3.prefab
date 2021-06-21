@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 3b95f765cad836a4a80bf25a1105fb65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,6 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u0421\u0442\u043E\u043B"
   owner: {fileID: 0}
-  damage: 5
-  damageWaiting: 2
+  damage: 10
+  speed: 1
   sound: {fileID: 8300000, guid: fb5516e2320d89e4f8e1c212f8b2b7eb, type: 3}

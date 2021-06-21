@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6649065787367217579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.14, y: -78.43, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: b69f1d723d5aeef41bb41d41bba7e1a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,6 +237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041A\u0430\u0441\u0442\u0440\u044E\u043B\u044F"
   owner: {fileID: 0}
-  damage: 10
-  damageWaiting: 0
+  damage: 30
+  speed: 3
   sound: {fileID: 8300000, guid: d1c6cdb4dec30e0498fdd58aecfda87f, type: 3}
