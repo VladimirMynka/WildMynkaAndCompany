@@ -109,7 +109,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.42668954, y: 0.43814436}
     oldSize: {x: 0.96, y: 0.96}
     newSize: {x: 0.96, y: 0.96}
     adaptiveTilingThreshold: 0.5
@@ -282,11 +282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41ff5f297f87e45b95c61b1e31a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetsHandler: {fileID: 0}
+  prefabs: {fileID: 0}
   weapons:
   - {fileID: 6649065787367217579, guid: 8e91b9e019066034a90f68bd765bf70f, type: 3}
   spells: []
   keys: []
   others: []
+  weaponsIndeces: 
+  spellsIndeces: 
+  keysIndeces: 
+  othersIndeces: 
 --- !u!114 &1496938483405311862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 0}
   currentWeaponText: {fileID: 0}
+  arms: {fileID: 0}
   index: 0
 --- !u!114 &1053181658393647663
 MonoBehaviour:
@@ -343,12 +350,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpell: {fileID: 0}
+  cursorExample: {fileID: 0}
+  cursor: {fileID: 0}
+  cursorSR: {fileID: 0}
   currentSpellText: {fileID: 0}
   spellAudio: {fileID: 0}
   audioWaiting: 0
   audioTime: 0
   index: 0
   spellWaiting: 0
+  enable: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!81 &4287408356992940811
 AudioListener:
