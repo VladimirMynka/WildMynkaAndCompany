@@ -53,11 +53,11 @@ public class SpritesChanger : MonoBehaviour
     {
         if (Mathf.Abs(y) >= Mathf.Abs(x))
         {
-            if (y > 0) ChangeParameters(rotater.back, normalLayer + 2, rotater.backArms, true);
-            else if (y < 0) ChangeParameters(rotater.forward, normalLayer, rotater.forwardArms, false); 
+            if (y > 0.2) ChangeParameters(rotater.back, normalLayer + 2, rotater.backArms, true);
+            else if (y < 0.2) ChangeParameters(rotater.forward, normalLayer, rotater.forwardArms, false); 
         }
-        else if (x > 0) ChangeParameters(rotater.rigth, normalLayer + 2, rotater.rigthArms, false);
-        else if (x < 0) ChangeParameters(rotater.left, normalLayer, rotater.leftArms, true);
+        else if (x > 0.2) ChangeParameters(rotater.rigth, normalLayer + 2, rotater.rigthArms, false);
+        else if (x < 0.2) ChangeParameters(rotater.left, normalLayer, rotater.leftArms, true);
     }
 
     void ChangeParameters(Sprite sprite, int layer, Vector3 newArms, bool inv)
