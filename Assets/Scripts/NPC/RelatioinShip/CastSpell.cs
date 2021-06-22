@@ -19,10 +19,12 @@ public class CastSpell : MonoBehaviour
     public float spellNormalOutDifference;
     Inventory inventory;
     Target target;
+    Mana mana;
     void Start()
     {
         inventory = GetComponent< Inventory >();
         target = GetComponent< Target >();
+        mana = GetComponent<Mana>();
     }
 
     void FixedUpdate()
@@ -42,24 +44,28 @@ public class CastSpell : MonoBehaviour
 
     void castSpell(){
         if(spellTime != 0) return;
-        if(!target) return;
-        if(!target.target) return;
+        if(target == null) return;
+        if(target.target == null) return;
         if(target.distance - spellDistance > spellNormalOutDifference) return;
         if(spellDistance - target.distance > spellNormalInDifference) return;
-        currentSpell = Instantiate(inventory.spells[index], transform.position, transform.rotation);
+        var spellToCast = inventory.spells[index];
+        if(spellToCast.GetComponent<Spell>().manaCost > mana.current) return;
+        currentSpell = Instantiate(spellToCast, transform.position, transform.rotation);
         
-        Spell spell = currentSpell.GetComponent< Spell >();
-        if (spell){
+        Spell spell = currentSpell.GetComponent<Spell>();
+        if (spell != null)
+        {
+            mana.current -= spell.manaCost;
             spell.owner = gameObject;
             spell.begin = transform.position;
             spell.end = target.pointTarget;
             spellWaiting = spell.afterSpellWaiting;
             spellAudio = spell.sound;
             if (audioTime == 0){
-                if (spellAudio){
+                if (spellAudio != null){
                     audioWaiting = spellAudio.length;
                     audioTime += 1;
-                    GetComponent< AudioSource >().PlayOneShot(spellAudio);
+                    GetComponent<AudioSource>().PlayOneShot(spellAudio);
                 }
             }
         }

@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class RunAway : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Target target;
+    public float selfDistance;
+    public bool enable;
+    void Awake()
     {
-        
+        target = GetComponent<Target>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!enable) return;
+        target.normalDistance = selfDistance;
+        target.normalInDifference = 0;
+        target.normalOutDifference = selfDistance;
+
+        if (target.distance >= selfDistance)
+        {
+            enable = false;
+            target.target = gameObject;
+        }
     }
 }

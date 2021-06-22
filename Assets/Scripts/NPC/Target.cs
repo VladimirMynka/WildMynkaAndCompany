@@ -11,7 +11,9 @@ public class Target : MonoBehaviour
     public float normalDistance;
     public float defaultNormalDistance;
     public float normalInDifference;
+    public float defaultNormalInDifference;
     public float normalOutDifference;
+    public float defaultNormalOutDifference;
     public float distance;
     public float speed;
     public float oscillationAngle = 5;
@@ -31,6 +33,7 @@ public class Target : MonoBehaviour
         if (target)
         {
             pointTarget = target.transform.position;
+            if (target.tag == "Player") relationship = playerRelationship;
         }
 
         Vector3 distanceVector = pointTarget - transform.position;

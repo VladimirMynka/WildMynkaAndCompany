@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 
     public float current = 100;
     public float maxHealth = 100;
-    public float regeneration = 1;
+    public float regeneration = 3;
 
     void Update()
     {

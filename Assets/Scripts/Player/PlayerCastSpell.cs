@@ -23,15 +23,22 @@ public class PlayerCastSpell : MonoBehaviour
     float spellTime;
     public Vector3 target;
     Inventory inventory;
+    private Characteristics characteristics;
+    private Mana mana;
+
+
     void Awake()
     {
-        inventory = GetComponent< Inventory >();
+        characteristics = GetComponent<Characteristics>();
+        mana = GetComponent<Mana>();
+        inventory = GetComponent<Inventory>();
         if (inventory.spells.Count != 0){
             currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
             cursorExample = inventory.spells[index].GetComponent<Spell>().example;
             cursor = Instantiate(cursorExample, transform.position, transform.rotation);
             cursorSR = cursor.GetComponent<SpriteRenderer>();
         }
+        cursor.SetActive(enable);
     }
 
     void Update()
@@ -67,8 +74,9 @@ public class PlayerCastSpell : MonoBehaviour
 
     public void ChangeState()
     {
+        if(inventory.spells.Count == 0) return;
         enable = !enable;
-        if(cursorExample == null){}
+        if(cursorExample == null)
             cursorExample = inventory.spells[index].GetComponent<Spell>().example;
         if(cursor == null){
             cursor = Instantiate(cursorExample, transform.position, transform.rotation);
@@ -81,10 +89,14 @@ public class PlayerCastSpell : MonoBehaviour
     {
         if(spellTime != 0) return;
         if(inventory.spells.Count == 0) return;
-        currentSpell = Instantiate(inventory.spells[index], transform.position, transform.rotation);
+        var spellToCopy = inventory.spells[index];
+        if(spellToCopy.GetComponent<Spell>().ManaCost(characteristics) > mana.current)
+            return;
+        currentSpell = Instantiate(spellToCopy, transform.position, transform.rotation);
         
-        Spell spell = currentSpell.GetComponent< Spell >();
-        if (spell){
+        Spell spell = currentSpell.GetComponent<Spell>();
+        if (spell != null){
+            mana.current -= spell.ManaCost(characteristics);
             spell.owner = gameObject;
             spell.begin = transform.position;
             spell.end = target;
@@ -110,5 +122,6 @@ public class PlayerCastSpell : MonoBehaviour
         cursorExample = inventory.spells[index].GetComponent<Spell>().example;
         cursor = Instantiate(cursorExample, transform.position, transform.rotation);
         cursorSR = cursor.GetComponent<SpriteRenderer>();
+        cursor.SetActive(enable);
     }
 }

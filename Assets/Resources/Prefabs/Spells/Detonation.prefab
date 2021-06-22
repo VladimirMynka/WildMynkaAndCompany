@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2783250422658346101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 68.099655, y: -0.4343639, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -262,12 +262,14 @@ MonoBehaviour:
   owner: {fileID: 0}
   example: {fileID: 8825658109634511513, guid: c8c81f3c413ded24da305bf86c1da011, type: 3}
   sound: {fileID: 8300000, guid: 576e284061af8c449857fb5906707765, type: 3}
-  aliveTime: 3
+  aliveTime: 2
   afterSpellWaiting: 5
   begin: {x: 0, y: 0, z: 0}
   end: {x: 0, y: 0, z: 0}
   speed: 1
   hasTarget: 1
+  manaCost: 20
+  spellType: 0
 --- !u!114 &2370763948661293195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   afterDetonation: {fileID: 8657317574963208330, guid: 01eb9d9f80297be4288f5771b7203f0b,
     type: 3}
-  quantity: 20
+  quantity: 30
   radius: 1
   afterDetonationAliveTime: 2

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Door : MonoBehaviour
+public class LyingWeapon : MonoBehaviour
 {
-    public Vector3 exit;
-    public GameObject exitObject;
+    public int addingWeapon;
     public GameObject miniCanvas;
+    public GameObject player;
     ActiveObject activeObject;
     public string text;
-    public GameObject player;
     public bool active;
 
-    void Awake() 
+    void Awake()
     {
-        if(exitObject != null) exit = exitObject.transform.position;
         player = GameObject.FindWithTag("Player");
         activeObject = player.GetComponent<ActiveObject>();
     }
@@ -25,16 +23,16 @@ public class Door : MonoBehaviour
         if(!active) return;
         if(activeObject.activeObject != gameObject) active = false;
         if(Input.GetKeyDown("e")){
-            player.transform.position = exit;
+            AddWeapon(player);
         }
         miniCanvas.transform.Find("Image").position = transform.position;
     }
     
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject != player)
+        if(other.gameObject.tag != "Player")
         {
-            other.gameObject.transform.position = exit;
+            AddWeapon(other.gameObject);
         }
         else
         {
@@ -52,5 +50,14 @@ public class Door : MonoBehaviour
             active = false;
             miniCanvas.SetActive(false);
         }
+    }
+
+    void AddWeapon(GameObject creature)
+    {
+        if (creature == null) return;
+        var inventory = creature.GetComponent<Inventory>();
+        if (inventory == null) return;
+        inventory.AddWeapon(addingWeapon);
+        Destroy(gameObject);
     }
 }

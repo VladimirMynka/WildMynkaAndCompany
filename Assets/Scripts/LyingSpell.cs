@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Door : MonoBehaviour
+public class LyingSpell : MonoBehaviour
 {
-    public Vector3 exit;
-    public GameObject exitObject;
+    public int addingSpell;
     public GameObject miniCanvas;
+    public GameObject player;
     ActiveObject activeObject;
     public string text;
-    public GameObject player;
     public bool active;
 
-    void Awake() 
+    void Awake()
     {
-        if(exitObject != null) exit = exitObject.transform.position;
         player = GameObject.FindWithTag("Player");
         activeObject = player.GetComponent<ActiveObject>();
     }
@@ -25,7 +23,7 @@ public class Door : MonoBehaviour
         if(!active) return;
         if(activeObject.activeObject != gameObject) active = false;
         if(Input.GetKeyDown("e")){
-            player.transform.position = exit;
+            AddSpell(player);
         }
         miniCanvas.transform.Find("Image").position = transform.position;
     }
@@ -34,7 +32,7 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject != player)
         {
-            other.gameObject.transform.position = exit;
+            AddSpell(other.gameObject);
         }
         else
         {
@@ -52,5 +50,14 @@ public class Door : MonoBehaviour
             active = false;
             miniCanvas.SetActive(false);
         }
+    }
+
+    void AddSpell(GameObject creature)
+    {
+        if (creature == null) return;
+        var inventory = creature.GetComponent<Inventory>();
+        if (inventory == null) return;
+        inventory.AddSpell(addingSpell);
+        Destroy(gameObject);
     }
 }

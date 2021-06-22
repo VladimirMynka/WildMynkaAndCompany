@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class StealHealth : MonoBehaviour
 {
     public float damage;
     public float learningFactor;
     GameObject owner;
     Characteristics characteristics;
+    Health ownerHealth;
 
     void Start() {
-        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-180, 0));
         owner = GetComponent<Spell>().owner;
         characteristics = owner.GetComponent<Characteristics>();
+        ownerHealth = owner.GetComponent<Health>();
     }
 
     void OnTriggerStay2D(Collider2D other) {
@@ -21,6 +22,7 @@ public class Fire : MonoBehaviour
         Health health = otherGO.GetComponent<Health>();
         if (health != null){
             health.current -= damage * Time.deltaTime * 10;
+            ownerHealth.current += damage * Time.deltaTime * 10;
             characteristics.attackMagic += learningFactor * Time.deltaTime * 10;
 
             Destroy(gameObject, 0.1f);

@@ -39,24 +39,25 @@ public class Attack : MonoBehaviour
         }
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
-        if(!enable){
-            RemoveWeapon();
-            target.normalDistance = target.defaultNormalDistance;
-        }
-
-        if(enable){
-            ChangeWeapon();
-            AttackMoving();
-            if(audioTime == 0 && sounds.Length > 0){
-                int random = Random.Range(0, sounds.Length);
-                GetComponent<AudioSource>().PlayOneShot(sounds[random]);
-                audioWaiting = sounds[random].length * 2;
-                audioTime++;
-            }
-        }
-
-        if(currentWeapon){
+        if(currentWeapon)
+        {
             currentWeapon.transform.localPosition = GetComponent<Arms>().arms;
+        }
+
+        if(!enable)
+        {
+            RemoveWeapon();
+            return;
+        }
+
+        ChangeWeapon();
+        AttackMoving();
+        if(audioTime == 0 && sounds.Length > 0)
+        {
+            int random = Random.Range(0, sounds.Length);
+            GetComponent<AudioSource>().PlayOneShot(sounds[random]);
+            audioWaiting = sounds[random].length * 2;
+            audioTime++;
         }
     }
 
