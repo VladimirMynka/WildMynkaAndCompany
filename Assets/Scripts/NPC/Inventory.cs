@@ -22,24 +22,28 @@ public class Inventory : MonoBehaviour
 
     public void AddWeapon(int index)
     {
+        if(weaponsIndeces.IndexOf(index) != -1) return;
         weaponsIndeces.Add(index);
         weapons.Add(prefabs.weapons[index]);
     }
 
     public void AddSpell(int index)
     {
+        if(spellsIndeces.IndexOf(index) != -1) return;
         spellsIndeces.Add(index);
         spells.Add(prefabs.spells[index]);
     }
 
     public void AddKey(int index)
     {
+        if(keysIndeces.IndexOf(index) != -1) return;
         keysIndeces.Add(index);
         keys.Add(prefabs.keys[index]);
     }
 
     public void AddOther(int index)
     {
+        if(othersIndeces.IndexOf(index) != -1) return;
         othersIndeces.Add(index);
         others.Add(prefabs.others[index]);
     }

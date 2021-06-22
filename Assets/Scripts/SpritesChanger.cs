@@ -17,7 +17,6 @@ public class SpritesChanger : MonoBehaviour
     }
 
     public Rotater rotater;
-    public int normalLayer;
     SpriteRenderer sr;
     Rigidbody2D rb;
     Arms arms;
@@ -44,27 +43,32 @@ public class SpritesChanger : MonoBehaviour
         if (weapon == null) return;
 
         if (inverse && weapon.transform.localScale.x > 0)
+        {
             weapon.transform.localScale -= new Vector3(weapon.transform.localScale.x * 2, 0, 0);
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
+        }
         if (!inverse && weapon.transform.localScale.x < 0)
+        {
             weapon.transform.localScale -= new Vector3(weapon.transform.localScale.x * 2, 0, 0);
+            weapon.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
+        }
     }
 
     void ChangeDirection(float x, float y)
     {
         if (Mathf.Abs(y) >= Mathf.Abs(x))
         {
-            if (y > 0.2) ChangeParameters(rotater.back, normalLayer + 2, rotater.backArms, true);
-            else if (y < 0.2) ChangeParameters(rotater.forward, normalLayer, rotater.forwardArms, false); 
+            if (y > 0.2) ChangeParameters(rotater.back, rotater.backArms, true);
+            else if (y < -0.2) ChangeParameters(rotater.forward, rotater.forwardArms, false); 
         }
-        else if (x > 0.2) ChangeParameters(rotater.rigth, normalLayer + 2, rotater.rigthArms, false);
-        else if (x < 0.2) ChangeParameters(rotater.left, normalLayer, rotater.leftArms, true);
+        else if (x > 0.2) ChangeParameters(rotater.rigth, rotater.rigthArms, false);
+        else if (x < -0.2) ChangeParameters(rotater.left, rotater.leftArms, true);
     }
 
-    void ChangeParameters(Sprite sprite, int layer, Vector3 newArms, bool inv)
+    void ChangeParameters(Sprite sprite, Vector3 newArms, bool inv)
     {
         arms.arms = newArms;
         sr.sprite = sprite;
-        sr.sortingOrder = layer;
         inverse = inv;
     }
 }

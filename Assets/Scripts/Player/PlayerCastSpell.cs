@@ -37,8 +37,8 @@ public class PlayerCastSpell : MonoBehaviour
             cursorExample = inventory.spells[index].GetComponent<Spell>().example;
             cursor = Instantiate(cursorExample, transform.position, transform.rotation);
             cursorSR = cursor.GetComponent<SpriteRenderer>();
+            cursor.SetActive(enable);
         }
-        cursor.SetActive(enable);
     }
 
     void Update()
@@ -47,6 +47,15 @@ public class PlayerCastSpell : MonoBehaviour
         if (audioTime != 0) audioTime += Time.deltaTime;
         if (spellTime > spellWaiting + 1) spellTime = 0;
         if (audioTime > audioWaiting + 1) audioTime = 0;
+
+        if (cursor == null && inventory.spells.Count != 0)
+        {
+            currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
+            cursorExample = inventory.spells[index].GetComponent<Spell>().example;
+            cursor = Instantiate(cursorExample, transform.position, transform.rotation);
+            cursorSR = cursor.GetComponent<SpriteRenderer>();
+            cursor.SetActive(enable);
+        }
 
         if (enable && cursor != null){
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
@@ -68,7 +77,6 @@ public class PlayerCastSpell : MonoBehaviour
 
         if(Input.GetKeyDown(SwitchSpellButton)){ 
             NextSpell();
-            currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
         }
     }
 
@@ -113,7 +121,7 @@ public class PlayerCastSpell : MonoBehaviour
 
         spellTime += 1;
     }
-    void NextSpell()
+    public void NextSpell()
     {
         if(!inventory) return;
         index++;
@@ -123,5 +131,6 @@ public class PlayerCastSpell : MonoBehaviour
         cursor = Instantiate(cursorExample, transform.position, transform.rotation);
         cursorSR = cursor.GetComponent<SpriteRenderer>();
         cursor.SetActive(enable);
+        currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;        
     }
 }

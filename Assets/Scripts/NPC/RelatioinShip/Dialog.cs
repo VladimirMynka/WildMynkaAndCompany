@@ -37,6 +37,7 @@ public class Dialog : MonoBehaviour
         targetScript = transform.parent.GetComponent<Target>();
         player = GameObject.FindWithTag("Player");
         activeObject = player.GetComponent<ActiveObject>();
+        globalTopicsObject = GameObject.FindWithTag("GlobalDialogs");
     }
     void Update() 
     {
