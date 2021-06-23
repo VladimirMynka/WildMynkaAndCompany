@@ -26,8 +26,7 @@ public class Dialog : MonoBehaviour
 
     void Awake() 
     {
-        topicsRectangle = dialogCanvas.transform.Find("Topics").Find("Viewport").Find("Content").gameObject;
-        content = dialogCanvas.transform.Find("Replicas").Find("Viewport").Find("Content").gameObject;
+        globalTopicsObject = GameObject.FindWithTag("GlobalDialogs");
         topics = new Topic[topicsIndeces.Length];
         globalTopics = globalTopicsObject.GetComponent<GlobalDialogs>();
         for(int i = 0; i < topicsIndeces.Length; i++){
@@ -37,7 +36,11 @@ public class Dialog : MonoBehaviour
         targetScript = transform.parent.GetComponent<Target>();
         player = GameObject.FindWithTag("Player");
         activeObject = player.GetComponent<ActiveObject>();
-        globalTopicsObject = GameObject.FindWithTag("GlobalDialogs");
+    }
+    void Start()
+    {
+        topicsRectangle = dialogCanvas.transform.Find("Topics").Find("Viewport").Find("Content").gameObject;
+        content = dialogCanvas.transform.Find("Replicas").Find("Viewport").Find("Content").gameObject;
     }
     void Update() 
     {

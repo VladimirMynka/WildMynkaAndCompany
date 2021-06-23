@@ -15,6 +15,7 @@ TagManager:
   - BadNPC
   - Weapon
   - GlobalDialogs
+  - GlobalAssets
   layers:
   - Default
   - TransparentFX

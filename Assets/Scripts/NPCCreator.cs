@@ -44,7 +44,7 @@ public class NPCCreator : MonoBehaviour
         k *= beginKoefficient;
         timer = 1;
         int index = Random.Range(0, prefabs.Length);
-        currentCreature = Instantiate(prefabs[index]);
+        currentCreature = Instantiate(prefabs[index], transform.position, transform.rotation);
         SetPosition(currentCreature);
         SetHealth(currentCreature);
         SetCharacteristics(currentCreature);

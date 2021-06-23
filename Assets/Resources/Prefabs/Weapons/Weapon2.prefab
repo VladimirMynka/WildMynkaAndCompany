@@ -237,6 +237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u041D\u043E\u0436\u0438\u043A"
   owner: {fileID: 0}
+  ownerPar: {fileID: 0}
   damage: 20
   speed: 5
   sound: {fileID: 8300000, guid: 1555816f1d4dd73498e6c52de77643d4, type: 3}
+  learningFactor: 0.05

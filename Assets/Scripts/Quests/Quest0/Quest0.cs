@@ -13,6 +13,8 @@ public class Quest0 : Quest
     public GameObject weaponCanvas;
     public GameObject skeleton1;
     public GameObject skeleton2;
+    public GameObject elf;
+    Target elfTarget;
     public string[] helpStrings;
 
     void Awake()
@@ -22,6 +24,7 @@ public class Quest0 : Quest
         waiting = beginWaiting;
         player = GameObject.FindWithTag("Player");
         inventory = player.GetComponent<Inventory>();
+        elfTarget = elf.GetComponent<Target>();
     }
 
     void Update()
@@ -70,6 +73,7 @@ public class Quest0 : Quest
         if(index == 5 && skeleton2 == null)
         {
             Open(helpCanvas, helpStrings[4]);
+            elfTarget.playerRelationship = 120;
             index++;
         }
 

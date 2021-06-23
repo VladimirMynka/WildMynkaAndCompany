@@ -19,6 +19,21 @@ public class Spell : MonoBehaviour
     public SpellType spellType;
     Vector2 velocity;
 
+    SpriteRenderer sr;
+    public Sprite[] sprites;
+    float time;
+    float waiting;
+    int index;
+
+
+    void Awake()
+    {
+        
+        waiting = aliveTime / sprites.Length;
+        time = 1;
+        sr = GetComponent<SpriteRenderer>();
+    }
+
     void Start()
     {
         Destroy(gameObject, aliveTime);
@@ -30,9 +45,20 @@ public class Spell : MonoBehaviour
         velocity = new Vector2(x * speed, y * speed);
         
         var component = GetComponent<Rigidbody2D>();
-        if(hasTarget)
-            component.drag = 0f;
+        if(hasTarget) component.drag = 0f;
         component.velocity = velocity;
+    }
+
+    void Update() 
+    {
+        if(time != 0) time += Time.deltaTime;
+        if(time >= waiting + 1) time = 0;
+        if(time == 0)
+        {
+            time += 1;
+            index++;
+            sr.sprite = sprites[index];
+        }
     }
 
     public float ManaCost(Characteristics characteristics)

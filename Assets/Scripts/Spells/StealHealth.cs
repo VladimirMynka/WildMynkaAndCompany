@@ -20,12 +20,13 @@ public class StealHealth : MonoBehaviour
         GameObject otherGO = other.gameObject;
         if (otherGO == owner) return;
         Health health = otherGO.GetComponent<Health>();
+        CheckerAttacked ca = otherGO.GetComponent<CheckerAttacked>();
         if (health != null){
             health.current -= damage * Time.deltaTime * 10;
             ownerHealth.current += damage * Time.deltaTime * 10;
             characteristics.attackMagic += learningFactor * Time.deltaTime * 10;
-
-            Destroy(gameObject, 0.1f);
+            
+            if (damage > 0 && ca != null) ca.SetAttacker(owner);
         }
     }
 }

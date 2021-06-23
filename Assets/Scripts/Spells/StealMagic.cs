@@ -20,12 +20,13 @@ public class StealMagic : MonoBehaviour
         GameObject otherGO = other.gameObject;
         if (otherGO == owner) return;
         Mana mana = otherGO.GetComponent<Mana>();
-        if (mana != null){
-            mana.current -= damage * Time.deltaTime * 10;
-            ownerMana.current += damage * Time.deltaTime * 10;
-            characteristics.attackMagic += learningFactor * Time.deltaTime * 10;
+        CheckerAttacked ca = otherGO.GetComponent<CheckerAttacked>();
 
-            Destroy(gameObject, 0.1f);
+        if (mana != null){
+            mana.current -= damage * Time.deltaTime;
+            characteristics.attackMagic += learningFactor * Time.deltaTime;
+            
+            if (damage > 0 && ca != null) ca.SetAttacker(owner);
         }
     }
 }

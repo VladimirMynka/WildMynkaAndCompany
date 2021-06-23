@@ -13,11 +13,9 @@ public class Weapon : MonoBehaviour
     bool doDamage;
     bool canSound;
     public float learningFactor;
-
-    void Awake() {
+    void Start() {
         ownerPar = owner.GetComponent<Characteristics>();
     }
-
     void OnTriggerStay2D(Collider2D other) 
     {
         if (!doDamage) return;
@@ -28,6 +26,9 @@ public class Weapon : MonoBehaviour
             otherGO.GetComponent<Health>().current -= damage * Time.deltaTime;
             ownerPar.attack += learningFactor * Time.deltaTime;
             ownerPar.power += learningFactor * Time.deltaTime;
+
+            CheckerAttacked ca = otherGO.GetComponent<CheckerAttacked>();
+            if(ca != null && damage > 0) ca.SetAttacker(owner); 
             if(canSound)
             {
                 GetComponent<AudioSource>().PlayOneShot(sound);

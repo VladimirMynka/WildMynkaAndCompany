@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 3690290965456343377}
   - component: {fileID: 3690290965456343376}
   - component: {fileID: 5421088298829823321}
+  - component: {fileID: -5549880676710805760}
   m_Layer: 0
   m_Name: Monster2
   m_TagString: NPC
@@ -120,7 +121,7 @@ BoxCollider2D:
   m_Offset: {x: -0.00818634, y: -0.07884359}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5360538, y: 0.37545064}
     oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 0.86}
     adaptiveTilingThreshold: 0.5
@@ -335,8 +336,8 @@ MonoBehaviour:
   pointTarget: {x: 0, y: 0, z: 0}
   relationship: -20
   playerRelationship: -20
-  normalDistance: 1
-  defaultNormalDistance: 1
+  normalDistance: 2
+  defaultNormalDistance: 2
   normalInDifference: 0.1
   defaultNormalInDifference: 1
   normalOutDifference: 0
@@ -376,10 +377,10 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 4bd0800f0e6e2e2418ee25b69d48946a, type: 3}
   changeWeaponWaiting: 10
-  attackWaiting: 5
+  attackWaiting: 2
   audioWaiting: 0
-  attackDistance: 0.3
-  bigAttackDistance: 0.7
+  attackDistance: 0.35
+  bigAttackDistance: 0.55
   rotateSpan: 30
 --- !u!114 &6856162198381784338
 MonoBehaviour:
@@ -447,13 +448,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotater:
     forward: {fileID: 21300000, guid: e76c1a2553703da438a4c103b00420a7, type: 3}
-    forwardArms: {x: -0.1, y: 0, z: 0}
+    forwardArms: {x: -0.1, y: 0.1, z: 0}
     back: {fileID: 21300000, guid: 98f07833387e00f4a93ebf0fa59cd2f3, type: 3}
-    backArms: {x: 0.1, y: 0, z: 0}
+    backArms: {x: 0.1, y: 0.1, z: 0}
     left: {fileID: 21300000, guid: e76c1a2553703da438a4c103b00420a7, type: 3}
-    leftArms: {x: -0.1, y: 0, z: 0}
+    leftArms: {x: -0.1, y: 0.1, z: 0}
     rigth: {fileID: 21300000, guid: 98f07833387e00f4a93ebf0fa59cd2f3, type: 3}
-    rigthArms: {x: 0.1, y: 0, z: 0}
+    rigthArms: {x: 0.1, y: 0.1, z: 0}
 --- !u!114 &3690290965456343420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +539,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followingDistance: 4
+--- !u!114 &-5549880676710805760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856162198381784339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa96d3416e439a4c9a0c73ab210a3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacker: {fileID: 0}
 --- !u!1 &7354150521967901188
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject assetsHandler;
+    GameObject assetsHandler;
     public Prefabs prefabs;
     public List<GameObject> weapons;
     public List<GameObject> spells;
@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
 
     void Awake() 
     {
+        assetsHandler = GameObject.FindWithTag("GlobalAssets");
         prefabs = assetsHandler.GetComponent<Prefabs>();
     }
 

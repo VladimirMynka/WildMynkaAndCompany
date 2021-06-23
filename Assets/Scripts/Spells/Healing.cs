@@ -9,7 +9,7 @@ public class Healing : MonoBehaviour
     GameObject owner;
     Characteristics characteristics;
     Health ownerHealth;
-    float scaling;
+    public float scaling;
     Vector3 scalingVector;
 
     void Start() 
@@ -18,6 +18,7 @@ public class Healing : MonoBehaviour
         characteristics = owner.GetComponent<Characteristics>();
         ownerHealth = owner.GetComponent<Health>();
         scalingVector = new Vector3(scaling, scaling, 0);
+        transform.parent = owner.transform;
     }
 
     void Update()

@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     public string text;
     public GameObject player;
     public bool active;
+    public int orderInLayer;
 
     void Awake() 
     {
@@ -26,6 +27,7 @@ public class Door : MonoBehaviour
         if(activeObject.activeObject != gameObject) active = false;
         if(Input.GetKeyDown("e")){
             player.transform.position = exit;
+            player.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         }
         miniCanvas.transform.Find("Image").position = transform.position;
     }
@@ -34,7 +36,9 @@ public class Door : MonoBehaviour
     {
         if(other.gameObject != player)
         {
+            if(other.gameObject.GetComponent<Health>() == null) return;
             other.gameObject.transform.position = exit;
+            player.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         }
         else
         {

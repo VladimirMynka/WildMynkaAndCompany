@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 4378612851572507790}
   - component: {fileID: 4378612851572507791}
   - component: {fileID: 4958157738655639686}
+  - component: {fileID: -1690896029913141735}
   m_Layer: 0
   m_Name: Monster
   m_TagString: NPC
@@ -117,10 +118,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00818634, y: -0.07884359}
+  m_Offset: {x: -0.00818634, y: 0.029409528}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.43264508, y: 0.34742704}
     oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 0.86}
     adaptiveTilingThreshold: 0.5
@@ -128,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3169098, y: 0.42319584}
+  m_Size: {x: 0.3169098, y: 0.2066896}
   m_EdgeRadius: 0
 --- !u!82 &5823297348891752658
 AudioSource:
@@ -376,10 +377,10 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 4bd0800f0e6e2e2418ee25b69d48946a, type: 3}
   changeWeaponWaiting: 10
-  attackWaiting: 5
+  attackWaiting: 2
   audioWaiting: 0
-  attackDistance: 0.3
-  bigAttackDistance: 0.7
+  attackDistance: 0.4
+  bigAttackDistance: 0.6
   rotateSpan: 30
 --- !u!114 &5823297348891752653
 MonoBehaviour:
@@ -447,13 +448,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotater:
     forward: {fileID: 21300000, guid: 3c30c117bd2906a42afc6c878654a19d, type: 3}
-    forwardArms: {x: -0.1, y: 0, z: 0}
+    forwardArms: {x: -0.1, y: 0.1, z: 0}
     back: {fileID: 21300000, guid: 1d3b4eaf85b5964459c5b9a8069ababe, type: 3}
-    backArms: {x: 0.1, y: 0, z: 0}
+    backArms: {x: 0.1, y: 0.1, z: 0}
     left: {fileID: 21300000, guid: 3c30c117bd2906a42afc6c878654a19d, type: 3}
-    leftArms: {x: -0.1, y: 0, z: 0}
+    leftArms: {x: -0.1, y: 0.1, z: 0}
     rigth: {fileID: 21300000, guid: 1d3b4eaf85b5964459c5b9a8069ababe, type: 3}
-    rigthArms: {x: 0.1, y: 0, z: 0}
+    rigthArms: {x: 0.1, y: 0.1, z: 0}
 --- !u!114 &4378612851572507811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +539,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followingDistance: 4
+--- !u!114 &-1690896029913141735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823297348891752652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa96d3416e439a4c9a0c73ab210a3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7636497256985628953
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +972,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015350342, y: 0.3714056}
+  m_Offset: {x: 0.0031280518, y: 0.6248765}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -970,7 +983,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5963745, y: 0.55158806}
+  m_Size: {x: 0.39041138, y: 0.4354143}
   m_EdgeRadius: 0
 --- !u!82 &2832066846359515286
 AudioSource:

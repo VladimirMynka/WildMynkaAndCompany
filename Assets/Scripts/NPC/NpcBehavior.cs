@@ -21,11 +21,14 @@ public class NpcBehavior : MonoBehaviour
     }
     void Update()
     {
-        if(target.relationship == 100)
+        if(target.relationship > 100) return;
+        else if(target.relationship == 100)
         {
             following.enable = true;
+            attack.enable = false;
+            castSpell.enable = false;
         }
-        if(target.relationship > 80)
+        else if(target.relationship > 80)
         {
             attack.enable = false;
         }
@@ -39,6 +42,7 @@ public class NpcBehavior : MonoBehaviour
             runAway.enable = true;
             following.enable = false;
             attack.enable = false;
+            castSpell.enable = false;
         }
         else if(target.relationship > 20)
         {
