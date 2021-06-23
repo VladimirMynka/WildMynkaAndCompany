@@ -20,5 +20,11 @@ public class Detonation : MonoBehaviour
             newFire.GetComponent<Spell>().owner = gameObject.GetComponent<Spell>().owner;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject == GetComponent<Spell>().owner) return;
+        Destroy(gameObject, 0.1f);
+    }
     
 }

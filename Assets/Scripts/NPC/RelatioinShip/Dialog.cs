@@ -21,6 +21,8 @@ public class Dialog : MonoBehaviour
     public bool active;
     public string text;
     Target targetScript;
+    GameObject player;
+    ActiveObject activeObject;
 
     void Awake() 
     {
@@ -33,41 +35,49 @@ public class Dialog : MonoBehaviour
         }
         greeting = globalTopics.greetings[greetingIndex];
         targetScript = transform.parent.GetComponent<Target>();
+        player = GameObject.FindWithTag("Player");
+        activeObject = player.GetComponent<ActiveObject>();
+        globalTopicsObject = GameObject.FindWithTag("GlobalDialogs");
     }
     void Update() 
     {
         if(!active) return;
+        if(activeObject.activeObject != gameObject) active = false;
         if(Input.GetKeyDown("e")){
-            miniCanvas.GetComponent< Canvas >().planeDistance = -10;
-            dialogCanvas.GetComponent< Canvas >().planeDistance = 100;
+            miniCanvas.SetActive(false);
+            dialogCanvas.SetActive(true);
             Greet();
             StartCoroutine(ClearAndAddAll());
         }
+        miniCanvas.transform.Find("Image").position = transform.parent.position;
     }
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player" && targetScript.playerRelationship >= 60){
+        if(other.gameObject == player && targetScript.playerRelationship >= 60)
+        {
             active = true;
-            miniCanvas.GetComponent< Canvas >().planeDistance = 98;
-            miniCanvas.transform.Find("Text").GetComponent< Text >().text = text;
+            activeObject.activeObject = gameObject;
+            miniCanvas.SetActive(true);
+            miniCanvas.GetComponentInChildren< Text >().text = text;
         }
     }
 
     void OnTriggerExit2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player"){
+        if(other.gameObject == player)
+        {
             active = false;
-            miniCanvas.GetComponent< Canvas >().planeDistance = -10;
+            miniCanvas.SetActive(false);
         }
     }
 
     void Greet()
     {
         int index = UnityEngine.Random.Range(0, greeting.texts.Length);
-        content.transform.Find("Title").gameObject.GetComponent<Text>().text = greeting.name;
-        content.transform.Find("Text").gameObject.GetComponent<Text>().text = greeting.texts[index];
-        gameObject.GetComponent< AudioSource >().Stop();
-        gameObject.GetComponent< AudioSource >().PlayOneShot(greeting.replicas[index]);
+        content.transform.Find("Title").GetComponent<Text>().text = greeting.name;
+        content.transform.Find("Text").GetComponent<Text>().text = greeting.texts[index];
+        GetComponent< AudioSource >().Stop();
+        GetComponent< AudioSource >().PlayOneShot(greeting.replicas[index]);
         greeting.usingCount++;
     }
 

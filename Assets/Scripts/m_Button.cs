@@ -8,11 +8,11 @@ public class m_Button : MonoBehaviour
     public GameObject dialogCanvas;
     
     public void helpCanvasOnClick(){
-        helpCanvas.GetComponent< Canvas >().planeDistance = -10;
+        helpCanvas.SetActive(false);
         Time.timeScale = 1;
     }
     public void dialogCanvasOnClick(){
-        dialogCanvas.GetComponent< Canvas >().planeDistance = -10;
+        dialogCanvas.SetActive(false);
         Time.timeScale = 1;
     }
 }

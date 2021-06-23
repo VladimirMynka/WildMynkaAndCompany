@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    public GameObject mainMenu;
     public GameObject saveMenu;
     public GameObject loadMenu;
     public GameObject applyCanvas;
@@ -22,13 +23,13 @@ public class Menu : MonoBehaviour
     }
     void openMenu()
     {
-        openMenu(gameObject);
+        openMenu(mainMenu);
         lastTimeScale = Time.timeScale;
         Time.timeScale = 0;
         open = true;
     }
     public void closeMenu(){
-        closeMenu(gameObject);
+        closeMenu(mainMenu);
         closeMenu(saveMenu);
         closeMenu(loadMenu);
         closeMenu(applyCanvas);
@@ -37,11 +38,11 @@ public class Menu : MonoBehaviour
     }
     void openMenu(GameObject menu)
     {
-        menu.GetComponent<Canvas>().planeDistance = 100;
+        menu.SetActive(true);
     }
     void closeMenu(GameObject menu)
     {
-        menu.GetComponent<Canvas>().planeDistance = -10;
+        menu.SetActive(false);
     }
     public void openSaveMenu()
     {
@@ -70,9 +71,9 @@ public class Menu : MonoBehaviour
     public void beforeExitGame()
     {
         openApplyCanvas();
-        applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = exitText;
-        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-        applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { exitGame(); });
+        applyCanvas.transform.Find("Text").GetComponent<Text>().text = exitText;
+        applyCanvas.transform.Find("YesButton").GetComponent<Button>().onClick.RemoveAllListeners();
+        applyCanvas.transform.Find("YesButton").GetComponent<Button>().onClick.AddListener(() => { exitGame(); });
     }
     public void exitGame()
     {

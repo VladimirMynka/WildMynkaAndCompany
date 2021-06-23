@@ -115,7 +115,7 @@ public class SaveMenuButtons : MonoBehaviour
 
     void saveOnClick(string saveName)
     {
-        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        openMenu(applyCanvas);
         applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = saveText;
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { save(saveName); });
@@ -129,7 +129,7 @@ public class SaveMenuButtons : MonoBehaviour
     }
     void loadOnClick(string saveName)
     {
-        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        openMenu(applyCanvas);
         applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = loadText;
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { load(saveName); });
@@ -142,7 +142,7 @@ public class SaveMenuButtons : MonoBehaviour
     }
     public void newGame()
     {
-        applyCanvas.GetComponent<Canvas>().planeDistance = 100;
+        openMenu(applyCanvas);
         applyCanvas.transform.Find("Text").gameObject.GetComponent<Text>().text = newGameText;
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
         applyCanvas.transform.Find("YesButton").gameObject.GetComponent<Button>().onClick.AddListener(() => { load(""); });
@@ -150,11 +150,11 @@ public class SaveMenuButtons : MonoBehaviour
     }
     void openMenu(GameObject menu)
     {
-        menu.GetComponent<Canvas>().planeDistance = 100;
+        menu.SetActive(true);
     }
     void closeMenu(GameObject menu)
     {
-        menu.GetComponent<Canvas>().planeDistance = -10;
+        menu.SetActive(false);
     }
 
 }

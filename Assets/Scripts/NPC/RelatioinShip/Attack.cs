@@ -17,6 +17,10 @@ public class Attack : MonoBehaviour
     public float bigAttackDistance;
     Inventory inventory;
     Target target;
+    float speed;
+    float hitingIndex;
+    float rotateZ;
+    public float rotateSpan = 10;
     void Start()
     {
         inventory = GetComponent< Inventory >();
@@ -35,37 +39,36 @@ public class Attack : MonoBehaviour
         }
         if (audioTime > audioWaiting + 1) audioTime = 0;
 
-        if(!enable){
-            removeWeapon();
-            target.normalDistance = target.defaultNormalDistance;
+        if(currentWeapon)
+        {
+            currentWeapon.transform.localPosition = GetComponent<Arms>().arms;
         }
 
-        if(enable){
-            changeWeapon();
-            attack();
-            if(audioTime == 0 && sounds.Length > 0){
-                int random = Random.Range(0, sounds.Length);
-                GetComponent< AudioSource >().PlayOneShot(sounds[random]);
-                audioWaiting = sounds[random].length * 2;
-                audioTime++;
-            }
+        if(!enable)
+        {
+            RemoveWeapon();
+            return;
         }
 
-        if(currentWeapon){
-            currentWeapon.transform.localPosition = GetComponent< Arms >().arms;
+        ChangeWeapon();
+        AttackMoving();
+        if(audioTime == 0 && sounds.Length > 0)
+        {
+            int random = Random.Range(0, sounds.Length);
+            GetComponent<AudioSource>().PlayOneShot(sounds[random]);
+            audioWaiting = sounds[random].length * 2;
+            audioTime++;
         }
     }
 
-    float toRad(float angle){
-        return angle * Mathf.PI / 180;
-    }
-
-    void attack(){
-        if(!target) return;
+    void AttackMoving()
+    {
+        if (target == null) return;
         if (target.distance - target.normalDistance > target.normalOutDifference) return;
         if (target.normalDistance - target.distance > target.normalInDifference) return;
         
         if(attackTime == 0){
+            Hit();
             target.normalDistance = attackDistance;
             attackTime += 0.5f;
         }
@@ -73,12 +76,53 @@ public class Attack : MonoBehaviour
             target.normalDistance = bigAttackDistance;
             attackTime += 0.5f;
         }
+        AnimateHiting();
+    }
+
+    void Hit()
+    {
+        if(hitingIndex != 0) return;
+        if(currentWeapon == null) return;
+        hitingIndex = 1;
+        currentWeapon.GetComponent<Weapon>().Hit();
+        speed = currentWeapon.GetComponent<Weapon>().speed;
+    }
+
+    void AnimateHiting()
+    {
+        if(currentWeapon == null)
+        {
+            hitingIndex = 0;
+            return;
+        }
+        if(hitingIndex == 1)
+        {
+            if(rotateZ >= rotateSpan) hitingIndex = 2;
+            rotateZ += speed;
+        }
+        if(hitingIndex == 2)
+        {
+            if(rotateZ <= -rotateSpan) hitingIndex = 3;
+            rotateZ -= speed;
+        }
+        if(hitingIndex == 3)
+        {
+            rotateZ += speed;
+            if(rotateZ >= 0)
+            {
+                rotateZ = 0;
+                hitingIndex = 0;
+            }
+            currentWeapon.GetComponent<Weapon>().EndHit();
+        }
+        currentWeapon.transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
     }
     
-    void changeWeapon(){
+    void ChangeWeapon()
+    {
         if (changeWeaponTime != 0) return;
 
-        removeWeapon();
+        RemoveWeapon();
 
         if (!inventory) return;
         if (inventory.weapons.Count <= 0) return;
@@ -106,7 +150,7 @@ public class Attack : MonoBehaviour
         changeWeaponTime += 1;
     }
 
-    void removeWeapon(){
+    void RemoveWeapon(){
         if(currentWeapon) Destroy(currentWeapon);
     }
 }

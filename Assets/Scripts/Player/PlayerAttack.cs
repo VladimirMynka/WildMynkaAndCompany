@@ -41,8 +41,6 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetKeyDown("["))
         {
             NextWeapon();
-            if (currentWeapon != null) AddWeapon();
-            currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
         }
         if(Input.GetButtonDown("Fire2"))
         {
@@ -123,5 +121,8 @@ public class PlayerAttack : MonoBehaviour
         if(!inventory) return;
         index++;
         if(index >= inventory.weapons.Count) index = 0;
+        if (currentWeapon != null) AddWeapon();
+        currentWeaponText.GetComponent<Text>().text = inventory.weapons[index].GetComponent<Weapon>().weaponName;
+
     }
 }

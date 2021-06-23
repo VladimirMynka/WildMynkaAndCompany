@@ -6,11 +6,17 @@ public class Weapon : MonoBehaviour
 {
     public string weaponName = "weapon";
     public GameObject owner;
+    public Characteristics ownerPar;
     public float damage = 10;
     public float speed = 1;
     public AudioClip sound;
     bool doDamage;
     bool canSound;
+    public float learningFactor;
+
+    void Awake() {
+        ownerPar = owner.GetComponent<Characteristics>();
+    }
 
     void OnTriggerStay2D(Collider2D other) 
     {
@@ -20,6 +26,8 @@ public class Weapon : MonoBehaviour
         if (otherGO.GetComponent<Health>())
         {
             otherGO.GetComponent<Health>().current -= damage * Time.deltaTime;
+            ownerPar.attack += learningFactor * Time.deltaTime;
+            ownerPar.power += learningFactor * Time.deltaTime;
             if(canSound)
             {
                 GetComponent<AudioSource>().PlayOneShot(sound);

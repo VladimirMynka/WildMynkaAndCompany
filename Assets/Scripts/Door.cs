@@ -8,42 +8,49 @@ public class Door : MonoBehaviour
     public Vector3 exit;
     public GameObject exitObject;
     public GameObject miniCanvas;
+    ActiveObject activeObject;
     public string text;
-    public GameObject transportObject;
-    public GameObject currentCamera;
+    public GameObject player;
     public bool active;
 
-
-    void Start() {
-        if(exitObject) exit = exitObject.transform.position;
+    void Awake() 
+    {
+        if(exitObject != null) exit = exitObject.transform.position;
+        player = GameObject.FindWithTag("Player");
+        activeObject = player.GetComponent<ActiveObject>();
     }
 
-    void Update() {
+    void Update() 
+    {
         if(!active) return;
+        if(activeObject.activeObject != gameObject) active = false;
         if(Input.GetKeyDown("e")){
-            transportObject.transform.position = exit;
+            player.transform.position = exit;
         }
+        miniCanvas.transform.Find("Image").position = transform.position;
     }
     
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag != "Player"){
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject != player)
+        {
             other.gameObject.transform.position = exit;
         }
-        else{
+        else
+        {
+            activeObject.activeObject = gameObject;
             active = true;
-            transportObject = other.gameObject;
-            miniCanvas.GetComponent< Canvas >().planeDistance = 100;
-            miniCanvas.transform.Find("Text").GetComponent< Text >().text = text;
-            Vector3 position = currentCamera.GetComponent< Camera >().WorldToScreenPoint(transform.position);
-            miniCanvas.GetComponent< RectTransform >().pivot = new Vector2(position.x, position.y);
+            miniCanvas.SetActive(true);
+            miniCanvas.GetComponentInChildren<Text>().text = text;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject == transportObject){
+    void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.gameObject == player)
+        {
             active = false;
-            miniCanvas.GetComponent< Canvas >().planeDistance = -10;
-            transportObject = null;
+            miniCanvas.SetActive(false);
         }
     }
 }

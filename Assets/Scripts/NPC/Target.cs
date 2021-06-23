@@ -11,10 +11,11 @@ public class Target : MonoBehaviour
     public float normalDistance;
     public float defaultNormalDistance;
     public float normalInDifference;
+    public float defaultNormalInDifference;
     public float normalOutDifference;
+    public float defaultNormalOutDifference;
     public float distance;
     public float speed;
-    public float angle;
     public float oscillationAngle = 5;
     public float maxOscillationSpeed = 0.2f;
     Attack attack;
@@ -32,6 +33,7 @@ public class Target : MonoBehaviour
         if (target)
         {
             pointTarget = target.transform.position;
+            if (target.tag == "Player") relationship = playerRelationship;
         }
 
         Vector3 distanceVector = pointTarget - transform.position;
@@ -48,12 +50,6 @@ public class Target : MonoBehaviour
         {
             rb.velocity = -vector;
         }
-
-        angle = 0;
-        if(attack.currentWeapon != null){
-            angle = ToDegrees(Mathf.Atan2(y, x));
-            angle -= GetComponent< Arms >().normalAngle;
-        }
         
         if (rb.velocity.sqrMagnitude > maxOscillationSpeed * maxOscillationSpeed){
             if (rotateZ < -oscillationAngle) onRight = false;
@@ -65,21 +61,7 @@ public class Target : MonoBehaviour
         transform.rotation = Quaternion.Euler(
             transform.rotation.x,
             transform.rotation.y,
-            CalculateAngle(angle) + rotateZ
+            rotateZ
         );
-    }
-
-    float ToDegrees(float angle){
-        return angle * 180 / Mathf.PI;
-    }
-
-    float CalculateAngle(float angle){
-        while(angle > 180){
-            angle -= 360;
-        }
-        while(angle < -180){
-            angle += 360;
-        }
-        return angle;
     }
 }
