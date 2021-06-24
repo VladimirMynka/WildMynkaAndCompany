@@ -22,8 +22,8 @@ public class StealHealth : MonoBehaviour
         Health health = otherGO.GetComponent<Health>();
         CheckerAttacked ca = otherGO.GetComponent<CheckerAttacked>();
         if (health != null){
-            health.current -= damage * Time.deltaTime * 10;
-            ownerHealth.current += damage * Time.deltaTime * 10;
+            health.current -= damage * Time.deltaTime * 3;
+            ownerHealth.current += damage * Time.deltaTime * 3;
             characteristics.attackMagic += learningFactor * Time.deltaTime * 10;
             
             if (damage > 0 && ca != null) ca.SetAttacker(owner);

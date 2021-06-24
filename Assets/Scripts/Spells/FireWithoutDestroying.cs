@@ -22,7 +22,7 @@ public class FireWithoutDestroying : MonoBehaviour
         CheckerAttacked ca = otherGO.GetComponent<CheckerAttacked>();
 
         if (health != null){
-            health.current -= damage * Time.deltaTime;
+            health.current -= damage * Time.deltaTime * 2;
             characteristics.attackMagic += learningFactor * Time.deltaTime;
 
             if (damage > 0 && ca != null) ca.SetAttacker(owner);

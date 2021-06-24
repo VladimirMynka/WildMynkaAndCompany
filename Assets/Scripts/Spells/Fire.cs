@@ -20,7 +20,7 @@ public class Fire : MonoBehaviour
         if (otherGO == owner) return;
         Health health = otherGO.GetComponent<Health>();
         if (health != null){
-            health.current -= damage * Time.deltaTime * 10;
+            health.current -= damage * Time.deltaTime * 5;
             characteristics.attackMagic += learningFactor * Time.deltaTime * 10;
 
             Destroy(gameObject, 0.1f);
