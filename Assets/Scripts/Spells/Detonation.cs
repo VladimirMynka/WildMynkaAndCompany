@@ -28,7 +28,7 @@ public class Detonation : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) 
     {
         GameObject otherGO = other.gameObject;
-        if (otherGO == owner) return;
+        if (otherGO == GetComponent<Spell>().owner) return;
         Health health = otherGO.GetComponent<Health>();
         if (health != null){
             Destroy(gameObject, 0.2f);

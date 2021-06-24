@@ -18,7 +18,7 @@ public class CheckerAttacked : MonoBehaviour
 
     void Update() {
         if (!attacker) return;
-        if ((transform.position - attacker.transform.position).sqrMagnitude < 3 * 3) attacker = null;
+        if ((transform.position - attacker.transform.position).sqrMagnitude > 3 * 3) attacker = null;
     }
 
 }

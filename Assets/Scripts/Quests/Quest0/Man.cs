@@ -69,7 +69,7 @@ public class Man : Quest
         }
         if(index == 3)
         {
-            if ((man.transform.position - exit.transform.position).magnitude < 1) index++;
+            if ((man.transform.position - exit.transform.position).magnitude < 2) index++;
             if (manDialog.topics[0].usingCount > lastYesCount)
             {
                 followPlayer();
@@ -87,6 +87,7 @@ public class Man : Quest
             manAfterDeath.items = new GameObject[1];
             manAfterDeath.items[0] = present;
             elfDialog.AddTopic(newElfGoodTopic);
+            notFollowPlayer();
             index++;
         }
         if(index == 5 && manDialog.greeting.usingCount > 0)
