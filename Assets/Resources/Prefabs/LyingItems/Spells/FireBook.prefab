@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9dfc8c67b65c646b1900040d7d3b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addingSpell: 4
+  addingSpell: 0
   miniCanvas: {fileID: 0}
   player: {fileID: 0}
   text: "\u0422\u043E\u043C \"\u043E\u0433\u043E\u043D\u044C\""

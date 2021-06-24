@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4030623470383916911
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spells.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spells.Array.data[0]
+      value: 
+      objectReference: {fileID: 6175456492712769583, guid: 797fa134e1870c94492ea5984a600ab6,
+        type: 3}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spells.Array.data[1]
+      value: 
+      objectReference: {fileID: 2045313425481587285, guid: b95edf4f50483b54c9ddc0605ffafc90,
+        type: 3}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 5132581186289698380, guid: e0261371a202ac944a877c1b9b09a8a8,
+        type: 3}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spellsIndeces.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: weaponsIndeces.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spellsIndeces.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: spellsIndeces.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581666, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: weaponsIndeces.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581670, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: enable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581671, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_Name
+      value: MonsterEasyMag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 215.74982
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.99779
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494053064299581690, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436376769216112131, guid: 32745cdd797343b45bfb6fb3fac443ed,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32745cdd797343b45bfb6fb3fac443ed, type: 3}

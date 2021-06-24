@@ -309,14 +309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41ff5f297f87e45b95c61b1e31a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetsHandler: {fileID: 0}
   prefabs: {fileID: 0}
   weapons:
-  - {fileID: 6649065787367217579, guid: 8e91b9e019066034a90f68bd765bf70f, type: 3}
+  - {fileID: 4082815879878524859, guid: 80fec09133f07ba48af27e8891de7a14, type: 3}
   spells: []
   keys: []
   others: []
-  weaponsIndeces: 00000000
+  weaponsIndeces: 04000000
   spellsIndeces: 
   keysIndeces: 
   othersIndeces: 
@@ -538,7 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e958985a04d6114981c992eda49ff9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followingDistance: 4
+  followingDistance: 3
 --- !u!114 &-1690896029913141735
 MonoBehaviour:
   m_ObjectHideFlags: 0

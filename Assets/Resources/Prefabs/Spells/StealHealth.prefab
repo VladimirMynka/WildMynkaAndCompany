@@ -269,7 +269,7 @@ MonoBehaviour:
   end: {x: 0, y: 0, z: 0}
   speed: 1.2
   hasTarget: 1
-  manaCost: 5
+  manaCost: 20
   spellType: 1
   sprites:
   - {fileID: -6158105264302742662, guid: d34c9b004fc459e42891f7dfe3f9557d, type: 3}
