@@ -2609,7 +2609,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 320
+        y: 319
         width: 32
         height: 32
       alignment: 9
@@ -3137,7 +3137,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.7462268, y: 0.53419733}
+      pivot: {x: 0.70122385, y: 0.5454488}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -3191,7 +3191,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 191
         width: 32
         height: 32
       alignment: 9
@@ -3853,8 +3853,8 @@ TextureImporter:
       name: decorative_157
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 129
+        y: 95
         width: 32
         height: 31
       alignment: 9
@@ -3905,7 +3905,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 96
+        y: 95
         width: 32
         height: 32
       alignment: 9
@@ -3929,8 +3929,8 @@ TextureImporter:
       name: decorative_160
       rect:
         serializedVersion: 2
-        x: 224
-        y: 96
+        x: 225
+        y: 95
         width: 32
         height: 32
       alignment: 9
@@ -4056,11 +4056,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 63
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.54929876, y: 0.43661618}
+      pivot: {x: 0.5267973, y: 0.4366169}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -4299,7 +4299,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 32
+        y: 31
         width: 32
         height: 32
       alignment: 9
