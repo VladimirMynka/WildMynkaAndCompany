@@ -168,9 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogCanvas: {fileID: 0}
-  buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd, type: 3}
+  buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd,
+    type: 3}
   topics: []
   topicsIndeces: 050000000600000007000000
+  greeting:
+    name: 
+    texts: []
+    replicas: []
+    usingCount: 0
+  greetingIndex: 0
   globalTopicsObject: {fileID: 0}
   miniCanvas: {fileID: 0}
   active: 0
@@ -406,7 +413,6 @@ MonoBehaviour:
   current: 100
   maxHealth: 100
   regeneration: 1
-  sr: {fileID: 0}
 --- !u!114 &8615736117059662748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41ff5f297f87e45b95c61b1e31a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabs: {fileID: 0}
   weapons:
   - {fileID: 6649065787367217579, guid: 8e91b9e019066034a90f68bd765bf70f, type: 3}
   - {fileID: 6450431964402723588, guid: 870bb40b0b9d9dc48b67c3ee4dd0081d, type: 3}
@@ -481,6 +488,10 @@ MonoBehaviour:
   - {fileID: 3971448354557838779, guid: 606a1ec329f178348b8bee177e0f65a5, type: 3}
   keys: []
   others: []
+  weaponsIndeces: 
+  spellsIndeces: 
+  keysIndeces: 
+  othersIndeces: 
 --- !u!114 &8615736117059662720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,14 +506,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   pointTarget: {x: 0, y: 0, z: 0}
-  relationShip: 20
+  relationship: 0
+  playerRelationship: 0
   normalDistance: 2
   defaultNormalDistance: 2
   normalInDifference: 0.1
+  defaultNormalInDifference: 0
   normalOutDifference: 0
+  defaultNormalOutDifference: 0
   distance: 0
   speed: 2
-  angle: 0
+  oscillationAngle: 5
+  maxOscillationSpeed: 0.2
 --- !u!114 &8615736117059662723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,17 +541,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8615736117059662724}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0236e93c2f820b41b51822be7c69682, type: 3}
+  m_Script: {fileID: 11500000, guid: 86e599aa5a030fe4587145e1a70c554a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 1
+  enable: 0
+  index: 0
   currentWeapon: {fileID: 0}
   sounds: []
   changeWeaponWaiting: 10
   attackWaiting: 2
-  audioWaiting: 0
-  attackDistance: 0.5
-  bigAttackDistance: 1
+  fixedAudioWaiting: 10
+  attackDistance: 0.3
 --- !u!114 &8615736117059662725
 MonoBehaviour:
   m_ObjectHideFlags: 0

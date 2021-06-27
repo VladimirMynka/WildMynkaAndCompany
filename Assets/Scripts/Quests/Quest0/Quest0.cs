@@ -33,7 +33,12 @@ public class Quest0 : Quest
         if(time > waiting + 1) time = 0;
 
 
-        if(index == 0 && time == 0) index++;
+        if(index == 0 && time == 0)
+        { 
+            skeleton1.GetComponent<Target>().target = null;
+            skeleton2.GetComponent<Target>().target = null;
+            index++;
+        }
 
         if(index == 1)
         {
@@ -45,8 +50,8 @@ public class Quest0 : Quest
         {
             Open(helpCanvas, helpStrings[1]);
             skeleton1.GetComponent<Target>().target = player;
+            player.GetComponent<PlayerAttack>().ChangeWeapon();
             weaponCanvas.SetActive(true);
-            player.GetComponent<PlayerAttack>().NextWeapon();
             index++;
         }
 

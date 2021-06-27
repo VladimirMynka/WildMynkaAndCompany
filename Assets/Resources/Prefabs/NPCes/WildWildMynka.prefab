@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogCanvas: {fileID: 0}
-  buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd, type: 3}
+  buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd,
+    type: 3}
   topics: []
   topicsIndeces: 
   greeting:
@@ -413,7 +414,6 @@ MonoBehaviour:
   current: 170
   maxHealth: 200
   regeneration: 2
-  sr: {fileID: 0}
 --- !u!114 &8339555664675930883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c41ff5f297f87e45b95c61b1e31a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetsHandler: {fileID: 0}
   prefabs: {fileID: 0}
   weapons: []
   spells:
@@ -521,10 +520,11 @@ MonoBehaviour:
   normalDistance: 2
   defaultNormalDistance: 2
   normalInDifference: 0.1
+  defaultNormalInDifference: 0
   normalOutDifference: 0
+  defaultNormalOutDifference: 0
   distance: 0
   speed: 2
-  angle: 0
   oscillationAngle: 5
   maxOscillationSpeed: 0.2
 --- !u!114 &8339555664675930908
@@ -550,17 +550,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8339555664675930907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0236e93c2f820b41b51822be7c69682, type: 3}
+  m_Script: {fileID: 11500000, guid: 86e599aa5a030fe4587145e1a70c554a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enable: 0
+  index: 0
   currentWeapon: {fileID: 0}
   sounds: []
   changeWeaponWaiting: 10
   attackWaiting: 2
-  audioWaiting: 0
-  attackDistance: 0.5
-  bigAttackDistance: 1
+  fixedAudioWaiting: 10
+  attackDistance: 0.3
 --- !u!114 &8339555664675930906
 MonoBehaviour:
   m_ObjectHideFlags: 0

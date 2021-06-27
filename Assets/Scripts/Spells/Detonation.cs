@@ -27,13 +27,12 @@ public class Detonation : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) 
     {
+        if(other.isTrigger) return;
         GameObject otherGO = other.gameObject;
-        if (otherGO == GetComponent<Spell>().owner) return;
-        Health health = otherGO.GetComponent<Health>();
-        if (health != null){
-            Destroy(gameObject, 0.2f);
-        }
+        if (otherGO == owner) return;
+        if (otherGO.transform.IsChildOf(owner.transform)) return;
 
+        Destroy(gameObject, 0.2f);
     }
     
 }

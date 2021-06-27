@@ -18,7 +18,7 @@ public class NPCCreator : MonoBehaviour
 
     public GameObject[] prefabs;
     public GameObject[] items;
-    float timer = 0;
+    public float timer = 0;
     public float waiting;
     GameObject currentCreature;
     public GameObject miniCanvas;
@@ -31,18 +31,21 @@ public class NPCCreator : MonoBehaviour
 
     void Update() 
     {
-        if(timer == 0 && currentCreature == null)
+        if(currentCreature == null)
         {
-            CreateNPC();
+            if(timer == 0)
+            { 
+                CreateNPC();
+                timer = 1;
+            }
+            else timer += Time.deltaTime;
         }
         if(timer >= waiting + 1) timer = 0;
-        if(timer != 0) timer += Time.deltaTime;
     }
 
     void CreateNPC()
     {
         k *= beginKoefficient;
-        timer = 1;
         int index = Random.Range(0, prefabs.Length);
         currentCreature = Instantiate(prefabs[index], transform.position, transform.rotation);
         SetPosition(currentCreature);
@@ -78,7 +81,8 @@ public class NPCCreator : MonoBehaviour
     void SetTarget(GameObject npc)
     {
         var target = npc.GetComponent<Target>();
-        target.target = npc;
+        target.target = null;
+        target.pointTarget = transform.position; 
         target.speed = beginParameters.speed * k;
     }
 

@@ -101,7 +101,6 @@ public class ToHuntingGrounds : Quest
             if(playerAttack.currentWeapon != null)
             {
                 player.GetComponent<Inventory>().AddWeapon(newWeaponIndex);
-                playerAttack.NextWeapon();
                 index++;
             }
         }

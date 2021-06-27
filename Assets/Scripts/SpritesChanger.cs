@@ -20,7 +20,6 @@ public class SpritesChanger : MonoBehaviour
     SpriteRenderer sr;
     Rigidbody2D rb;
     Arms arms;
-    PlayerAttack playerAttack;
     Attack attack;
     GameObject weapon;
     bool inverse;
@@ -31,27 +30,13 @@ public class SpritesChanger : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         arms = GetComponent<Arms>();
         attack = GetComponent<Attack>();
-        playerAttack = GetComponent<PlayerAttack>();
     }
 
     void FixedUpdate() 
     {
         ChangeDirection(rb.velocity.x, rb.velocity.y);
         if (attack != null) weapon = attack.currentWeapon;
-        else if(playerAttack != null) weapon = playerAttack.currentWeapon;
-
-        if (weapon == null) return;
-
-        if (inverse && weapon.transform.localScale.x > 0)
-        {
-            weapon.transform.localScale -= new Vector3(weapon.transform.localScale.x * 2, 0, 0);
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
-        }
-        if (!inverse && weapon.transform.localScale.x < 0)
-        {
-            weapon.transform.localScale -= new Vector3(weapon.transform.localScale.x * 2, 0, 0);
-            weapon.GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
-        }
+        ChangeWeaponDirection();
     }
 
     void ChangeDirection(float x, float y)
@@ -63,6 +48,22 @@ public class SpritesChanger : MonoBehaviour
         }
         else if (x > 0.2) ChangeParameters(rotater.rigth, rotater.rigthArms, false);
         else if (x < -0.2) ChangeParameters(rotater.left, rotater.leftArms, true);
+    }
+
+    void ChangeWeaponDirection()
+    {
+        if (weapon == null) return;
+        var weaponSR = weapon.GetComponent<SpriteRenderer>();
+        if (inverse && !weaponSR.flipX)
+        {
+            weaponSR.flipX = true;
+            weaponSR.sortingOrder = sr.sortingOrder - 1;
+        }
+        if (!inverse && weaponSR.flipX)
+        {
+            weaponSR.flipX = false;
+            weaponSR.sortingOrder = sr.sortingOrder;
+        }
     }
 
     void ChangeParameters(Sprite sprite, Vector3 newArms, bool inv)

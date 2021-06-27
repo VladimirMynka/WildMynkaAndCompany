@@ -290,22 +290,20 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveNpcAttack()
     {
-        var attack = gameObject.GetComponent<Attack>();
+        var attack = gameObject.GetComponent<NPCAttack>();
         Put(attack.enable);
         Put(attack.changeWeaponWaiting);
         Put(attack.attackWaiting);
         Put(attack.attackDistance);
-        Put(attack.bigAttackDistance);
     }
     protected void LoadNpcAttack()
     {
-        var attack = gameObject.GetComponent<Attack>();
-        if (attack == null) attack = gameObject.AddComponent<Attack>();
+        var attack = gameObject.GetComponent<NPCAttack>();
+        if (attack == null) attack = gameObject.AddComponent<NPCAttack>();
         attack.enable = NextBool();
         attack.changeWeaponWaiting = NextFloat();
         attack.attackWaiting = NextFloat();
         attack.attackDistance = NextFloat();
-        attack.bigAttackDistance = NextFloat();
     }
 
     protected void SaveNpcCastSpell()
