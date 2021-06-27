@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: 8c69f3cd16f534bec8236a6484f500d4
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2850627945663199611
+    second: tree-orange_0
+  - first:
+      213: -8778151999511415079
+    second: tree-orange_1
+  - first:
+      213: -2516238866305088480
+    second: tree-orange_2
+  - first:
+      213: -3744316021376371662
+    second: tree-orange_3
+  - first:
+      213: -4643873009119523140
+    second: tree-orange_4
+  - first:
+      213: -547038989744830396
+    second: tree-orange_5
+  - first:
+      213: -7166072438222859013
+    second: tree-orange_6
+  - first:
+      213: 6088537389928169963
+    second: tree-orange_7
+  - first:
+      213: -4906528778789136334
+    second: tree-orange_8
+  - first:
+      213: 1255026555178133025
+    second: tree-orange_9
+  - first:
+      213: 1503327007334910069
+    second: tree-orange_10
+  - first:
+      213: -7255606977908148771
+    second: tree-orange_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +77,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +110,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -86,7 +122,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -101,7 +137,51 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tree-orange_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 59
+        height: 80
+      alignment: 9
+      pivot: {x: 0.53071743, y: 0.29176223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4.5, y: -27}
+        - {x: -6.5, y: -28}
+        - {x: -5.5, y: -25}
+        - {x: -3.5, y: -24}
+        - {x: -1.5, y: -22}
+        - {x: -2.5, y: -17}
+        - {x: 1.5, y: -16}
+        - {x: 4.5, y: -16}
+        - {x: 6.5, y: -17}
+        - {x: 9.5, y: -20}
+        - {x: 10.5, y: -25}
+        - {x: 10.5, y: -27}
+        - {x: 7.5, y: -27}
+        - {x: 5.5, y: -25}
+        - {x: 5.5, y: -24}
+        - {x: 3.5, y: -24}
+        - {x: 5.5, y: -26}
+        - {x: 5.5, y: -27}
+        - {x: 3.5, y: -28}
+        - {x: 1.5, y: -30}
+        - {x: 0.5, y: -32}
+        - {x: -3.5, y: -32}
+        - {x: -2.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b797e0863077f8720800000000000000
+      internalID: 2850627945663199611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

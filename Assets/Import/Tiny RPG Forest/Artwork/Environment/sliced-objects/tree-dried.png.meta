@@ -1,7 +1,76 @@
 fileFormatVersion: 2
 guid: db07cc93e21f1457d9a1364618027fbb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8274265486856528186
+    second: tree-dried_0
+  - first:
+      213: -1802913119947417162
+    second: tree-dried_1
+  - first:
+      213: 2772944058374814657
+    second: tree-dried_2
+  - first:
+      213: 4842335405124609425
+    second: tree-dried_3
+  - first:
+      213: -6387674237508993281
+    second: tree-dried_4
+  - first:
+      213: 2257100942658878260
+    second: tree-dried_5
+  - first:
+      213: 6321566049857003627
+    second: tree-dried_6
+  - first:
+      213: 3831527469593400126
+    second: tree-dried_7
+  - first:
+      213: -1692358355842988303
+    second: tree-dried_8
+  - first:
+      213: 2720135529567156499
+    second: tree-dried_9
+  - first:
+      213: 8997867491228758666
+    second: tree-dried_10
+  - first:
+      213: -1112060739768192532
+    second: tree-dried_11
+  - first:
+      213: 2443802413643621290
+    second: tree-dried_12
+  - first:
+      213: 2758696154559264454
+    second: tree-dried_13
+  - first:
+      213: -5522910782192830734
+    second: tree-dried_14
+  - first:
+      213: 2954656332955338752
+    second: tree-dried_15
+  - first:
+      213: 2511997103799510364
+    second: tree-dried_16
+  - first:
+      213: 1394981859074951146
+    second: tree-dried_17
+  - first:
+      213: 8854041084347003661
+    second: tree-dried_18
+  - first:
+      213: -7178137685459101174
+    second: tree-dried_19
+  - first:
+      213: -2563782967951301635
+    second: tree-dried_20
+  - first:
+      213: 4520238708392922295
+    second: tree-dried_21
+  - first:
+      213: -9190016748974782931
+    second: tree-dried_22
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +110,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 36
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +143,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -86,7 +155,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -101,7 +170,51 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tree-dried_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 96
+        height: 104
+      alignment: 9
+      pivot: {x: 0.5285271, y: 0.17016333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -44}
+        - {x: -2, y: -45}
+        - {x: -6, y: -45}
+        - {x: -7, y: -44}
+        - {x: -7, y: -42}
+        - {x: -6, y: -40}
+        - {x: -7, y: -38}
+        - {x: -5, y: -37}
+        - {x: -3, y: -34}
+        - {x: 1, y: -34}
+        - {x: 6, y: -33}
+        - {x: 8, y: -34}
+        - {x: 9, y: -37}
+        - {x: 9, y: -38}
+        - {x: 10, y: -39}
+        - {x: 10, y: -41}
+        - {x: 8, y: -41}
+        - {x: 6, y: -40}
+        - {x: 4, y: -38}
+        - {x: 3, y: -38}
+        - {x: 4, y: -39}
+        - {x: 4, y: -40}
+        - {x: 3, y: -42}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce54aee067eb2d80800000000000000
+      internalID: -8274265486856528186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
