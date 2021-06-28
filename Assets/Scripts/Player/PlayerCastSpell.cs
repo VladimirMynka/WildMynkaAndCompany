@@ -25,6 +25,7 @@ public class PlayerCastSpell : MonoBehaviour
     Inventory inventory;
     private Characteristics characteristics;
     private Mana mana;
+    SpriteRenderer sr;
 
 
     void Awake()
@@ -32,6 +33,7 @@ public class PlayerCastSpell : MonoBehaviour
         characteristics = GetComponent<Characteristics>();
         mana = GetComponent<Mana>();
         inventory = GetComponent<Inventory>();
+        sr = GetComponent<SpriteRenderer>();
         if (inventory.spells.Count != 0){
             currentSpellText.GetComponent<Text>().text = inventory.spells[index].GetComponent<Spell>().spellName;  
             cursorExample = inventory.spells[index].GetComponent<Spell>().example;
@@ -67,6 +69,7 @@ public class PlayerCastSpell : MonoBehaviour
                 cursorSR.color[2],
                 alpha
             );
+            cursorSR.sortingLayerID = sr.sortingLayerID;
         }
         if(enable && Input.GetButton(CastSpellButton)) 
             CastSpell();

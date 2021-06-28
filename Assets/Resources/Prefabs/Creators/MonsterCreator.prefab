@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8577927110120213646}
   - component: {fileID: 3897705188251211691}
+  - component: {fileID: 1549598633545013247}
   m_Layer: 0
   m_Name: MonsterCreator
   m_TagString: Untagged
@@ -51,7 +52,10 @@ MonoBehaviour:
   - {fileID: 2158279292780946009, guid: 57093d10ac475e04ab5f83196f339990, type: 3}
   - {fileID: 9092837528809961607, guid: 0556bc2b8d78917418c986bf445e56ab, type: 3}
   - {fileID: 2049911929775396825, guid: ab3571f9de87dff48864d501093d8caf, type: 3}
+  timer: 0
   waiting: 600
+  index: 0
+  currentCreature: {fileID: 0}
   miniCanvas: {fileID: 0}
   dialogCanvas: {fileID: 0}
   radius: 2
@@ -64,3 +68,17 @@ MonoBehaviour:
     attackMagic: 30
     selfMagic: 30
   beginKoefficient: 1.1
+  k: 1
+--- !u!114 &1549598633545013247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121185907503873833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d963e919f567d4aa5c8a6272c554bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assetsHandler: {fileID: 0}

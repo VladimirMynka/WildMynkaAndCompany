@@ -92,7 +92,7 @@ public class Man : Quest
         }
         if(index == 5 && manDialog.greeting.usingCount > 0)
         {
-            Destroy(man, 0.1f);
+            man.GetComponent<Health>().current = 0;
             manCopy.SetActive(true);
             index++;
         }

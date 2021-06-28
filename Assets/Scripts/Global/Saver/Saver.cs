@@ -109,7 +109,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadSprite()
     {
-        var savingSprite = gameObject.GetComponent<SavingSprite>();
+        var savingSprite = GetComponent<SavingSprite>();
         if(savingSprite == null) savingSprite = gameObject.AddComponent<SavingSprite>();
         savingSprite.imageIndex = NextInt();
         savingSprite.layer = NextInt();
@@ -117,14 +117,14 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveHealth()
     {
-        var health = gameObject.GetComponent<Health>();
+        var health = GetComponent<Health>();
         Put(health.current);
         Put(health.maxHealth);
         Put(health.regeneration);
     }
     protected void LoadHealth()
     {
-        var health = gameObject.GetComponent<Health>();
+        var health = GetComponent<Health>();
         if(health == null) health = gameObject.AddComponent<Health>();
         health.current = NextFloat();
         health.maxHealth = NextFloat();
@@ -133,7 +133,7 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveCharacteristics()
     {
-        var characteristics = gameObject.GetComponent<Characteristics>();
+        var characteristics = GetComponent<Characteristics>();
         Put(characteristics.attack);
         Put(characteristics.power);
         Put(characteristics.protection);
@@ -144,7 +144,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadCharacteristics()
     {
-        var characteristics = gameObject.GetComponent<Characteristics>();
+        var characteristics = GetComponent<Characteristics>();
         if(characteristics == null) characteristics = gameObject.AddComponent<Characteristics>();
         characteristics.attack = NextFloat();
         characteristics.power = NextFloat();
@@ -157,7 +157,7 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveInventory()
     {
-        var inventory = gameObject.GetComponent<Inventory>();
+        var inventory = GetComponent<Inventory>();
         
         Put(inventory.weaponsIndeces.Count);
         foreach (int index in inventory.weaponsIndeces)
@@ -177,7 +177,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadInventory()
     {
-        var inventory = gameObject.GetComponent<Inventory>();
+        var inventory = GetComponent<Inventory>();
         if (inventory == null) inventory = gameObject.AddComponent<Inventory>();
 
         int weaponsCount = NextInt();
@@ -206,13 +206,13 @@ public abstract class Saver : MonoBehaviour
     }
     protected void SavePlayerAttack()
     {
-        var attack = gameObject.GetComponent<PlayerAttack>();
+        var attack = GetComponent<PlayerAttack>();
         Put(attack.index);
         Put(attack.currentWeapon != null);
     }
     protected void LoadPlayerAttack()
     {
-        var attack = gameObject.GetComponent<PlayerAttack>();
+        var attack = GetComponent<PlayerAttack>();
         if (attack == null) attack = gameObject.AddComponent<PlayerAttack>();
 
         attack.index = NextInt();
@@ -221,13 +221,13 @@ public abstract class Saver : MonoBehaviour
 
     protected void SavePlayerCastSpell()
     {
-        var castSpell = gameObject.GetComponent<PlayerCastSpell>();
+        var castSpell = GetComponent<PlayerCastSpell>();
         Put(castSpell.index);
         Put(castSpell.enable);
     }
     protected void LoadPlayerCastSpell()
     {
-        var castSpell = gameObject.GetComponent<PlayerCastSpell>();
+        var castSpell = GetComponent<PlayerCastSpell>();
         if (castSpell == null) castSpell = gameObject.AddComponent<PlayerCastSpell>();
         castSpell.index = NextInt();
         castSpell.enable = !NextBool();
@@ -236,33 +236,33 @@ public abstract class Saver : MonoBehaviour
 
     protected void SavePlayerMoving()
     {
-        var moving = gameObject.GetComponent<PlayerMoving>();
+        var moving = GetComponent<PlayerMoving>();
         Put(moving.speed);
     }
     protected void LoadPlayerMoving()
     {
-        var moving = gameObject.GetComponent<PlayerMoving>();
+        var moving = GetComponent<PlayerMoving>();
         if (moving == null) moving = gameObject.AddComponent<PlayerMoving>();
         moving.speed = NextFloat();
     }
 
     protected void SaveArms()
     {
-        var arms = gameObject.GetComponent<Arms>();
+        var arms = GetComponent<Arms>();
         Put(arms.arms.x);
         Put(arms.arms.y);
         Put(arms.arms.z);
     }
     protected void LoadArms()
     {
-        var arms = gameObject.GetComponent<Arms>();
+        var arms = GetComponent<Arms>();
         if (arms == null) arms = gameObject.AddComponent<Arms>();
         arms.arms = new Vector3(NextFloat(), NextFloat(), NextFloat());
     }
 
     protected void SaveTarget()
     {
-        var target = gameObject.GetComponent<Target>();
+        var target = GetComponent<Target>();
         Put(target.pointTarget.x);
         Put(target.pointTarget.y);
         Put(target.pointTarget.z);
@@ -276,7 +276,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadTarget()
     {
-        var target = gameObject.GetComponent<Target>();
+        var target = GetComponent<Target>();
         if (target == null) target = gameObject.AddComponent<Target>();
         target.pointTarget = new Vector3(NextFloat(), NextFloat(), NextFloat());
         target.playerRelationship = NextInt();
@@ -290,7 +290,7 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveNpcAttack()
     {
-        var attack = gameObject.GetComponent<NPCAttack>();
+        var attack = GetComponent<NPCAttack>();
         Put(attack.enable);
         Put(attack.changeWeaponWaiting);
         Put(attack.attackWaiting);
@@ -298,7 +298,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadNpcAttack()
     {
-        var attack = gameObject.GetComponent<NPCAttack>();
+        var attack = GetComponent<NPCAttack>();
         if (attack == null) attack = gameObject.AddComponent<NPCAttack>();
         attack.enable = NextBool();
         attack.changeWeaponWaiting = NextFloat();
@@ -308,7 +308,7 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveNpcCastSpell()
     {
-        var castSpell = gameObject.GetComponent<CastSpell>();
+        var castSpell = GetComponent<CastSpell>();
         Put(castSpell.enable);
         Put(castSpell.index);
         Put(castSpell.changeSpellWaiting);
@@ -318,7 +318,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadNpcCastSpell()
     {
-        var castSpell = gameObject.GetComponent<CastSpell>();
+        var castSpell = GetComponent<CastSpell>();
         if (castSpell == null) castSpell = gameObject.AddComponent<CastSpell>();
         castSpell.enable = NextBool();
         castSpell.index = NextInt();
@@ -330,7 +330,7 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveDialog()
     {
-        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        var dialog = gameObject.transform.Find("DialogTrigger").GetComponent<Dialog>();
         Put(dialog.topicsIndeces.Length);
         foreach(int i in dialog.topicsIndeces)
             Put(i);
@@ -338,7 +338,7 @@ public abstract class Saver : MonoBehaviour
     }
     protected void LoadDialog()
     {
-        var dialog = gameObject.transform.Find("DialogTrigger").gameObject.GetComponent<Dialog>();
+        var dialog = gameObject.transform.Find("DialogTrigger").GetComponent<Dialog>();
         int topicsCount = NextInt();
         int[] newIndeces = new int[topicsCount];
         for(int i = 0; i < topicsCount; i++)
@@ -350,14 +350,14 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveQuest()
     {
-        var quest = gameObject.GetComponent<Quest>();
+        var quest = GetComponent<Quest>();
         Put(quest.index);
         Put(quest.time);
         Put(quest.waiting);
     }
     protected void LoadQuest()
     {
-        var quest = gameObject.GetComponent<Quest>();
+        var quest = GetComponent<Quest>();
         quest.index = NextInt();
         quest.time = NextFloat();
         quest.waiting = NextFloat();
@@ -365,12 +365,33 @@ public abstract class Saver : MonoBehaviour
 
     protected void SaveCanvas()
     {
-        var canvas = gameObject.GetComponent<Canvas>();
+        var canvas = GetComponent<Canvas>();
         Put(canvas.planeDistance);
     }
     protected void LoadCanvas()
     {
-        var canvas = gameObject.GetComponent<Canvas>();
+        var canvas = GetComponent<Canvas>();
         canvas.planeDistance = NextFloat();
+    }
+
+    protected void SaveNpcCreator()
+    {
+        var creator = GetComponent<NPCCreator>();
+        Put(creator.currentCreature == null);
+        Put(creator.index);
+        Put(creator.k);
+    }
+    protected void LoadNpcCreator()
+    {
+        var creator = GetComponent<NPCCreator>();
+        if (creator == null) creator = gameObject.AddComponent<NPCCreator>();
+        bool exist = NextBool();
+        creator.index = NextInt();
+        creator.k = NextFloat();
+        if(exist)
+        {
+            creator.currentCreature = Instantiate(creator.prefabs[creator.index], transform.position, transform.rotation);
+            creator.currentCreature.name = creator.gameObject.name + creator.currentCreature.name;
+        }
     }
 }

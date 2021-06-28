@@ -47,6 +47,9 @@ public class Spell : MonoBehaviour
         var component = GetComponent<Rigidbody2D>();
         if(hasTarget) component.drag = 0f;
         component.velocity = velocity;
+
+        sr.sortingLayerName = owner.GetComponent<SpriteRenderer>().sortingLayerName;
+        sr.sortingOrder = owner.GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     void Update() 

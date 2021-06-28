@@ -15,7 +15,7 @@ public class CameraScript : MonoBehaviour
         thisCamera = GetComponent<Camera>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if(!player) player = GameObject.FindWithTag("Player");
         transform.position = player.transform.position;

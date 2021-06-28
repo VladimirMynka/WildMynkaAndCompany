@@ -9,6 +9,9 @@ public class AfterDeath : MonoBehaviour
     public GameObject miniCanvas;
 
     void OnDestroy() {
+        Health health = GetComponent<Health>();
+        if(health == null) return;
+        if(health.current > 0) return;
         foreach(GameObject item in items)
         {
             float x = Random.Range(-radius, radius);
