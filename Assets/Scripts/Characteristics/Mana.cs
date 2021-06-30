@@ -12,7 +12,7 @@ public class Mana : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (current < maxMana) current += Time.deltaTime * regeneration;
+        if (current < maxMana || regeneration < 0) current += Time.deltaTime * regeneration;
         if (current > maxMana) current = maxMana;
     }
 }

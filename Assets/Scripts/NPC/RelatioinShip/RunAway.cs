@@ -14,6 +14,7 @@ public class RunAway : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0) return;
         if (!enable) return;
         target.normalDistance = selfDistance;
         target.normalInDifference = 0;

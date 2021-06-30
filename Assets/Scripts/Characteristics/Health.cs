@@ -16,10 +16,10 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (current < maxHealth){
+        if (current < maxHealth || regeneration < 0){
             current += Time.deltaTime * regeneration;
         }
-        if (current >= maxHealth){
+        if (current > maxHealth){
             current = maxHealth;
         }
     }

@@ -72,27 +72,29 @@ public class Man : Quest
             if ((man.transform.position - exit.transform.position).magnitude < 2) index++;
             if (manDialog.topics[0].usingCount > lastYesCount)
             {
-                followPlayer();
+                FollowPlayer();
                 lastYesCount++;
             }
             if (manDialog.topics[1].usingCount > lastNoCount)
             {
-                notFollowPlayer();
+                StartCoroutine(NotFollowPlayer());
                 lastNoCount++;
             }
         }
         if(index == 4)
         {
             manDialog.ChangeGreeting(greeting3);
+            manDialog.ChangeTopicsArray(new int[0]);
             manAfterDeath.items = new GameObject[1];
             manAfterDeath.items[0] = present;
             elfDialog.AddTopic(newElfGoodTopic);
-            notFollowPlayer();
+            StartCoroutine(NotFollowPlayer());
             index++;
         }
         if(index == 5 && manDialog.greeting.usingCount > 0)
         {
-            man.GetComponent<Health>().current = 0;
+            man.GetComponent<Health>().current = 1;
+            man.GetComponent<Health>().regeneration = -100;
             manCopy.SetActive(true);
             index++;
         }
@@ -102,15 +104,16 @@ public class Man : Quest
         }
     }
 
-    void followPlayer()
+    void FollowPlayer()
     {
         manTarget.target = player;
         manTarget.playerRelationship = 100;
     }
 
-    IEnumerator notFollowPlayer()
+    IEnumerator NotFollowPlayer()
     {
         manTarget.playerRelationship = 50;
+        manTarget.relationship = 50;
         yield return null;
         manTarget.target = man;
         manTarget.playerRelationship = 120;

@@ -16,6 +16,7 @@ public class Following : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) return;
         if (!enable)
         {
             mainTarget = null;

@@ -45,6 +45,7 @@ public class PlayerCastSpell : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0) return;
         if (spellTime != 0) spellTime += Time.deltaTime;
         if (audioTime != 0) audioTime += Time.deltaTime;
         if (spellTime > spellWaiting + 1) spellTime = 0;
