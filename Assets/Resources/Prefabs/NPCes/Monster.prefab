@@ -374,8 +374,7 @@ MonoBehaviour:
   enable: 1
   index: 0
   currentWeapon: {fileID: 0}
-  sounds:
-  - {fileID: 8300000, guid: 4bd0800f0e6e2e2418ee25b69d48946a, type: 3}
+  sounds: []
   changeWeaponWaiting: 10
   attackWaiting: 2
   fixedAudioWaiting: 10

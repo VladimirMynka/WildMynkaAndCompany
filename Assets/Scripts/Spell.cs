@@ -60,6 +60,7 @@ public class Spell : MonoBehaviour
         {
             time += 1;
             index++;
+            if(index >= sprites.Length) index = 0;
             sr.sprite = sprites[index];
         }
     }

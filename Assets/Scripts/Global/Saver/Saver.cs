@@ -131,6 +131,22 @@ public abstract class Saver : MonoBehaviour
         health.regeneration = NextFloat();
     }
 
+    protected void SaveMana()
+    {
+        var mana = GetComponent<Mana>();
+        Put(mana.current);
+        Put(mana.maxMana);
+        Put(mana.regeneration);
+    }
+    protected void LoadMana()
+    {
+        var mana = GetComponent<Mana>();
+        if(mana == null) mana = gameObject.AddComponent<Mana>();
+        mana.current = NextFloat();
+        mana.maxMana = NextFloat();
+        mana.regeneration = NextFloat();
+    }
+
     protected void SaveCharacteristics()
     {
         var characteristics = GetComponent<Characteristics>();
@@ -377,21 +393,33 @@ public abstract class Saver : MonoBehaviour
     protected void SaveNpcCreator()
     {
         var creator = GetComponent<NPCCreator>();
-        Put(creator.currentCreature == null);
         Put(creator.index);
         Put(creator.k);
+        Put(creator.timer);
+        Put(creator.currentCreature != null);
     }
     protected void LoadNpcCreator()
     {
         var creator = GetComponent<NPCCreator>();
         if (creator == null) creator = gameObject.AddComponent<NPCCreator>();
-        bool exist = NextBool();
         creator.index = NextInt();
         creator.k = NextFloat();
+        creator.beginTimer = NextFloat();
+        bool exist = NextBool();
         if(exist)
         {
-            creator.currentCreature = Instantiate(creator.prefabs[creator.index], transform.position, transform.rotation);
-            creator.currentCreature.name = creator.gameObject.name + creator.currentCreature.name;
+            creator.CreateNPC();
         }
+    }
+
+    protected void SaveCamera()
+    {
+        var savingCamera = GetComponent<Camera>();
+        Put(savingCamera.orthographicSize);
+    }
+    protected void LoadCamera()
+    {
+        var loadingCamera = GetComponent<Camera>();
+        if (loadingCamera == null) loadingCamera = gameObject.AddComponent<Camera>();
     }
 }

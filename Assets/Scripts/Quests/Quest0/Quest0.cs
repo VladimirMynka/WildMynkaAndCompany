@@ -35,8 +35,8 @@ public class Quest0 : Quest
 
         if(index == 0 && time == 0)
         { 
-            skeleton1.GetComponent<Target>().target = null;
-            skeleton2.GetComponent<Target>().target = null;
+            if(skeleton1 != null) skeleton1.GetComponent<Target>().target = null;
+            if(skeleton2 != null) skeleton2.GetComponent<Target>().target = null;
             index++;
         }
 
@@ -55,16 +55,12 @@ public class Quest0 : Quest
             index++;
         }
 
+        if(index > 2 && weaponCanvas.active == false) weaponCanvas.SetActive(true);
+
         if(index == 3 && skeleton1 == null)
         {
             Open(helpCanvas, helpStrings[2]);
             index++;
-        }
-
-        if(index > 3 && skeleton1 != null)
-        {
-            skeleton1.GetComponent<AfterDeath>().enabled = false;
-            Destroy(skeleton1);
         }
 
         if(index == 4 && inventory.spells.Count > 0)
@@ -80,12 +76,6 @@ public class Quest0 : Quest
             Open(helpCanvas, helpStrings[4]);
             elfTarget.playerRelationship = 120;
             index++;
-        }
-
-        if(index > 5 && skeleton2 != null)
-        {
-            skeleton2.GetComponent<AfterDeath>().enabled = false;
-            Destroy(skeleton2);
         }
 
         if(index == 6 && (inventory.spells.Count > 1 || inventory.weapons.Count > 1))

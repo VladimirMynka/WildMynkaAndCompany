@@ -17,11 +17,13 @@ public class CastSpell : MonoBehaviour
     public float spellDistance;
     public float spellNormalInDifference;
     public float spellNormalOutDifference;
+    Characteristics characteristics;
     Inventory inventory;
     Target target;
     Mana mana;
     void Start()
     {
+        characteristics = GetComponent< Characteristics >();
         inventory = GetComponent< Inventory >();
         target = GetComponent< Target >();
         mana = GetComponent<Mana>();
@@ -49,13 +51,13 @@ public class CastSpell : MonoBehaviour
         if(target.distance - spellDistance > spellNormalOutDifference) return;
         if(spellDistance - target.distance > spellNormalInDifference) return;
         var spellToCast = inventory.spells[index];
-        if(spellToCast.GetComponent<Spell>().manaCost > mana.current) return;
+        if(spellToCast.GetComponent<Spell>().ManaCost(characteristics) > mana.current) return;
         currentSpell = Instantiate(spellToCast, transform.position, transform.rotation);
         
         Spell spell = currentSpell.GetComponent<Spell>();
         if (spell != null)
         {
-            mana.current -= spell.manaCost;
+            mana.current -= spell.ManaCost(characteristics);
             spell.owner = gameObject;
             spell.begin = transform.position;
             spell.end = target.pointTarget;

@@ -20,16 +20,7 @@ public class NpcCreatorSaver : Saver
         savedName = gameObject.name;
         
         Initiate();
-        StartCoroutine(LoadCreator(saveName));
-    }
-
-    IEnumerator LoadCreator(string saveName)
-    {
+        gameObject.name = gameObject.name.Remove(0, saveName.Length);
         LoadNpcCreator();
-        yield return null;
-        var currentCreature = GetComponent<NPCCreator>().currentCreature.GetComponent<Saver>();
-        currentCreature.gameObject.name = saveName + currentCreature.gameObject.name;
-        currentCreature.Load(saveName);
-        currentCreature.gameObject.name = currentCreature.gameObject.name.Remove(0, saveName.Length);
     }
 }

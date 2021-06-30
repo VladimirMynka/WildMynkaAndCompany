@@ -96,11 +96,6 @@ public class Man : Quest
             manCopy.SetActive(true);
             index++;
         }
-        if(index > 5 && man != null)
-        {
-            manAfterDeath.enabled = false;
-            Destroy(man);
-        }
         if(index > 5 && manCopy.active == false)
         {
             manCopy.SetActive(true);

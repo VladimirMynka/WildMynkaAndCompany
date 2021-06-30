@@ -18,7 +18,7 @@ public class NPCCreator : MonoBehaviour
 
     public GameObject[] prefabs;
     public GameObject[] items;
-    public float timer = 0;
+    public float timer;
     public float waiting;
     public int index;
     public GameObject currentCreature;
@@ -28,14 +28,30 @@ public class NPCCreator : MonoBehaviour
     public NPCParameters beginParameters;
     public float beginKoefficient;
     public float k = 1;
+    int wait = 10;
+    bool needWait = true;
+    public float beginTimer;
 
 
     void Update() 
     {
+        if(needWait)
+        {
+            if(timer < wait) timer += Time.deltaTime;
+            if(timer > wait)
+            { 
+                timer = beginTimer;
+                needWait = false;
+            }
+            return;
+        }
+
         if(currentCreature == null)
         {
             if(timer == 0)
             { 
+                k *= beginKoefficient;
+                index = Random.Range(0, prefabs.Length);
                 CreateNPC();
                 timer = 1;
             }
@@ -44,10 +60,8 @@ public class NPCCreator : MonoBehaviour
         if(timer >= waiting + 1) timer = 0;
     }
 
-    void CreateNPC()
+    public void CreateNPC()
     {
-        k *= beginKoefficient;
-        index = Random.Range(0, prefabs.Length);
         currentCreature = Instantiate(prefabs[index], transform.position, transform.rotation);
         currentCreature.name = gameObject.name + currentCreature.name;
         SetPosition(currentCreature);

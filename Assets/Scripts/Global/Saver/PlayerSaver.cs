@@ -13,6 +13,7 @@ public class PlayerSaver : Saver
         
         SaveTransform();
         SaveHealth();
+        SaveMana();
         SavePlayerMoving();
         SaveCharacteristics();
         SaveInventory();
@@ -28,6 +29,7 @@ public class PlayerSaver : Saver
         Initiate();
         LoadTransform();
         LoadHealth();
+        LoadMana();
         LoadPlayerMoving();
         LoadCharacteristics();
         LoadInventory();

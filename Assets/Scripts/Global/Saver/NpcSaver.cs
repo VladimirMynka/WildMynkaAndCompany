@@ -13,6 +13,7 @@ public class NpcSaver : Saver
         
         SaveTransform();
         SaveHealth();
+        SaveMana();
         SaveCharacteristics();
         SaveInventory();
         SaveTarget();
@@ -29,6 +30,7 @@ public class NpcSaver : Saver
         Initiate();
         LoadTransform();
         LoadHealth();
+        LoadMana();
         LoadCharacteristics();
         LoadInventory();
         LoadTarget();

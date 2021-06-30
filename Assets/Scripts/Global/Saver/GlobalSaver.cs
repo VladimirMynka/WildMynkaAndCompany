@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalSaver : Saver
@@ -48,13 +50,42 @@ public class GlobalSaver : Saver
         if (!saves.Contains($"~{saveName}"))
             throw new ArgumentException($"No save with name {saveName} exists.");        
 
+        StartCoroutine(DestroyAndLoad(saveName));
+    }
+
+    IEnumerator DestroyAndLoad(string saveName)
+    {
+        var deather = FindObjectOfType<DeathSaver>();
+        string deatherName = deather.gameObject.name;
+        deather.gameObject.name = saveName + deatherName;
+        deather.Load(saveName);
+        deather.gameObject.name = deatherName;
+        yield return null;
+
+        var allCreators = FindObjectsOfType<NpcCreatorSaver>();
+        foreach (var one in allCreators)
+        {
+            string oneName = one.gameObject.name;
+            one.gameObject.name = saveName + oneName;
+            Debug.Log(oneName);
+            one.Load(saveName);
+            yield return null;
+            one.gameObject.name = oneName;
+        }
+        yield return null;
+
+
         var all = FindObjectsOfType<Saver>();
         foreach (var one in all)
         {
-            if (!(one is BranchSaver) && !(one is GlobalSaver)){
-                one.gameObject.name = saveName + one.gameObject.name;
+            if (!(one is GlobalSaver) && !(one is DeathSaver) && !(one is NpcCreatorSaver))
+            {
+                string oneName = one.gameObject.name;
+                one.gameObject.name = saveName + oneName;
+                Debug.Log(oneName);
                 one.Load(saveName);
-                one.gameObject.name = one.gameObject.name.Remove(0, saveName.Length);
+                yield return null;
+                one.gameObject.name = oneName;
             }
         }
     }
