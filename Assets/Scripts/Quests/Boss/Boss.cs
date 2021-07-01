@@ -22,10 +22,10 @@ public class Boss : MonoBehaviour
 
     private void Update() 
     {
-        if ((points[currentPoint].transform.position - transform.position).sqrMagnitude < 1)
+        if ((points[currentPoint].transform.position - transform.position).sqrMagnitude < 4)
         {
             currentPoint++;
-            if (currentPoint > points.Length) currentPoint = 0;
+            if (currentPoint >= points.Length) currentPoint = 0;
             target.target = points[currentPoint];
             int index = Random.Range(0, spells.Length);
             foreach(GameObject spellTarget in targets)
