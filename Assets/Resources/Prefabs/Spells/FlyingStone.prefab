@@ -267,7 +267,7 @@ MonoBehaviour:
   afterSpellWaiting: 1
   begin: {x: 0, y: 0, z: 0}
   end: {x: 0, y: 0, z: 0}
-  speed: 1.2
+  speed: 3.5
   hasTarget: 1
   manaCost: 5
   spellType: 0
