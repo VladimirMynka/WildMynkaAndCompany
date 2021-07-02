@@ -100,6 +100,22 @@ public abstract class Saver : MonoBehaviour
         transformLocal.localRotation = new Quaternion(NextFloat(), NextFloat(), NextFloat(), NextFloat());
     }
 
+    protected void SaveLayer()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Put(spriteRenderer.sortingLayerName);
+        Put(spriteRenderer.sortingOrder);  
+    }
+    protected void LoadLayer()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) spriteRenderer = AddComponent<SpriteRenderer>();
+
+        spriteRenderer.sortingLayerName = NextString();
+        spriteRenderer.sortingOrder = NextInt();
+    }
+
     protected void SaveSprite()
     {
         var sprite = GetComponent<SavingSprite>();

@@ -130,7 +130,7 @@ public class Dialog : MonoBehaviour
         topic.usingCount++;
     }
 
-    public void AddTopic(int topicIndex)
+    public int AddTopic(int topicIndex)
     {
         int[] newIndeces = new int[topicsIndeces.Length + 1];
         topics = new Topic[newIndeces.Length];
@@ -142,6 +142,7 @@ public class Dialog : MonoBehaviour
         newIndeces[newIndeces.Length - 1] = topicIndex;
         topics[newIndeces.Length - 1] = globalTopics.topics[newIndeces[newIndeces.Length - 1]];
         topicsIndeces = newIndeces;
+        return newIndeces.Length - 1;
     }
     public void RemoveTopic(int topicIndex)
     {
@@ -207,5 +208,15 @@ public class Dialog : MonoBehaviour
     public int GetTopicsCount()
     {
         return topics.Length;
+    }
+
+    public int GetLocalIndexByGlobal(int globalIndex)
+    {
+        return Array.IndexOf(topicsIndeces, globalIndex);
+    }
+
+    public int GetGlobalIndexByLocal(int localIndex)
+    {
+        return topicsIndeces[localIndex];
     }
 }

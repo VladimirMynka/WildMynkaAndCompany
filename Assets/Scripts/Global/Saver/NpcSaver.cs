@@ -12,6 +12,7 @@ public class NpcSaver : Saver
         savedName = saveName + gameObject.name;;
         
         SaveTransform();
+        SaveLayer();
         SaveHealth();
         SaveMana();
         SaveCharacteristics();
@@ -29,6 +30,7 @@ public class NpcSaver : Saver
         
         Initiate();
         LoadTransform();
+        LoadLayer();
         LoadHealth();
         LoadMana();
         LoadCharacteristics();

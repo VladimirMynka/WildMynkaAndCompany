@@ -79,6 +79,19 @@ public class Spell : MonoBehaviour
 
         throw new Exception("This cannot happen");
     }
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(owner == null) return;
+        if(other.isTrigger) return;
+        GameObject otherGO = other.gameObject;
+        if (otherGO == null) return;
+        if (otherGO == owner) return;
+        Debug.Log(otherGO);
+        if (otherGO.transform.IsChildOf(owner.transform)) return;
+
+        Destroy(gameObject, 0.2f);
+    }
 }
 
 public enum SpellType

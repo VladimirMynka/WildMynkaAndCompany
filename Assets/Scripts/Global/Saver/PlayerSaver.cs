@@ -12,6 +12,7 @@ public class PlayerSaver : Saver
         savedName = saveName + gameObject.name;
         
         SaveTransform();
+        SaveLayer();
         SaveHealth();
         SaveMana();
         SavePlayerMoving();
@@ -28,6 +29,7 @@ public class PlayerSaver : Saver
         
         Initiate();
         LoadTransform();
+        LoadLayer();
         LoadHealth();
         LoadMana();
         LoadPlayerMoving();
