@@ -43,9 +43,10 @@ public class ToHuntingGrounds : Quest
         }
         if(index == 0)
         {
-            foreach(Topic topic in georgeDialog.topics)
+            int topicsCount = georgeDialog.GetTopicsCount();
+            for(int i = 0; i < topicsCount; i++)
             {
-                if(topic.usingCount > 0)
+                if(georgeDialog.GetTopicCount(i) > 0)
                 {
                     index++;
                     break;

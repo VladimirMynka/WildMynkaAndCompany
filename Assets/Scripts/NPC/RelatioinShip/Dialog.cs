@@ -7,18 +7,18 @@ using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
-    public GameObject dialogCanvas;
+    GameObject dialogCanvas;
     GameObject content;
     public GameObject buttonExample;
     GameObject topicsRectangle;
-    public Topic[] topics;
+    Topic[] topics;
     public int[] topicsIndeces;
-    public Topic greeting;
+    Topic greeting;
     public int greetingIndex;
-    public GameObject globalTopicsObject;
+    GameObject globalTopicsObject;
     GlobalDialogs globalTopics;
-    public GameObject miniCanvas;
-    public bool active;
+    GameObject miniCanvas;
+    bool active;
     public string text;
     Target targetScript;
     GameObject player;
@@ -26,6 +26,10 @@ public class Dialog : MonoBehaviour
 
     void Awake() 
     {
+        Canvases global = FindObjectOfType<Canvases>();
+        dialogCanvas = global.dialogCanvas;
+        miniCanvas = global.miniCanvas;
+
         globalTopicsObject = GameObject.FindWithTag("GlobalDialogs");
         topics = new Topic[topicsIndeces.Length];
         globalTopics = globalTopicsObject.GetComponent<GlobalDialogs>();
@@ -188,5 +192,20 @@ public class Dialog : MonoBehaviour
         Time.timeScale = 1;
         StartCoroutine(ClearAndAddAll());
         Time.timeScale = oldTimeScale;
+    }
+
+    public int GetGreetingCount()
+    {
+        return greeting.usingCount;
+    }
+
+    public int GetTopicCount(int i)
+    {
+        return topics[i].usingCount;
+    }
+
+    public int GetTopicsCount()
+    {
+        return topics.Length;
     }
 }

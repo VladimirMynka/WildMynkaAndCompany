@@ -48,5 +48,4 @@ public class Boss : MonoBehaviour
             }
         }
     }
-
 }

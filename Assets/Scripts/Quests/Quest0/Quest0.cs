@@ -15,6 +15,8 @@ public class Quest0 : Quest
     public GameObject skeleton2;
     public GameObject elf;
     Target elfTarget;
+
+    [TextAreaAttribute(5, 20)] 
     public string[] helpStrings;
 
     void Awake()
@@ -93,9 +95,5 @@ public class Quest0 : Quest
         Open(menu);
         menu.GetComponentInChildren<Text>().text = text;
         Time.timeScale = 0;
-    }
-    void Close(GameObject menu)
-    {
-        menu.SetActive(false);
     }
 }

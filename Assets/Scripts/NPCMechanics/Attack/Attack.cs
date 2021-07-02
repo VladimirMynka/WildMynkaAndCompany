@@ -9,10 +9,11 @@ public class Attack : MonoBehaviour
     public GameObject currentWeapon;
     protected Inventory inventory;
     Arms arms;
-    float hitingSpeed;
+    float firstHitingSpeed;
+    float secondHitingSpeed;
     float hitingIndex;
     float rotateZ;
-    float rotateSpan = 10;
+    float rotateSpan = 20;
 
     protected virtual void Awake()
     {
@@ -51,7 +52,8 @@ public class Attack : MonoBehaviour
         hitingIndex = 1;
 
         Weapon weapon = currentWeapon.GetComponent<Weapon>();
-        hitingSpeed = weapon.speed;
+        firstHitingSpeed = weapon.firstRotateSpeed;
+        secondHitingSpeed = weapon.secondRotateSpeed;
         rotateSpan = weapon.rotateSpan;
     }
 
@@ -69,7 +71,7 @@ public class Attack : MonoBehaviour
                 hitingIndex = 2;
                 currentWeapon.GetComponent<Weapon>().Hit();
             }
-            rotateZ += hitingSpeed;
+            rotateZ += firstHitingSpeed;
         }
         if(hitingIndex == 2)
         {
@@ -79,7 +81,7 @@ public class Attack : MonoBehaviour
                 rotateZ = 0;
                 currentWeapon.GetComponent<Weapon>().EndHit();
             }
-            rotateZ -= hitingSpeed;
+            rotateZ -= secondHitingSpeed;
         }
         currentWeapon.transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
     }

@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 public class SaveMenuButtons : MonoBehaviour
 {
     public GameObject buttonExample;
-    public GameObject saveMenu;
-    public GameObject saveContent;
-    public GameObject loadMenu;
-    public GameObject loadContent;
-    public GameObject applyCanvas;
+    GameObject saveMenu;
+    GameObject saveContent;
+    GameObject loadMenu;
+    GameObject loadContent;
+    GameObject applyCanvas;
     GlobalSaver globalSaver;
     public static readonly string SavesKey = "Saves";
     public static readonly string LastSaveKey = "LastSave";
@@ -24,6 +24,11 @@ public class SaveMenuButtons : MonoBehaviour
 
     void Start()
     {
+        Canvases global = FindObjectOfType<Canvases>();
+        saveMenu = global.saveMenu;
+        loadMenu = global.loadMenu;
+        applyCanvas = global.applyCanvas;
+
         globalSaver = GetComponent<GlobalSaver>();
         saveContent = saveMenu.transform.Find("Image").Find("Saves").Find("Viewport").Find("Content").gameObject;
         loadContent = loadMenu.transform.Find("Image").Find("Loads").Find("Viewport").Find("Content").gameObject;
@@ -54,7 +59,7 @@ public class SaveMenuButtons : MonoBehaviour
     {
         clearSaveContent();
         clearLoadContent();
-        yield return new WaitForSeconds(0.05f);
+        yield return null;
 
         string saves = PlayerPrefs.GetString(SavesKey, "");
         MatchHandler handler = new MatchHandler(new Regex("~([^~]*)").Match(saves));
@@ -67,18 +72,20 @@ public class SaveMenuButtons : MonoBehaviour
         }
     }
 
-    void clearSaveContent()
+    IEnumerator clearSaveContent()
     {
         for(int i = 1; i < saveContent.transform.childCount; i++){
             Destroy(saveContent.transform.GetChild(i).gameObject);
-        } 
+        }
+        yield return null;
     }
 
-    void clearLoadContent()
+    IEnumerator clearLoadContent()
     {
         for(int i = 0; i < loadContent.transform.childCount; i++){
             Destroy(loadContent.transform.GetChild(i).gameObject);
         }
+        yield return null;
     }
 
     void addSaveButton(string saveName, string saveDate)

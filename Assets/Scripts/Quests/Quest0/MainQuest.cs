@@ -26,7 +26,7 @@ public class MainQuest : Quest
             elfDialog.ChangeTopicsArray(topics1);
             index++;
         }
-        if(index == 1 && elfDialog.greeting.usingCount > 0)
+        if(index == 1 && elfDialog.GetGreetingCount() > 0)
         {
             elfDialog.ChangeGreeting(greeting2);
             door.SetActive(true);

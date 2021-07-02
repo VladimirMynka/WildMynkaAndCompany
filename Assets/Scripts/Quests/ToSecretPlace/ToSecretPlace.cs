@@ -46,9 +46,8 @@ public class ToSecretPlace : Quest
     {
         if(index == 0)
         {
-            if(dimitriyDialog.greeting.usingCount > 0)
+            if(dimitriyDialog.GetGreetingCount() > 0)
             {
-                Debug.Log(dimitriyDialog.greeting.usingCount);
                 dimitriyDialog.ChangeGreeting(newGreeting1);
                 index++;
             }
@@ -112,7 +111,7 @@ public class ToSecretPlace : Quest
 
         if(index == 4)
         {
-            if(dimitriyDialog.greeting.usingCount > 0)
+            if(dimitriyDialog.GetGreetingCount() > 0)
             {
                 dimitriyDialog.AddTopic(aboutTaskTopic);
                 dimitriyDialog.UpdateDialog();

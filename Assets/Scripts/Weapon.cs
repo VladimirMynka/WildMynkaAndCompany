@@ -8,7 +8,8 @@ public class Weapon : MonoBehaviour
     public GameObject owner;
     public Characteristics ownerPar;
     public float damage = 10;
-    public float speed = 1;
+    public float firstRotateSpeed = 1;
+    public float secondRotateSpeed = 2;
     public float rotateSpan = 10;
     public AudioClip sound;
     bool doDamage;

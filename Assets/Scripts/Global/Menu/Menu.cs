@@ -5,14 +5,23 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject mainMenu;
-    public GameObject saveMenu;
-    public GameObject loadMenu;
-    public GameObject applyCanvas;
+    GameObject mainMenu;
+    GameObject saveMenu;
+    GameObject loadMenu;
+    GameObject applyCanvas;
     public float lastTimeScale;
     public bool open;
     [TextArea()]
     public string exitText;
+
+    void Awake() 
+    {
+        Canvases global = FindObjectOfType<Canvases>();
+        mainMenu = global.mainMenu;
+        saveMenu = global.saveMenu;
+        loadMenu = global.loadMenu;
+        applyCanvas = global.applyCanvas;
+    }
 
     void Update() 
     {

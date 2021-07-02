@@ -3,53 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LyingWeapon : MonoBehaviour
+public class LyingWeapon : LyingItem
 {
     public int addingWeapon;
-    public GameObject miniCanvas;
-    public GameObject player;
-    ActiveObject activeObject;
-    public string text;
-    public bool active;
 
-    void Awake()
+    protected override void OnActivate(GameObject creature)
     {
-        player = GameObject.FindWithTag("Player");
-        activeObject = player.GetComponent<ActiveObject>();
-    }
-
-    void Update() 
-    {
-        if(!active) return;
-        if(activeObject.activeObject != gameObject) active = false;
-        if(Input.GetKeyDown("e")){
-            AddWeapon(player);
-        }
-        miniCanvas.transform.Find("Image").position = transform.position;
-    }
-    
-    void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.gameObject.tag != "Player")
-        {
-            AddWeapon(other.gameObject);
-        }
-        else
-        {
-            activeObject.activeObject = gameObject;
-            active = true;
-            miniCanvas.SetActive(true);
-            miniCanvas.GetComponentInChildren<Text>().text = text;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.gameObject == player)
-        {
-            active = false;
-            miniCanvas.SetActive(false);
-        }
+        AddWeapon(creature);
     }
 
     void AddWeapon(GameObject creature)

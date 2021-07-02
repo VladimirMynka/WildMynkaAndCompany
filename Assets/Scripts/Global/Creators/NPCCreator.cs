@@ -22,13 +22,11 @@ public class NPCCreator : MonoBehaviour
     public float waiting;
     public int index;
     public GameObject currentCreature;
-    public GameObject miniCanvas;
-    public GameObject dialogCanvas;
     public float radius;
     public NPCParameters beginParameters;
     public float beginKoefficient;
     public float k = 1;
-    int wait = 10;
+    int wait = 3;
     bool needWait = true;
     public float beginTimer;
 
@@ -69,7 +67,6 @@ public class NPCCreator : MonoBehaviour
         SetCharacteristics(currentCreature);
         SetTarget(currentCreature);
         SetAfterDeath(currentCreature);
-        SetDialog(currentCreature);
     }
 
     void SetPosition(GameObject npc)
@@ -105,20 +102,12 @@ public class NPCCreator : MonoBehaviour
     void SetAfterDeath(GameObject npc)
     {
         var afterDeath = npc.GetComponent<AfterDeath>();
-        afterDeath.miniCanvas = miniCanvas;
         afterDeath.items = new GameObject[items.Length];
         for(int i = 0; i < items.Length; i++)
         {
             int probably = Random.Range(0, 100);
             if(probably < 5) afterDeath.items[i] = items[i];
         }
-    }
-
-    void SetDialog(GameObject npc)
-    {
-        var dialog = npc.GetComponentInChildren<Dialog>();
-        dialog.miniCanvas = miniCanvas;
-        dialog.dialogCanvas = dialogCanvas;
     }
 
     Vector3 GetRandomPosition()

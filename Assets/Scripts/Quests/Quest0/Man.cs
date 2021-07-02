@@ -62,7 +62,7 @@ public class Man : Quest
             soldier.GetComponent<AfterDeath>().enabled = false;
             Destroy(soldier);
         }
-        if(index == 2 && manDialog.greeting.usingCount > 0)
+        if(index == 2 && manDialog.GetGreetingCount() > 0)
         {
             manDialog.ChangeGreeting(greeting2);
             index++;
@@ -70,12 +70,12 @@ public class Man : Quest
         if(index == 3)
         {
             if ((man.transform.position - exit.transform.position).magnitude < 2) index++;
-            if (manDialog.topics[0].usingCount > lastYesCount)
+            if (manDialog.GetTopicCount(0) > lastYesCount)
             {
                 FollowPlayer();
                 lastYesCount++;
             }
-            if (manDialog.topics[1].usingCount > lastNoCount)
+            if (manDialog.GetTopicCount(1) > lastNoCount)
             {
                 StartCoroutine(NotFollowPlayer());
                 lastNoCount++;
@@ -91,7 +91,7 @@ public class Man : Quest
             StartCoroutine(NotFollowPlayer());
             index++;
         }
-        if(index == 5 && manDialog.greeting.usingCount > 0)
+        if(index == 5 && manDialog.GetGreetingCount() > 0)
         {
             man.GetComponent<Health>().current = 1;
             man.GetComponent<Health>().regeneration = -100;
