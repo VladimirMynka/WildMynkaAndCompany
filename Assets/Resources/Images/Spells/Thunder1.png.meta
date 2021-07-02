@@ -1,34 +1,52 @@
 fileFormatVersion: 2
-guid: d34c9b004fc459e42891f7dfe3f9557d
+guid: 529c48b2aedc811d7bb91d375f67a5ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6158105264302742662
-    second: Darkness3_0
+      213: -5296979300547338667
+    second: Thunder1_0
   - first:
-      213: -1667017198870185926
-    second: Darkness3_1
+      213: 4508642138168368575
+    second: Thunder1_1
   - first:
-      213: -1195576042159786555
-    second: Darkness3_2
+      213: 6275628068103709353
+    second: Thunder1_2
   - first:
-      213: 5457663698589392996
-    second: Darkness3_3
+      213: 5221255511253354890
+    second: Thunder1_3
   - first:
-      213: -4999152225015484954
-    second: Darkness3_4
+      213: -5380665449145295544
+    second: Thunder1_4
   - first:
-      213: -1504179137501921462
-    second: Darkness3_5
+      213: 7381720111533449625
+    second: Thunder1_5
   - first:
-      213: -7068527302146291996
-    second: Darkness3_6
+      213: -4008116439404570302
+    second: Thunder1_6
   - first:
-      213: 2664467391689594873
-    second: Darkness3_7
+      213: -2295693470528888224
+    second: Thunder1_7
   - first:
-      213: 8256614359216334802
-    second: Darkness3_8
+      213: 2485672605333950315
+    second: Thunder1_8
+  - first:
+      213: 9132095839905968518
+    second: Thunder1_9
+  - first:
+      213: 1915475916873775104
+    second: Thunder1_10
+  - first:
+      213: -7975109234621523429
+    second: Thunder1_11
+  - first:
+      213: 4002401438616374279
+    second: Thunder1_12
+  - first:
+      213: -8627814758004536431
+    second: Thunder1_13
+  - first:
+      213: -4861345337849156032
+    second: Thunder1_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,23 +132,116 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Darkness3_0
+      name: Thunder1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e574804695d76b0800000000000000
+      internalID: -5296979300547338667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd12e8032ae19e30800000000000000
+      internalID: 4508642138168368575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a2eacd6a72871750800000000000000
+      internalID: 6275628068103709353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a898ecd5930a57840800000000000000
+      internalID: 5221255511253354890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d1a7038490455b0800000000000000
+      internalID: -5380665449145295544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_5
       rect:
         serializedVersion: 2
         x: 0
@@ -144,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a73a5cf93e30a8aa0800000000000000
-      internalID: -6158105264302742662
+      spriteID: 991ee47d453217660800000000000000
+      internalID: 7381720111533449625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_1
+      name: Thunder1_6
       rect:
         serializedVersion: 2
         x: 192
@@ -165,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3830ea90b09dd8e0800000000000000
-      internalID: -1667017198870185926
+      spriteID: 24913e2955f4068c0800000000000000
+      internalID: -4008116439404570302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_2
+      name: Thunder1_7
       rect:
         serializedVersion: 2
         x: 384
@@ -186,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c539119ce5786fe0800000000000000
-      internalID: -1195576042159786555
+      spriteID: 06221ff93fe0420e0800000000000000
+      internalID: -2295693470528888224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_3
+      name: Thunder1_8
       rect:
         serializedVersion: 2
         x: 576
@@ -207,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46027f9c7348dbb40800000000000000
-      internalID: 5457663698589392996
+      spriteID: b6f89dc9012ee7220800000000000000
+      internalID: 2485672605333950315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_4
+      name: Thunder1_9
       rect:
         serializedVersion: 2
         x: 768
@@ -228,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed29d9b9817f9ab0800000000000000
-      internalID: -4999152225015484954
+      spriteID: 681fa6058c8bbbe70800000000000000
+      internalID: 9132095839905968518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_5
+      name: Thunder1_10
       rect:
         serializedVersion: 2
         x: 0
@@ -249,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4ff4ae3b05102be0800000000000000
-      internalID: -1504179137501921462
+      spriteID: 008b311a233259a10800000000000000
+      internalID: 1915475916873775104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_6
+      name: Thunder1_11
       rect:
         serializedVersion: 2
         x: 192
@@ -270,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e68b6e8edb87ed90800000000000000
-      internalID: -7068527302146291996
+      spriteID: b1a5271b768b25190800000000000000
+      internalID: -7975109234621523429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_7
+      name: Thunder1_12
       rect:
         serializedVersion: 2
         x: 384
@@ -291,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f7154dc9f61af420800000000000000
-      internalID: 2664467391689594873
+      spriteID: 70ccd3d17e26b8730800000000000000
+      internalID: 4002401438616374279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_8
+      name: Thunder1_13
       rect:
         serializedVersion: 2
         x: 576
@@ -312,8 +423,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d7aa78a303659270800000000000000
-      internalID: 8256614359216334802
+      spriteID: 19b44419038d34880800000000000000
+      internalID: -8627814758004536431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thunder1_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04eeff6fb28098cb0800000000000000
+      internalID: -4861345337849156032
       vertices: []
       indices: 
       edges: []

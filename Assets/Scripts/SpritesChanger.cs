@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpritesChanger : MonoBehaviour
 {
+
+
+
+    
     [System.Serializable]
     public class Rotater{
         public Sprite forward;
@@ -30,6 +34,8 @@ public class SpritesChanger : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         arms = GetComponent<Arms>();
         attack = GetComponent<Attack>();
+
+
     }
 
     void FixedUpdate() 
