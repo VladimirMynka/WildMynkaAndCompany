@@ -11,6 +11,7 @@ public class Subordination : MonoBehaviour
     Characteristics characteristics;
     Health ownerHealth;
     Target target;
+    float time = 0;
 
     void Start() {
         owner = GetComponent<Spell>().owner;
@@ -23,15 +24,17 @@ public class Subordination : MonoBehaviour
 
     void Update() 
     {
-        if (owner != player) return;
-        if (target.target != player || target.relationship != 100)
-            StartCoroutine(FollowPlayer(target));
-    }
-
-    void OnDestroy() 
-    {
-        if(target != null);
-        StartCoroutine(NotFollowPlayer(target));
+        time += Time.deltaTime;
+        if (time < 10)
+        {
+            if (owner != player) return;
+            if (target.target != player || target.relationship != 100)
+                StartCoroutine(FollowPlayer(target));
+        }
+        else
+        {
+            StartCoroutine(NotFollowPlayer(target));
+        }
     }
 
     IEnumerator FollowPlayer(Target target)
@@ -50,5 +53,7 @@ public class Subordination : MonoBehaviour
         target.target = target.gameObject;
         target.playerRelationship = 120;
         target.relationship = -20;
+        yield return null;
+        Destroy(gameObject);
     }
 }
