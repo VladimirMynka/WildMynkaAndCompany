@@ -29,6 +29,7 @@ public class NpcSaver : Saver
         savedName = gameObject.name;
         
         Initiate();
+        if(input == "") return;
         LoadTransform();
         LoadLayer();
         LoadHealth();

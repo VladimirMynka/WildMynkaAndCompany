@@ -38,7 +38,7 @@ public class Door : MonoBehaviour
         {
             if(other.gameObject.GetComponent<Health>() == null) return;
             other.gameObject.transform.position = exit;
-            player.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+            other.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         }
         else
         {

@@ -90,7 +90,7 @@ public class Spell : MonoBehaviour
         Debug.Log(otherGO);
         if (otherGO.transform.IsChildOf(owner.transform)) return;
 
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 0.1f);
     }
 }
 

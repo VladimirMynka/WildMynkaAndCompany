@@ -14,7 +14,7 @@ public class LyingWeapon : LyingItem
 
     void AddWeapon(GameObject creature)
     {
-        if (creature == null) return;
+        if (creature != player) return;
         var inventory = creature.GetComponent<Inventory>();
         if (inventory == null) return;
         inventory.AddWeapon(addingWeapon);

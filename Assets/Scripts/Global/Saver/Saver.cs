@@ -15,6 +15,7 @@ public abstract class Saver : MonoBehaviour
     private const string Token = "~([^~]*)";
     private static readonly Regex TokenRegex = new Regex(Token);
     protected static int currentTree = 0;
+    protected string input;
     
     private static MatchHandler matcher = null;
 
@@ -51,10 +52,12 @@ public abstract class Saver : MonoBehaviour
         output.Clear();
     }
 
-    protected string GetString() =>
-        PlayerPrefs.GetString(savedName);
+    protected string GetString()
+    {
+        input = PlayerPrefs.GetString(savedName);
+        return input;
+    }
     
-
     protected static float NextFloat()
     {
         return matcher.nextFloat();
@@ -110,7 +113,7 @@ public abstract class Saver : MonoBehaviour
     protected void LoadLayer()
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null) spriteRenderer = AddComponent<SpriteRenderer>();
+        if (spriteRenderer == null) spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 
         spriteRenderer.sortingLayerName = NextString();
         spriteRenderer.sortingOrder = NextInt();

@@ -46,9 +46,12 @@ public class DeathSaver : Saver
         {
             string destroyingName = NextString();
             var destroyingObject = GameObject.Find(destroyingName);
-            destroyingObject.SetActive(false);
-            Destroy(destroyingObject);
-            AddName(destroyingName);
+            if (destroyingObject != null)
+            {
+                destroyingObject.SetActive(false);
+                Destroy(destroyingObject);
+                AddName(destroyingName);
+            }
         }
     }
 }

@@ -32,24 +32,31 @@ public class Man : Quest
         manTarget = man.GetComponent<Target>();
         manAfterDeath = man.GetComponent<AfterDeath>();
         player = GameObject.FindWithTag("Player");
+        time = 1;
     }
 
     void Update()
     {
-        if(index == -1)
-        {
-            manAfterDeath.enabled = false;
-            Destroy(man);
+        if(time != 0)
+        { 
+            time += Time.deltaTime;
         }
+        if(time > 3) time = 0;
+        if(time != 0) return;
+
         if(index != -1 && index < 4 && man == null)
         {
             index = -1;
+            manCopy.SetActive(true);
+            Destroy(manCopy);
             elfDialog.AddTopic(newElfBadTopic);
         }
+
         if(index == 0)
         {
             manDialog.ChangeGreeting(greeting1);
             manDialog.ChangeTopicsArray(manTopics);
+            if (manCopy != null) manCopy.SetActive(false);
             index++;
         }
         if(index == 1 && soldier == null)
@@ -98,7 +105,7 @@ public class Man : Quest
             manCopy.SetActive(true);
             index++;
         }
-        if(index > 5 && manCopy.active == false)
+        if(index > 5 && manCopy != null && manCopy.active == false)
         {
             manCopy.SetActive(true);
         }

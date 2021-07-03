@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LyingItem : MonoBehaviour
 {
     GameObject miniCanvas;
-    GameObject player;
+    protected GameObject player;
     ActiveObject activeObject;
     public string text;
     bool active;

@@ -57,8 +57,8 @@ public class SaveMenuButtons : MonoBehaviour
 
     IEnumerator clearAndAddAll()
     {
-        clearSaveContent();
-        clearLoadContent();
+        StartCoroutine(clearSaveContent());
+        StartCoroutine(clearLoadContent());
         yield return null;
 
         string saves = PlayerPrefs.GetString(SavesKey, "");

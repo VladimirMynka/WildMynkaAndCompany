@@ -55,6 +55,12 @@ public class Attack : MonoBehaviour
         firstHitingSpeed = weapon.firstRotateSpeed;
         secondHitingSpeed = weapon.secondRotateSpeed;
         rotateSpan = weapon.rotateSpan;
+        if(!currentWeapon.GetComponent<SpriteRenderer>().flipX)
+        {
+            firstHitingSpeed *= -1;
+            secondHitingSpeed *= -1;
+            rotateSpan *= -1;
+        }
     }
 
     protected void AnimateHiting()
@@ -66,7 +72,8 @@ public class Attack : MonoBehaviour
         }
         if(hitingIndex == 1)
         {
-            if(rotateZ >= rotateSpan)
+            
+            if((rotateSpan > 0 && rotateZ >= rotateSpan) || (rotateSpan < 0 && rotateZ <= rotateSpan))
             { 
                 hitingIndex = 2;
                 currentWeapon.GetComponent<Weapon>().Hit();
@@ -75,7 +82,7 @@ public class Attack : MonoBehaviour
         }
         if(hitingIndex == 2)
         {
-            if(rotateZ <= 0)
+            if((rotateSpan > 0 && rotateZ <= 0) || (rotateSpan < 0 && rotateZ >= 0))
             {
                 hitingIndex = 0;
                 rotateZ = 0;
