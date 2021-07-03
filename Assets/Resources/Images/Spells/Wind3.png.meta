@@ -1,34 +1,49 @@
 fileFormatVersion: 2
-guid: d34c9b004fc459e42891f7dfe3f9557d
+guid: b080db0cdd4b8c3f29d050a35f0f071a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6158105264302742662
-    second: Darkness3_0
+      213: 8324689027669330764
+    second: Wind3_0
   - first:
-      213: -1667017198870185926
-    second: Darkness3_1
+      213: 5306958134031766521
+    second: Wind3_1
   - first:
-      213: -1195576042159786555
-    second: Darkness3_2
+      213: -9216257386961300788
+    second: Wind3_2
   - first:
-      213: 5457663698589392996
-    second: Darkness3_3
+      213: -6027496061794227117
+    second: Wind3_3
   - first:
-      213: -4999152225015484954
-    second: Darkness3_4
+      213: -4697700463888330346
+    second: Wind3_4
   - first:
-      213: -1504179137501921462
-    second: Darkness3_5
+      213: -6841795062367904589
+    second: Wind3_5
   - first:
-      213: -7068527302146291996
-    second: Darkness3_6
+      213: -3830218409325494275
+    second: Wind3_6
   - first:
-      213: 2664467391689594873
-    second: Darkness3_7
+      213: -525588040810038092
+    second: Wind3_7
   - first:
-      213: 8256614359216334802
-    second: Darkness3_8
+      213: -6818038315808061161
+    second: Wind3_8
+  - first:
+      213: -3788954321666581183
+    second: Wind3_9
+  - first:
+      213: 1911093386254539586
+    second: Wind3_10
+  - first:
+      213: 796411868310466920
+    second: Wind3_11
+  - first:
+      213: 2516546559926383751
+    second: Wind3_12
+  - first:
+      213: 5219566471563699933
+    second: Wind3_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,23 +129,116 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Darkness3_0
+      name: Wind3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b82d7809c378370800000000000000
+      internalID: 8324689027669330764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind3_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f355d03e4a16a940800000000000000
+      internalID: 5306958134031766521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind3_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc21a938cb6491080800000000000000
+      internalID: -9216257386961300788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind3_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c60bf44480a5ca0800000000000000
+      internalID: -6027496061794227117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind3_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6919fbc415a6eceb0800000000000000
+      internalID: -4697700463888330346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wind3_5
       rect:
         serializedVersion: 2
         x: 0
@@ -144,14 +252,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a73a5cf93e30a8aa0800000000000000
-      internalID: -6158105264302742662
+      spriteID: 3bc1a81e3af0d01a0800000000000000
+      internalID: -6841795062367904589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_1
+      name: Wind3_6
       rect:
         serializedVersion: 2
         x: 192
@@ -165,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3830ea90b09dd8e0800000000000000
-      internalID: -1667017198870185926
+      spriteID: dfffdfb66a458dac0800000000000000
+      internalID: -3830218409325494275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_2
+      name: Wind3_7
       rect:
         serializedVersion: 2
         x: 384
@@ -186,14 +294,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c539119ce5786fe0800000000000000
-      internalID: -1195576042159786555
+      spriteID: 4bcf259267cb4b8f0800000000000000
+      internalID: -525588040810038092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_3
+      name: Wind3_8
       rect:
         serializedVersion: 2
         x: 576
@@ -207,14 +315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46027f9c7348dbb40800000000000000
-      internalID: 5457663698589392996
+      spriteID: 719024976467161a0800000000000000
+      internalID: -6818038315808061161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_4
+      name: Wind3_9
       rect:
         serializedVersion: 2
         x: 768
@@ -228,14 +336,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed29d9b9817f9ab0800000000000000
-      internalID: -4999152225015484954
+      spriteID: 14dd1e28e1eea6bc0800000000000000
+      internalID: -3788954321666581183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_5
+      name: Wind3_10
       rect:
         serializedVersion: 2
         x: 0
@@ -249,14 +357,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4ff4ae3b05102be0800000000000000
-      internalID: -1504179137501921462
+      spriteID: 24bdc443f41958a10800000000000000
+      internalID: 1911093386254539586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_6
+      name: Wind3_11
       rect:
         serializedVersion: 2
         x: 192
@@ -270,14 +378,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e68b6e8edb87ed90800000000000000
-      internalID: -7068527302146291996
+      spriteID: 861fc89ef5c6d0b00800000000000000
+      internalID: 796411868310466920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_7
+      name: Wind3_12
       rect:
         serializedVersion: 2
         x: 384
@@ -291,14 +399,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f7154dc9f61af420800000000000000
-      internalID: 2664467391689594873
+      spriteID: 784b42553c19ce220800000000000000
+      internalID: 2516546559926383751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkness3_8
+      name: Wind3_13
       rect:
         serializedVersion: 2
         x: 576
@@ -312,8 +420,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d7aa78a303659270800000000000000
-      internalID: 8256614359216334802
+      spriteID: dd6e71b2d00af6840800000000000000
+      internalID: 5219566471563699933
       vertices: []
       indices: 
       edges: []
