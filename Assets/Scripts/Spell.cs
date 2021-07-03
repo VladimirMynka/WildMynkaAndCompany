@@ -82,6 +82,7 @@ public class Spell : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) 
     {
+        if(!hasTarget) return;
         if(owner == null) return;
         if(other.isTrigger) return;
         GameObject otherGO = other.gameObject;

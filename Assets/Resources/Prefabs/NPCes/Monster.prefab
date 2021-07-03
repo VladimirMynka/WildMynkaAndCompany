@@ -378,7 +378,7 @@ MonoBehaviour:
   changeWeaponWaiting: 10
   attackWaiting: 2
   fixedAudioWaiting: 10
-  attackDistance: 0.3
+  attackDistance: 0.5
 --- !u!114 &5823297348891752653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,13 +445,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotater:
     forward: {fileID: 21300000, guid: 3c30c117bd2906a42afc6c878654a19d, type: 3}
-    forwardArms: {x: -0.1, y: 0.1, z: 0}
+    forwardArms: {x: -0.15, y: 0.15, z: 0}
     back: {fileID: 21300000, guid: 1d3b4eaf85b5964459c5b9a8069ababe, type: 3}
-    backArms: {x: 0.1, y: 0.1, z: 0}
+    backArms: {x: 0.15, y: 0.15, z: 0}
     left: {fileID: 21300000, guid: 3c30c117bd2906a42afc6c878654a19d, type: 3}
-    leftArms: {x: -0.1, y: 0.1, z: 0}
+    leftArms: {x: -0.15, y: 0.15, z: 0}
     rigth: {fileID: 21300000, guid: 1d3b4eaf85b5964459c5b9a8069ababe, type: 3}
-    rigthArms: {x: 0.1, y: 0.1, z: 0}
+    rigthArms: {x: 0.15, y: 0.15, z: 0}
 --- !u!114 &4378612851572507811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +482,6 @@ MonoBehaviour:
   items:
   - {fileID: 9092837528809961607, guid: 0556bc2b8d78917418c986bf445e56ab, type: 3}
   radius: 0.5
-  miniCanvas: {fileID: 0}
 --- !u!114 &4378612851572507789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,18 +1089,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1e5c06e3147cf49a4bc792931980c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogCanvas: {fileID: 0}
   buttonExample: {fileID: 2568792612394435409, guid: 5a9060135049413499ee4fcb29e5f9cd,
     type: 3}
-  topics: []
   topicsIndeces: 00000000010000000200000003000000
-  greeting:
-    name: 
-    texts: []
-    replicas: []
-    usingCount: 0
   greetingIndex: 0
-  globalTopicsObject: {fileID: 0}
-  miniCanvas: {fileID: 0}
-  active: 0
   text: "\u0421\u0442\u0440\u0430\u0448\u043D\u044B\u0439 \u044D\u043B\u044C\u0444"

@@ -102,7 +102,7 @@ BoxCollider2D:
   m_Offset: {x: 0.09535837, y: 0.096588135}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4836119, y: -0.11619142}
     oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 5.29, y: 3.87}
     adaptiveTilingThreshold: 0.5
@@ -239,6 +239,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   ownerPar: {fileID: 0}
   damage: 30
-  speed: 3
+  firstRotateSpeed: 5
+  secondRotateSpeed: 10
+  rotateSpan: 60
   sound: {fileID: 8300000, guid: d1c6cdb4dec30e0498fdd58aecfda87f, type: 3}
-  learningFactor: 0.01
+  powerLearningFactor: 0.1
+  attackLearningFactor: 0.1

@@ -239,6 +239,9 @@ MonoBehaviour:
   owner: {fileID: 0}
   ownerPar: {fileID: 0}
   damage: 50
-  speed: 2
+  firstRotateSpeed: 5
+  secondRotateSpeed: 10
+  rotateSpan: 30
   sound: {fileID: 8300000, guid: d1c6cdb4dec30e0498fdd58aecfda87f, type: 3}
-  learningFactor: 0.05
+  powerLearningFactor: 0.1
+  attackLearningFactor: 0.1

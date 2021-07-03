@@ -22,6 +22,7 @@ public class Boss : MonoBehaviour
 
     private void Update() 
     {
+        if (Distance(player) > 20) return;
         if ((points[currentPoint].transform.position - transform.position).sqrMagnitude < 4)
         {
             currentPoint++;
@@ -47,5 +48,10 @@ public class Boss : MonoBehaviour
                 }
             }
         }
+    }
+
+    float Distance(GameObject one)
+    {
+        return ((one.transform.position - transform.position).magnitude);
     }
 }
